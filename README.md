@@ -1260,6 +1260,9 @@ El siguiente Impact Mapping fue desarrollado en UXPressia de manera colaborativa
 </figure>
 
 ### 2.4.3. Product Backlog
+
+A continuación, presentaremos el Product Backlog, el cual contiene todas las funcionalidades y características necesarias para el desarrollo de la plataforma. Este listado incluye tanto las historias de usuario como las tareas técnicas que facilitarán el progreso del proyecto. Para priorizar las tareas, se ha utilizado la escala Fibonacci (1, 2, 3, 5, 8, 13, 21), la cual ayuda a estimar el esfuerzo relativo requerido para completar cada tarea. Además, hemos asignado cada item a un sprint, de acuerdo con su relevancia y dependencias.
+
 | # Orden | User Story ID | Título                                         | Story Points (1 / 2 / 3 / 5 / 8) |
 |----------|---------------|------------------------------------------------|----------------------------------|
 | 1  | US-01 | Visualizar propuesta de valor principal en la Landing Page | 3 |
