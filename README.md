@@ -941,6 +941,9 @@ Las tareas fueron identificadas a partir del análisis cualitativo de entrevista
 
 ### 2.3.3. User Journey Mapping
 **Segmento objetivo #1: Negocios que utilizan equipos de refrigeración**
+
+Este User Journey Map representa el recorrido actual de Carolina García. El mapa ilustra su experiencia completa desde que maneja continuamente los datos registrados de la empresa hasta su seguimiento luego de la realización de la venta o servicio.
+Esta sección refleja la situación actual sin intervención de soluciones tecnológicas, mostrando los puntos de contacto, tareas clave, emociones y posibles fricciones que enfrenta en su día a día. Este recorrido permite entender los desafíos que enfrenta Carolina.
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter02/JourneyMap-segment-1.png"
        alt="Segmento 1 del Journey Map: Etapa de Descubrimiento de necesidades del usuario."
@@ -951,6 +954,9 @@ Las tareas fueron identificadas a partir del análisis cualitativo de entrevista
 </figure>
 
 **Segmento objetivo #2: EMPRESAS PROVEEDORAS DE SERVICIOS**
+
+Este User Journey Map representa el recorrido actual de Luis Rojas. El mapa ilustra su experiencia completa desde que maneja continuamente los datos registrados de la empresa hasta su seguimiento luego de la realización de la venta o servicio.
+Esta sección refleja la situación actual sin intervención de soluciones tecnológicas, mostrando los puntos de contacto, tareas clave, emociones y posibles fricciones que enfrenta en su día a día. Este recorrido permite entender los desafíos que enfrenta Luis.
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter02/JourneyMap-segment-2.png"
        alt="Segmento 2 del Journey Map: Etapa de Consideración y Evaluación."
