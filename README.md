@@ -838,6 +838,16 @@ En esta sección se presentan las fichas de User Personas construidas a partir d
 
 ### 2.3.2. User Task Matrix
 
+En esta sección se presenta el User Task Matrix, construido a partir de los User Persona que representan a los dos segmentos clave identificados:
+
+Segmento 1: Negocios que utilizan equipos de refrigeración (representado por Carolina García).
+
+Segmento 2: Empresas proveedoras de servicios y equipos de refrigeración (representado por Luis Rojas).
+
+Las tareas fueron identificadas a partir del análisis cualitativo de entrevistas, y cada una fue evaluada según su frecuencia y nivel de importancia para los respectivos perfiles.
+
+
+
 <table>
   <tr>
     <th rowspan="2">Tarea / Task</th>
