@@ -1263,6 +1263,28 @@ El siguiente Impact Mapping fue desarrollado en UXPressia de manera colaborativa
 
 A continuación, presentaremos el Product Backlog, el cual contiene todas las funcionalidades y características necesarias para el desarrollo de la plataforma. Este listado incluye tanto las historias de usuario como las tareas técnicas que facilitarán el progreso del proyecto. Para priorizar las tareas, se ha utilizado la escala Fibonacci (1, 2, 3, 5, 8, 13, 21), la cual ayuda a estimar el esfuerzo relativo requerido para completar cada tarea. Además, hemos asignado cada item a un sprint, de acuerdo con su relevancia y dependencias.
 
+Escala de Story Points (Fibonacci):
+
+1: Tareas pequeñas que se pueden completar rápidamente.
+
+2: Tareas de tamaño moderado.
+
+3: Tareas que requieren más tiempo y esfuerzo.
+
+5: Tareas complejas o con dependencia de otras tareas.
+
+8: Tareas muy complejas o que afectan a múltiples áreas.
+
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/Product-Backlog.png"
+       alt="Diagrama de Product Backlog: Lista priorizada de funcionalidades y requisitos del producto."
+       style="max-width: 95%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 1:</strong> Product Backlog.
+  </figcaption>
+</figure>
+
 | # Orden | User Story ID | Título                                         | Story Points (1 / 2 / 3 / 5 / 8) |
 |----------|---------------|------------------------------------------------|----------------------------------|
 | 1  | US-01 | Visualizar propuesta de valor principal en la Landing Page | 3 |
@@ -1304,9 +1326,66 @@ A continuación, presentaremos el Product Backlog, el cual contiene todas las fu
 
 ### 2.5.1. EventStorming
 Con el objetivo de realizar un modelado colaborativo y estratégico del dominio de OsitoPolar, se llevó a cabo una sesión de EventStorming, una técnica visual centrada en eventos del dominio que permite identificar flujos de negocio, entidades relevantes, actores y límites naturales del sistema.
+Objetivo: Comprender cómo los usuarios (dueños de negocios y técnicos) interactúan con la plataforma, desde una perspectiva orientada a eventos.
+
+Herramientas utilizadas:
+
+- Herramienta visual: Miro
+- Plataforma de reunión: Discord
+- Duración: 1 hora
+- Participantes: 5 miembros del equipo
+
+Actividades realizadas:
+
+Identificación de eventos de dominio
+Ejemplos: Usuario registra un equipo de refrigeración, Sistema detecta alerta de temperatura, Técnico recibe notificación de mantenimiento, Usuario confirma visita, Sistema genera historial técnico.
+
+Agrupación de eventos por flujo de valor
+Se estructuraron flujos ideales (happy paths), como la programación exitosa de un mantenimiento, y flujos de error (unhappy paths), como alertas no atendidas a tiempo.
+
+Identificación de puntos críticos (Pivotal Points):
+- La detección automática de fallas en equipos.
+- La asignación de técnicos disponibles.
+- La confirmación de visitas por parte de los clientes.
+
+Detección de puntos de dolor (Pain Points):
+- Fallas no detectadas a tiempo.
+- Pérdida de historial técnico.
+- Mala coordinación entre clientes y técnicos.
+
+Asignación de comandos y actores:
+- Registrar Equipo (Usuario)
+- Generar Alerta (Sistema)
+- Asignar Técnico (Administrador del servicio)
+- Confirmar Mantenimiento (Técnico/Usuario)
+
+Políticas del sistema:
+- Validación de roles y permisos.
+- Restricciones comerciales (técnico asignado solo dentro de su zona).
+- Autenticación segura de usuarios.
+
+Modelos de lectura (Read Models):
+- Dashboard con estado de equipos en tiempo real.
+- Historial técnico por equipo.
+- Reportes de incidencias y mantenimientos.
+
+Sistemas externos:
+- Integración con sensores IoT para monitoreo en tiempo real.
+- Pasarela de pagos (para suscripciones premium).
+- Servicios de mensajería para notificaciones (email/SMS).
+
+Identificación de Aggregates:
+- EquipoRefrigeracion (agregado raíz que encapsula historial, alertas y mantenimientos).
+- Usuario (propietario, técnico o proveedor).
+
+Mantenimiento (con asignación, estado y resultados).
+
 <img width="1734" height="525" alt="image" src="https://github.com/user-attachments/assets/f3937874-d931-48db-b5a1-192ddef51340" />
 
 #### 2.5.1.1. Candidate Context Discovery
+Durante esta etapa se aplicó la técnica Start With Value, con el objetivo de identificar primero el valor principal que la aplicación debe ofrecer: evitar pérdidas económicas y mejorar la eficiencia de los mantenimientos de equipos de refrigeración.
+
+Candidate Bounded Contexts Identificados
 | Bounded Context | Descripción breve | Tipo |
 |-----------------|-------------------|------|
 | **Gestion de equipos** | Registro, monitoreo y alertas en tiempo real de equipos de refrigeración. | Core |
