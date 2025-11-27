@@ -1043,30 +1043,208 @@ El trabajo fue realizado de manera colaborativa, priorizando la comprensión del
 | US-27 | Solicitar demostración del producto | Como visitante, quiero solicitar una demostración del producto para evaluar su funcionamiento antes de adquirirlo. | **Escenario 1: Solicitud de demo** <br/> Dado que el visitante desea una demostración del producto, cuando envía una solicitud de demostración, entonces el sistema registra la información en la base de datos y genera una confirmación automática enviada al correo registrado. | EP-07 |
 
 #### 2.4.1.1. Spike Story
-**Spike Story ID: SS-01**
-**Como** equipo de desarrollo (web, móvil y backend),
-**Quiero** investigar y prototipar las tecnologías móviles más adecuadas para la plataforma OsitoPolar (Kotlin para Android, Flutter con Dart y/o Kotlin Multiplatform),
+**Spike Story ID:** SS-01
+
+**Como** equipo de desarrollo (web, móvil y backend),  
+**Quiero** investigar y prototipar las tecnologías móviles más adecuadas para la plataforma OsitoPolar (Kotlin para Android, Flutter con Dart y/o Kotlin Multiplatform),  
 **Para que** podamos complementar los conocimientos adquiridos en el curso con investigación práctica y seleccionar el enfoque más viable para el desarrollo móvil.
 
+---
+
+### Criterios de Aceptación (en formato Given-When-Then)
+
+1. **Revisa la documentación oficial de las tecnologías móviles**
+  - Dado que el equipo no domina completamente las tecnologías móviles,
+  - Cuando el desarrollador revisa la documentación de Kotlin Android, Flutter y Kotlin Multiplatform (KMP),
+  - Entonces el desarrollador identifica y documenta sus características principales, fortalezas y limitaciones en un informe compartido.
+
+2. **Evalúa la Compatibilidad con la Plataforma Web/Backend**
+  - Dado que OsitoPolar ya cuenta con frontend en Vue y backend en .NET ASP,
+  - Cuando el desarrollador evalúa la integración móvil con APIs RESTful y WebSockets,
+  - Entonces el informe detalla los requisitos de interoperabilidad y cómo cada tecnología móvil facilita la comunicación con el backend existente.
+
+3. **Analiza la Curva de Aprendizaje y Conocimientos del Equipo**
+  - Dado que el equipo tiene conocimientos base del curso y experiencia previa limitada en móviles,
+  - Cuando se contrastan los contenidos del curso con los requerimientos de cada framework,
+  - Entonces el informe documenta qué tecnologías son más rápidas de adoptar y qué brechas de conocimiento deberán cubrirse.
+
+4. **Evalúa la Experiencia de Usuario y Capacidades de UI**
+  - Dado que la aplicación debe ofrecer una experiencia fluida a empresas y técnicos,
+  - Cuando el desarrollador analiza las capacidades de Flutter (UI multiplataforma), Kotlin Android (UI nativa) y KMP (UI específica por plataforma),
+  - Entonces el informe documenta ventajas y limitaciones en diseño de interfaces, usabilidad y consistencia visual.
+
+5. **Identifica Implicaciones de Seguridad**
+  - Dado que OsitoPolar manejará datos sensibles (monitoreo IoT, fallas de equipos, datos de clientes),
+  - Cuando se investigan las prácticas de seguridad soportadas por cada tecnología (almacenamiento seguro, comunicación cifrada, autenticación con backend),
+  - Entonces el informe incluye un resumen de riesgos y medidas recomendadas.
+
+6. **Evalúa el Impacto en el Rendimiento**
+  - Dado que la app debe procesar datos de IoT en tiempo real,
+  - Cuando el desarrollador investiga benchmarks de rendimiento (uso de memoria, consumo de batería, latencia de red),
+  - Entonces el informe documenta hallazgos y potenciales cuellos de botella en cada tecnología.
+
+7. **Verifica Costos y Recursos**
+  - Dado que se busca optimizar costos de desarrollo y mantenimiento,
+  - Cuando el desarrollador analiza dependencias externas, soporte en la comunidad, compatibilidad con librerías y esfuerzo de mantenimiento,
+  - Entonces el informe detalla costos asociados (tiempo de desarrollo, curva de aprendizaje, soporte a largo plazo).
+
+8. **Prototipa un Flujo Mínimo**
+  - Dado que se necesita validar la viabilidad práctica,
+  - Cuando el desarrollador construye un proof-of-concept mínimo (ej. pantalla de login y consumo de un endpoint IoT desde el backend),
+  - Entonces el PoC queda registrado en una rama del repositorio y documentado en el informe.
+
+9. **Estima el Esfuerzo de Implementación**
+  - Dado que el equipo necesita planificar futuros sprints,
+  - Cuando el desarrollador desglosa la implementación móvil en tareas (pantallas principales, consumo de APIs, integración IoT, seguridad),
+  - Entonces se presenta una estimación aproximada de puntos de historia para cada alternativa tecnológica.
+
+10. **Documenta y Comparte los Hallazgos**
+- Dado que el Spike está completo,
+- Cuando el desarrollador compila todos los hallazgos en un informe,
+- Entonces el documento incluye pros/contras, recomendación inicial y próximos pasos, y se revisa en una sesión de equipo.
+
+---
+
+### Definition of Done (DoD)
+- El PoC mínimo estará registrado en una rama del repositorio.
+- Los hallazgos se utilizan para crear o refinar historias de implementación en el backlog.
+- El Spike está limitado a 8–16 horas y se completa dentro del sprint.
+
 **Spike Story ID: SS-02**
+
 **Como** equipo de desarrollo (backend, frontend y móvil),
 **Quiero** investigar y prototipar la integración de Stripe para la gestión de planes de suscripción y pagos,
 **Para** que podamos garantizar un flujo de pago seguro, escalable y conforme con PCI-DSS dentro de OsitoPolar.
+
+**Criterios de Aceptación (Given-When-Then)**
+
+Revisa la Documentación de Stripe
+- Dado que el equipo no domina completamente Stripe,
+- Cuando el desarrollador revisa Stripe Checkout, PaymentIntents y Webhooks,
+- Entonces documenta las opciones disponibles y selecciona el flujo más adecuado para suscripciones recurrentes.
+
+Evalúa la Integración con Backend .NET 8
+- Dado que OsitoPolar usa ASP.NET Core con EF Core,
+- Cuando se analice la librería Stripe.net,
+- Entonces el informe detalla los pasos de configuración y compatibilidad con el modelo de pagos.
+
+Analiza la Seguridad y Cumplimiento
+- Dado que los pagos manejan datos sensibles,
+- Cuando se evalúe el uso de tokens,
+- Entonces se documentan riesgos y medidas de mitigación.
+
+Evalúa el Impacto en la Experiencia del Usuario
+- Dado que la app debe ofrecer una experiencia fluida,
+- Cuando se investigue la experiencia de usuario en web y móvil con Stripe Checkout vs. UI personalizada,
+- Entonces se documentan ventajas y desventajas de cada enfoque.
+
+Prototipa un Flujo Mínimo de Pago
+- Dado que se necesita validar la viabilidad,
+- Cuando se construye un PoC con creación de sesión de pago y confirmación vía webhook,
+- Entonces queda registrado en el repositorio y documentado en el informe.
+
+Estima Esfuerzo y Costos
+- Dado que la implementación requiere planificación,
+- Cuando se desglosen tareas (backend, frontend, móvil),
+- Entonces se presenta una estimación en puntos de historia y costos de uso de Stripe.
+
+Documenta y Comparte Hallazgos
+- Dado que el Spike está completo,
+- Cuando se compila el informe,
+- Entonces se incluyen pros/contras, la recomendación inicial y los siguientes pasos.
+
+
 
 **Spike Story ID: SS-03**
 **Como** equipo de desarrollo,
 **Quiero** investigar y prototipar un sistema de notificaciones en tiempo real para OsitoPolar,
 **Para** que los usuarios reciban alertas inmediatas de fallas, mantenimientos y pagos confirmados.
 
+Criterios de Aceptación (Given-When-Then)
+- Revisa Tecnologías Disponibles
+- Dado que el backend es .NET 8,
+- Cuando se investigue SignalR, WebSockets y colas de mensajería,
+- Entonces se documentan ventajas y limitaciones de cada enfoque.
+
+Evalúa Integración con Frontend y Móvil
+- Dado que existen clientes web y móviles,
+- Cuando se analicen librerías de integración (ej. SignalR Client para Flutter),
+- Entonces se documentan requisitos de interoperabilidad.
+
+Analiza Persistencia de Notificaciones
+- Dado que los usuarios necesitan historial,
+- Cuando se diseñe el flujo de datos,
+- Entonces se incluye persistencia en la base de datos.
+
+Evalúa Impacto en Rendimiento
+- Dado que se esperan múltiples notificaciones simultáneas,
+- Cuando se realicen pruebas de carga,
+- Entonces se documentan cuellos de botella potenciales.
+
+Prototipa un Flujo Mínimo
+- Dado que se debe validar,
+- Cuando se implemente un PoC con envío de una notificación en tiempo real,
+- Entonces queda registrado y documentado.
+
+Documenta y Comparte Hallazgos
+- Dado que el Spike está completo,
+- Cuando se compile el informe,
+- Entonces se presentan pros/contras y la recomendación inicial.
+
 **Spike Story ID: SS-04**
 **Como** equipo de desarrollo (web, móvil y backend),
 **Quiero** investigar y prototipar el uso de Jetpack Compose para desarrollar la pantalla de catálogo de equipos en la versión móvil de OsitoPolar,
 **Para** que podamos evaluar su facilidad de uso, rendimiento y compatibilidad con las funcionalidades actuales, seleccionando un enfoque viable para el desarrollo móvil.
 
+Criterios de Aceptación (Given-When-Then)
+Escenario 1
+- Dado que tenemos acceso a la documentación oficial de Jetpack Compose y Android SDK,
+- Cuando investiguemos las características principales de Jetpack Compose (como composición declarativa, animaciones y LiveData integration),
+- Entonces deberíamos documentar al menos 3 ventajas y 3 desafíos específicos para su implementación en el catálogo de equipos.
+
+<br>Escenario 2
+- Dado que configuramos un entorno de desarrollo con Android Studio y Jetpack Compose,
+- Cuando creemos un prototipo básico que muestre una lista de equipos con tarjetas (cards) y un botón "Request",
+- Entonces el prototipo debe compilar y ejecutarse en un emulador Android sin errores críticos, mostrando al menos 3 equipos del catálogo actual.
+
+<br>Escenario 3
+- Dado que probamos el prototipo en el emulador,
+- Cuando evaluemos el rendimiento (tiempo de carga de la lista y respuesta al botón "Request"),
+- Entonces deberíamos registrar métricas de rendimiento (e.g., tiempo de carga < 2 segundos) y compararlos con los requisitos de usabilidad de OsitoPolar.
+
+<br>Escenario 4
+- Dado que evaluamos la experiencia de desarrollo con Jetpack Compose,
+- Cuando finalicemos la investigación,
+- Entonces deberíamos presentar un informe con una recomendación sobre su viabilidad para el catálogo, justificando con pros, contras y estimaciones de esfuerzo para la implementación completa.
+
 **Spike Story ID: SS-05**
 **Como** equipo de desarrollo (web, móvil y backend),
 **Quiero** investigar y prototipar el uso de Jetpack Compose para implementar la pantalla de autenticación (login y registro) en la versión móvil de OsitoPolar,
 **Para** que podamos evaluar su seguridad, usabilidad y compatibilidad con el backend existente, seleccionando un enfoque viable para el desarrollo móvil.
+
+Criterios de Aceptación (Given-When-Then)
+<br>Escenario 1
+- Dado que tenemos acceso a la documentación de Jetpack Compose y las bibliotecas de autenticación de Android,
+- Cuando investiguemos las capacidades de Jetpack Compose para formularios de login/registro (como encriptación básica y manejo de estado),
+- Entonces deberíamos documentar al menos 3 ventajas y 3 desafíos específicos para su uso en la autenticación.
+
+<br>Escenario 2
+- Dado que configuramos un entorno de desarrollo con Android Studio y Jetpack Compose,
+- Cuando creemos un prototipo que incluya pantallas de login (email y contraseña) y registro (email, contraseña, nombre),
+- Entonces el prototipo debe compilar y ejecutarse en un emulador Android sin errores críticos, mostrando ambas pantallas con campos funcionales.
+
+<br>Escenario 3
+- Dado que probamos el prototipo en el emulador,
+- Cuando ingresemos credenciales válidas (e.g., email "user@example.com", contraseña "password123") y válidas,
+- Entonces deberíamos confirmar que el login/registro simulado se completa y muestra un mensaje de éxito en menos de 1 segundo.
+
+<br> Escenario 4
+- Dado que evaluamos la experiencia de usuario y desarrollo con Jetpack Compose para autenticación,
+- Cuando finalicemos la investigación,
+- Entonces deberíamos presentar un informe con una recomendación sobre su viabilidad para la autenticación, justificando con pros, contras y estimaciones de esfuerzo para la implementación completa.
+
+
+
 
 ### 2.4.2. Impact Mapping
 <figure style="page-break-inside: avoid; text-align: center;">
