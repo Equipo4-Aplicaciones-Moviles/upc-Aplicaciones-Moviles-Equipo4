@@ -1395,8 +1395,8 @@ Candidate Bounded Contexts Identificados
 | **Reportes y Dashboard** | Generación de métricas, exportación de reportes y visualización de indicadores. | Generic |
 | **Notificaciones** | Envío de alertas y recordatorios vía correo, SMS o push. | Generic |
 
-#### 2.5.1.2. Domain Message Flows Modeling
-Para visualizar la colaboración entre los contextos, se utilizó Domain Storytelling.
+   ##### 2.5.1.2. Domain Message Flows Modeling
+ Para visualizar la colaboración entre los contextos, se utilizó Domain Storytelling.
 
 Caso 1: Registro y Monitoreo de un Equipo:
 - El usuario registra un nuevo equipo de refrigeración.
@@ -1405,52 +1405,256 @@ Caso 1: Registro y Monitoreo de un Equipo:
 - Si se detecta una falla, se dispara un evento al contexto de Gestión de Mantenimientos.
 - El sistema asigna un técnico disponible y envía una notificación al usuario.
 
+Bounded Contexts involucrados:
+- Gestión de Equipos
+- Gestión de Mantenimientos
+- Notificaciones
+
 <img width="303" height="1536" alt="Image 18 sept 2025, 10_53_31 p m" src="https://github.com/user-attachments/assets/54b42e86-190d-4225-87f5-f22728a0cbf6" />
 
-#### 2.5.1.3. Bounded Context Canvases
-**Bounded Context 1: My Equipment**
+Caso 2: Programación de un Mantenimiento
+- El sistema detecta que un equipo requiere mantenimiento preventivo.
+- El contexto de Gestión de Mantenimientos genera una orden.
+- El usuario confirma la programación.
+- El técnico asignado recibe la orden y registra el resultado.
+- Se actualiza el historial en el contexto de Gestión de Equipos.
+
+Bounded Contexts involucrados:
+- Gestión de Mantenimientos
+- Gestión de Usuarios
+- Gestión de Equipos
+
+<img width="330" height="1536" alt="Image 18 sept 2025, 10_53_49 p m png2" src="https://github.com/user-attachments/assets/247f78b4-a54d-4679-be9c-b130928a1a04" />
+
+##### 2.5.1.3. Bounded Context Canvases
+
+En esta sección se presentan los diseños de los *Candidate Bounded Contexts* identificados para **OsitoPolar**, modelados con el formato del *Bounded Context Canvas*.
+
+---
+
+### **Bounded Context 1: My Equipment**
+
 **Context Overview:** Gestiona la administración central de los equipos de refrigeración registrados por los usuarios, permitiendo su monitoreo en tiempo real y la vinculación con servicios relacionados.
+
+**Business Rules:**
+- Cada *Cold Equipment* debe estar vinculado a un *User*.
+- No se puede eliminar un equipo con solicitudes o mantenimientos abiertos.
+
+**Ubiquitous Language:** User, Cold Equipment, Smart Dashboard, Equipment Inventory, Real-Time Monitoring.
+
+**Capability Analysis:**
+- Registrar, editar y eliminar equipos.
+- Mostrar equipos asociados al usuario.
+- Generar datos de estado para otros contextos.
+
+**Capability Layering:**
+- **Application:** APIs para gestión y consulta de equipos.  
+- **Domain:** validaciones de inventario y reglas de asociación.  
+- **Infrastructure:** persistencia y conexión con IoT.
+
+**Dependencies Capture:** Depende de *View Equipment* (para visualización avanzada), *Work Orders* (para mantenimientos) y *Notifications* (para alertas).
+
 **Design Critique:** Es un contexto *Core*, base del dominio. Requiere robustez en manejo de datos en tiempo real.
 
-**Bounded Context 2: Service Requests**
+---
+
+### **Bounded Context 2: Service Requests**
+
 **Context Overview:** Coordina las solicitudes de servicio generadas por los usuarios, que pueden derivar en órdenes de trabajo o mantenimientos programados.
+
+**Business Rules:**
+- Una *Service Request* debe estar ligada a un *User* y un *Equipment*.
+- Solo usuarios autenticados pueden crear solicitudes.
+
+**Ubiquitous Language:** Service Coordination, Request, User Profile, Client Portfolio.
+
+**Capability Analysis:**
+- Crear solicitudes de servicio.  
+- Consultar estado de las solicitudes.  
+- Cancelar o modificar solicitudes abiertas.
+
+**Capability Layering:**
+- **Application:** APIs de registro y consulta de solicitudes.  
+- **Domain:** reglas de validación y flujo de aprobación.  
+- **Infrastructure:** persistencia y coordinación con órdenes.
+
+**Dependencies Capture:** Depende de *My Equipment* (datos de equipos) y de *Work Orders* (para convertir solicitudes en órdenes).
+
 **Design Critique:** Es un contexto *Supporting*, facilita la coordinación y canaliza las necesidades de los usuarios.
 
-**Bounded Context 3: Work Orders**
+---
+
+### **Bounded Context 3: Work Orders**
+
 **Context Overview:** Administra el ciclo de vida de los mantenimientos preventivos y correctivos, desde su creación hasta el cierre.
+
+**Business Rules:**
+- Una *Work Order* debe asignarse a un *Service Provider*.  
+- No se puede cerrar una orden sin registrar un resultado técnico.
+
+**Ubiquitous Language:** Work Order, Preventive Maintenance, Corrective Maintenance, Service Provider, Technical History, Maintenance Schedule.
+
+**Capability Analysis:**
+- Crear, asignar y gestionar órdenes de trabajo.  
+- Actualizar y cerrar órdenes.  
+- Consultar historial de órdenes completadas.
+
+**Capability Layering:**
+- **Application:** APIs de gestión de órdenes.  
+- **Domain:** reglas de ciclo de vida.  
+- **Infrastructure:** persistencia y coordinación con técnicos.
+
+**Dependencies Capture:** Depende de *Service Requests* (para solicitudes aprobadas), *My Equipment* (para equipos vinculados) y *Notifications* (avisos de cambios).
+
 **Design Critique:** Es un *Core Context*, indispensable para la continuidad del servicio.
 
-**Bounded Context 4: View Maintenance**
+---
+
+### **Bounded Context 4: View Maintenance**
+
 **Context Overview:** Proporciona a los usuarios una interfaz para consultar mantenimientos realizados y programados.
+
+**Business Rules:**
+- Solo usuarios autorizados pueden acceder al historial de un equipo.  
+- El historial debe incluir *Technical History* y resultados de órdenes.
+
+**Ubiquitous Language:** Maintenance Schedule, Technical History, Report.
+
+**Capability Analysis:**
+- Consultar mantenimientos preventivos y correctivos.  
+- Generar reportes automáticos de historial.
+
+**Capability Layering:**
+- **Application:** APIs y vistas para consulta.  
+- **Domain:** reglas de acceso y filtrado.  
+- **Infrastructure:** integración con repositorio histórico.
+
+**Dependencies Capture:** Depende de *Work Orders* (resultados y estado) y *My Equipment* (asociación de equipos).
+
 **Design Critique:** Es un contexto *Supporting*, orientado a consulta e informes.
 
-**Bounded Context 5: Notifications**
+---
+
+### **Bounded Context 5: Notifications**
+
 **Context Overview:** Gestiona la emisión de alertas y recordatorios, garantizando que los usuarios estén informados de fallas, mantenimientos y cambios en el sistema.
+
+**Business Rules:**
+- Una *Failure Alert* debe enviarse en tiempo real.  
+- Cada *Notification* debe registrarse en un historial.
+
+**Ubiquitous Language:** Notification, Failure Alert, Automatic Report Generation, Service Zone.
+
+**Capability Analysis:**
+- Generar y enviar notificaciones.  
+- Configurar preferencias de usuario.  
+- Consultar historial de notificaciones.
+
+**Capability Layering:**
+- **Application:** APIs de envío y gestión de notificaciones.  
+- **Domain:** reglas de disparo y personalización.  
+- **Infrastructure:** integración con mensajería externa.
+
+**Dependencies Capture:** Depende de *My Equipment* (eventos de equipos) y *Work Orders* (avisos de mantenimientos).
+
 **Design Critique:** Es un contexto *Supporting*, vital para la experiencia de usuario y escalabilidad.
 
-**Bounded Context 6: View Equipment**
+---
+
+### **Bounded Context 6: View Equipment**
+
 **Context Overview:** Facilita la visualización del inventario de equipos y sus características técnicas para usuarios y proveedores.
+
+**Business Rules:**
+- Solo se muestran equipos activos en el inventario.  
+- Los datos técnicos deben estar completos para ser visibles.
+
+**Ubiquitous Language:** Equipment Inventory, Cold Equipment, Energy Consumption, Performance Report.
+
+**Capability Analysis:**
+- Listar y filtrar equipos.  
+- Acceder a especificaciones técnicas.
+
+**Capability Layering:**
+- **Application:** vistas y filtros de equipos.  
+- **Domain:** validaciones de visualización.  
+- **Infrastructure:** consultas optimizadas a base de datos.
+
+**Dependencies Capture:** Depende de *My Equipment* (registro y datos actualizados).
+
 **Design Critique:** Es un *Generic Context*, soporte esencial para mejorar usabilidad y experiencia del usuario.
 
 ### 2.5.2. Context Mapping
 Luego de definir los Bounded Contexts y modelar sus colaboraciones, se realizó una sesión de Context Mapping para visualizar las relaciones estructurales dentro del dominio de OsitoPolar.
+Este proceso permitió evaluar:
+- Nivel de criticidad (Core, Supporting, Generic).
+- Funcionalidades clave.
+- Dependencias cruzadas.
+- Oportunidades de aislamiento o colaboración.
+
+**Preguntas clave consideradas**
+¿Qué pasaría si Notificaciones se integrara en Mi Equipo en lugar de ser un contexto separado?
+¿Qué pasaría si Ver Mantenimientos se absorbiera en Órdenes de Trabajo?
+¿Qué pasaría si se creara un contexto separado para Service Providers (técnicos, zonas, cartera de clientes)?
+¿Qué pasaría si Ver Equipos se integrara directamente en Mi Equipo para reducir redundancias?
+
+**Alternativas exploradas**
+**Alternativa 1: Fusionar Notificaciones + Mi Equipo**
+Pros: reduce dependencias, notificaciones más inmediatas.
+Contras: rompe separación de responsabilidades.
+Decisión: Rechazada. Se mantiene independiente.
+
+**Alternativa 2: Absorber Ver Mantenimientos en Órdenes de Trabajo**
+Pros: simplifica arquitectura y flujo de datos.
+Contras: dificulta consultas históricas optimizadas.
+Decisión: Rechazada. Ver Mantenimientos se mantiene separado para consultas especializadas.
+
+**Alternativa 3: Crear contexto de Service Providers**
+Pros: aísla la gestión de técnicos, zonas y cartera de clientes.
+Contras: agrega complejidad inicial.
+Decisión: Aprobada para el roadmap futuro.
+
+**Alternativa 4: Integrar Ver Equipos en Mi Equipo**
+Pros: simplifica modelo y reduce redundancia.
+Contras: limita escalabilidad de la visualización.
+Decisión: Rechazada. Se mantiene desacoplado para mejorar rendimiento de búsquedas.
+
 
 ### 2.5.3. Software Architecture
-#### 2.5.3.1. Software Architecture Context Level Diagrams
+  ##### 2.5.3.1. Software Architecture Context Level Diagrams
+Este diagrama muestra cómo interactúan los usuarios (Clientes y Empresas Proveedoras) con OsitoPolar. Los usuarios usan la plataforma para gestionar y monitorear equipos de refrigeración. Además, OsitoPolar se conecta con los servicios de correo para enviar notificaciones y con el servicio de pago para procesar transacciones.
+
 ![OsitoPolar-SystemContext.png]( assets/chapter04/Domain-Driven%20Software%20Architecture/OsitoPolar-SystemContext.png)
 
-#### 2.5.3.2. Software Architecture Container Level Diagrams
+  #### 2.5.3.2. Software Architecture Container Level Diagrams
+Este diagrama ilustra los diferentes contenedores dentro de OsitoPolar y cómo interactúan entre sí. Los contenedores representan las diferentes capas y servicios que componen la plataforma, como la interfaz de usuario (webapp), la API y la base de datos.
+
 ![OsitoPolar-Container.png](<assets/chapter03/ContainerDiagrama.png>)
 
-#### 2.5.3.3. Software Architecture Deployment Diagrams
+  #### 2.5.3.3. Software Architecture Deployment Diagrams
+**Mi Equipo Bounded Context**
+
+Este diagrama representa los componentes encargados de la gestión de equipos. Los usuarios pueden agregar equipos, monitorearlos en tiempo real y ver el estado de los mismos.
+
 ![OsitoPolar-Component-MiEquipo.png]( assets/chapter03/DeploymentDiagram.png)
+
+**Notificaciones Bounded Context**
+
+Este diagrama describe los componentes que gestionan las notificaciones, esenciales para mantener a los usuarios informados sobre el estado de los equipos y otros eventos importantes.
+
 ![OsitoPolar-Component-Notificaciones.png]( assets/chapter04/Domain-Driven%20Software%20Architecture/OsitoPolar-Component-Notificaciones.png)
+
+**Ordenes de trabajo Bounded Context**
+
+Este diagrama se centra en la gestión de las órdenes de trabajo. Aquí se muestran los componentes involucrados en el proceso de crear, gestionar y completar órdenes de trabajo.
+
 ![OsitoPolar-Component-OrdenesTrabajo.png]( assets/chapter04/Domain-Driven%20Software%20Architecture/OsitoPolar-Component-OrdenesTrabajo.png)
+### 2.6. Tactical-Level Domain-Driven Design
 
-## 2.6. Tactical-Level Domain-Driven Design
+#### 2.6.1. Bounded Context: Mi Equipo
+##### 2.6.1.1. Domain Layer
+Esta capa representa el núcleo del sistema y las reglas de negocio del dominio.
 
-### 2.6.1. Bounded Context: Mi Equipo
-#### 2.6.1.1. Domain Layer
 | Clase  | Tipo | Propósito | Atributos / Métodos |
 | :---- | :---- | :---- | :---- |
 | Equipment | Aggregate | Equipo de refrigeración | Id, Name, Type, Model, Manufacturer, Cost |
@@ -1458,17 +1662,26 @@ Luego de definir los Bounded Contexts y modelar sus colaboraciones, se realizó 
 | RentalInfo | Entity | Información de renta de equipos | StartDate, EndDate, MonthlyFee, ProviderId |
 | Location | Entity | Ubicación | Name, Address, Coordinates |
 
-#### 2.6.1.2. Interface Layer
+##### 2.6.1.2. Interface Layer
+
+Encargada de exponer funcionalidades al usuario o consumidores externos.
+
 | Clase | Tipo | Propósito | Atributos / Métodos |
 | :---- | :---- | :---- | :---- |
 | EquipmentController | Controller | Gestiona las peticiones relacionadas con los equipment | GetAllEquipments(), GetEquipmentById(), CreateEquipment(), UpdateEquipmentOperations(), UpdateEquipment(), DeleteEquipment() |
 
-#### 2.6.1.3. Application Layer
+##### 2.6.1.3. Application Layer
+
+Define los flujos de negocio mediante comandos y eventos.
+
 | Clase | Tipo | Propósito | Métodos |
 | :---- | :---- | :---- | :---- |
 | EquipmentCommandService | Command Handler | Ejecuta la lógica para gestionar un Equipment | Handle(command::CreateEquipmentCommand, command: UpdateEquipmentTemperatureCommand, UpdateEquipmentLocationCommand) |
 
-#### 2.6.1.4. Infrastructure Layer
+##### 2.6.1.4. Infrastructure Layer
+
+Provee la implementación concreta de servicios como base de datos, brokers, etc.
+
 | Clase | Tipo | Propósito | Tecnologías |
 | :---- | :---- | :---- | :---- |
 | EquipmentRepository | Repository | Implementación de EquipmentRepository con acceso a base de datos | PostgreSQL |
@@ -1477,50 +1690,380 @@ Luego de definir los Bounded Contexts y modelar sus colaboraciones, se realizó 
 <img width="3870" height="3211" alt="mi_equipo_component1" src="https://github.com/user-attachments/assets/709cd005-84e4-4a14-8e6d-4dd3a8c2772b" />
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
+A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Mi Equipo. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
 #### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 <img width="1538" height="850" alt="image" src="https://github.com/user-attachments/assets/2b1b243e-27c0-41d7-a1a5-1f6ff0a01e7e" />
 
 #### 2.6.1.6.2. Bounded Context Database Design Diagram
 <img width="1091" height="623" alt="image" src="https://github.com/user-attachments/assets/79d43335-bed1-4203-9d34-3298314f8d43" />
 
-### 2.6.2. Bounded Context: Gestión de Solicitudes
-(Ver sección detallada en versión previa para Gestión de Solicitudes)
+ 
+#### 2.6.2. Bounded Context: Gestión de Solicitudes
 
-### 2.6.3. Bounded Context: Órdenes de Trabajo
-(Ver sección detallada en versión previa para Órdenes de Trabajo)
+##### 2.6.2.1. Domain Layer
 
-### 2.6.4. Bounded Context: Ver Mantenimientos
-(Ver sección detallada en versión previa para Ver Mantenimientos)
+Esta capa representa el núcleo del sistema y las reglas de negocio del dominio.
 
-### 2.6.5. Bounded Context: Notificaciones
+| Clase  | Tipo | Propósito | Atributos / Métodos |
+| :---- | :---- | :---- | :---- |
+| ServiceRquest | Aggregate | Representa a la solicitud de servicio | Id, OrderNumber, Title, Description, IssueDetails, RequestTime, Status, Priority, Urgency, IsEmergency, ServiceType |
+| EPriority | Value Object | Representa a la prioridad de una solicitud | Low, Medium, High, Critical |
+| EServiceType | Value Object | Representa el tipo de servicio de una solicitud | PreventiveMaintenance, CorrectiveMaintenance, Installation, Diagnostic |
+
+##### 2.6.2.2. Interface Layer
+
+Encargada de exponer funcionalidades al usuario o consumidores externos.
+
+| Clase  | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| ServiceRequestController | Controller | Gestiona las peticiones relacionadas ServiceRequest | CreateServiceRequest(), GetAllServiceRequests(), GetServiceRequestById(), UpdateServiceRequest(), AssignTechnician(), AddCustomerFeedback(), UpdateServiceRequestStatus() |
+
+##### 2.6.2.3. Application Layer
+
+Define los flujos de negocio mediante comandos y eventos.
+
+| Clase | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| ServiceRequestCommandService | Command Handler | Ejecuta la lógica para gestionar un ServiceRequest | Handle(command::CreateServiceRequestCommand, command: UpdateServiceRequestCommand, AssignTechnicianToServiceRequestCommand, AddCustomerFeedbackToServiceRequestCommand() |
+
+##### 2.6.2.4. Infrastructure Layer
+
+Provee la implementación concreta de servicios como base de datos, brokers, etc.
+
+| Clase | Tipo | Propósito | Tecnologías |
+| :---- | :---- | :---- | :---- |
+| ServiceRequestRepository | Repository | Implementación de ServiceRequestRepository con acceso a base de datos | PostgreSQL |
+
+##### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
+<img width="4620" height="1411" alt="gestion_solicitudes_component" src="https://github.com/user-attachments/assets/589e930b-82c7-48fd-9c49-7fe81b7c3a19" />
+
+##### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
+A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Gestión de Solicitudes. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
+###### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
+<img width="1817" height="467" alt="image" src="https://github.com/user-attachments/assets/b686ba99-f84c-4900-be14-d455b16d9b9f" />
+
+###### 2.6.2.6.2. Bounded Context Database Design Diagram
+<img width="542" height="640" alt="image" src="https://github.com/user-attachments/assets/e394d39c-dc41-46ed-9066-a52dbd2e81e8" />
+
+           
+
+#### 2.6.3. Bounded Context: Órdenes de Trabajo
+
+##### 2.6.3.1. Domain Layer
+
+Esta capa representa el núcleo del sistema y las reglas de negocio del dominio.
+
+| Clase  | Tipo | Propósito | Atributos / Métodos |
+| :---- | :---- | :---- | :---- |
+| WorkOrder | Aggregate | Representa a la orden de trabajo | Id, WorkOrderNumber, ServiceRequestId, Title, Description, CreationTime, Status, Cost, EquipmentId |
+| EWorkOrderStatus | Value Object | Representa al estado de una orden de trabajo | Created, Assigned, InProgress, OnHold, Completed, Resolved, Cancelled |
+
+##### 2.6.3.2. Interface Layer
+
+Encargada de exponer funcionalidades al usuario o consumidores externos.
+
+| Clase  | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| WorkOrdersController | Controller | Gestiona las peticiones relacionadas con los WorkOrders | CreateWorkOrder(), GetAllWorkOrders(), GetWorkOrderById(), UpdateWorkOrderStatus(), AddWorkOrderResolutionDetails() |
+
+##### 2.6.3.3. Application Layer
+
+Define los flujos de negocio mediante comandos y eventos.
+
+| Clase | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| WorkOrderCommandService | Command Handler | Ejecuta la lógica para gestionar un WorkOrder | Handle(command::CreateWorkOrderCommand, command: UpdateWorkOrderStatusCommand, AssignTechnicianToWorkOrderCommand, AddWorkOrderResolutionDetailsCommand) |
+
+##### 2.6.3.4. Infrastructure Layer
+
+Provee la implementación concreta de servicios como base de datos, brokers, etc.
+
+| Clase | Tipo | Propósito | Tecnologías |
+| :---- | :---- | :---- | :---- |
+| WorkOrderRepository | Repository | Implementación de WorkOrderRepository con acceso a base de datos | PostgreSQL |
+
+#### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
+<img width="4620" height="1411" alt="orden_trabajo_component" src="https://github.com/user-attachments/assets/c4700d59-dc40-4338-ae11-6ddf359ad468" />
+
+#### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
+A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Órdenes de Trabajo. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
+#### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
+<img width="1805" height="442" alt="image" src="https://github.com/user-attachments/assets/cf16b776-74cf-4c03-af58-38d6be9fca31" />
+
+#### 2.6.3.6.2. Bounded Context Database Design Diagram
+<img width="622" height="480" alt="image" src="https://github.com/user-attachments/assets/409402e0-9d5f-40e2-90c3-c8bfd29e5444" />
+
+ 
+
+#### 2.6.4. Bounded Context: Ver Mantenimientos
+
+##### 2.6.4.1. Domain Layer
+
+Esta capa representa el núcleo del sistema y las reglas de negocio del dominio.
+
+| Clase  | Tipo | Propósito | Atributos / Métodos |
+| :---- | :---- | :---- | :---- |
+| Technician | Entity | Representa a un técnico que ve los mantenimientos | Id, Name, Specialization, Phone, Email, Rating, Availability, CompanyId |
+
+
+##### 2.6.4.2. Interface Layer
+
+Encargada de exponer funcionalidades al usuario o consumidores externos.
+
+| Clase  | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| TechniciansController | Controller | Gestiona las peticiones relacionadas a los Technicians | CreateTechnician(), GetAllTechnicians(), GetTechnicianById(), GetTechnicianAverageRating() |
+
+##### 2.6.4.3. Application Layer
+
+Define los flujos de negocio mediante comandos y eventos.
+
+| Clase | Tipo | Propósito | Métodos |
+| :---- | :---- | :---- | :---- |
+| TechnicianCommandService | Command Handler | Ejecuta la lógica para gestionar un Technician | Handle(command: CreateTechnicianCommand, command: UpdateTechnicianCommand |
+
+##### 2.6.4.4. Infrastructure Layer
+
+Provee la implementación concreta de servicios como base de datos, brokers, etc.
+
+| Clase | Tipo | Propósito | Tecnologías |
+| :---- | :---- | :---- | :---- |
+| TechnicianRepository | Repository | Implementación de TechnicianRepository con acceso a base de datos | PostgreSQL |
+
+##### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
+<img width="4620" height="1616" alt="ver_mantenimientos_component" src="https://github.com/user-attachments/assets/cc9a9843-3bbf-4fa8-b894-3c0f667caeda" />
+
+##### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
+A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Ver Mantenimientos. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
+###### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
+<img width="1327" height="511" alt="image" src="https://github.com/user-attachments/assets/d17df10e-5038-45b5-847e-20237f81cbb5" />
+
+###### 2.6.4.6.2. Bounded Context Database Design Diagram
+<img width="871" height="463" alt="image" src="https://github.com/user-attachments/assets/7c0cba94-db9f-4329-9de0-87a4dfa55863" />
+
+     
+
+#### 2.6.5. Bounded Context: Notificaciones
 #### 2.6.5.1. Domain Layer
-| Clase                       | Tipo                  | Propósito                                                                         | Atributos / Métodos                                                                 |
+
+   | Clase                     | Tipo                  | Propósito                                                                 | Atributos / Métodos                                                                 |
 |----------------------------|-----------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| **Payment** | Entity               | Representa un pago realizado por un usuario para adquirir o renovar una suscripción. | Id, UserId, SubscriptionId, Amount: Price, StripeSession, CustomerEmail, Description, `UpdatePaymentStatus()` |
-| **Subscription** | Entity               | Representa un plan de suscripción contratado por un usuario o proveedor.  | Id, PlanName, Price, BillingCycle, MaxEquipment, MaxClients, Features (List<Feature>), `UpdatePlan()` |
-| **Price** | Value Object          | Define un valor monetario y su moneda asociada.                           | Amount, Currency                                                                    |
-| **Feature** | Value Object          | Representa una característica incluida en un plan de suscripción.         | Name                                                                                |
-| **PaymentStatus** | Value Object / Enum | Representa el estado de un pago.                                          | Processing, Succeeded, Failed, Cancelled                                            |
-| **StripeSession** | Value Object          | Encapsula la sesión de pago en Stripe y su estado.                        | SessionId, `MarkAsProcessing()`, `MarkAsSucceeded()`, `MarkAsFailed()`, `MarkAsCancelled()` |
-| **BillingCycle** | Value Object / Enum | Define la periodicidad de facturación.                                    | Monthly, Yearly                                                                     |
-| **IPaymentRepository** | Repository Interface | Abstracción para acceder a datos de pagos.                                | `AddAsync()`, `FindById()`, `FindByUserId()`, `FindByStripeSessionId()`             |
+| **Payment**               | Entity               | Representa un pago realizado por un usuario para adquirir o renovar una suscripción. | Id, UserId, SubscriptionId, Amount: Price, StripeSession, CustomerEmail, Description, `UpdatePaymentStatus()` |
+| **Subscription**          | Entity               | Representa un plan de suscripción contratado por un usuario o proveedor.  | Id, PlanName, Price, BillingCycle, MaxEquipment, MaxClients, Features (List<Feature>), `UpdatePlan()` |
+| **Price**                 | Value Object         | Define un valor monetario y su moneda asociada.                           | Amount, Currency                                                                    |
+| **Feature**               | Value Object         | Representa una característica incluida en un plan de suscripción.         | Name                                                                                |
+| **PaymentStatus**         | Value Object / Enum  | Representa el estado de un pago.                                          | Processing, Succeeded, Failed, Cancelled                                            |
+| **StripeSession**         | Value Object         | Encapsula la sesión de pago en Stripe y su estado.                        | SessionId, `MarkAsProcessing()`, `MarkAsSucceeded()`, `MarkAsFailed()`, `MarkAsCancelled()` |
+| **BillingCycle**          | Value Object / Enum  | Define la periodicidad de facturación.                                    | Monthly, Yearly                                                                     |
+| **IPaymentRepository**    | Repository Interface | Abstracción para acceder a datos de pagos.                                | `AddAsync()`, `FindById()`, `FindByUserId()`, `FindByStripeSessionId()`             |
 | **ISubscriptionRepository** | Repository Interface | Abstracción para acceder a datos de suscripciones.                        | `FindByIdAsync()`, `FindByUserTypeAsync()`                                          |
 | **ISubscriptionCommandService** | Domain Service  | Gestiona operaciones sobre suscripciones.                                 | `Handle(CreateSubscriptionCommand)`, `Handle(UpgradePlanCommand)`, `Handle(DeleteSubscriptionCommand)` |
 
+    
+  #### 2.6.5.2. Interface Layer
+  
+Expone las funcionalidades a usuarios y sistemas externos.
 
-### 2.6.6. Bounded Context: Ver Equipos
-(Ver sección detallada en versión previa para Ver Equipos)
+| Clase                    | Tipo            | Propósito                                                                | Métodos                                                                 |
+|---------------------------|-----------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **SubscriptionsController** | REST Controller | Gestiona las peticiones HTTP relacionadas con suscripciones.              | `CreateSubscription()`, `GetAllSubscriptions()`, `GetSubscriptionById()`, `UpgradeSubscription()`, `DeleteSubscription()` |
+| **Resources**            | DTOs (Request/Response) | Representan los contratos expuestos en la API.                            | CreateSubscriptionResource, UpgradeSubscriptionResource, SubscriptionResource |
+| **Assemblers**           | Mapper          | Convierte entre recursos ↔ comandos ↔ entidades.                          | CreateSubscriptionCommandFromResourceAssembler, UpgradeSubscriptionCommandFromResourceAssembler, SubscriptionResourceFromEntityAssembler |
 
-<div style="page-break-after: always;"></div>
+---
 
-# Capítulo III: Solution UI/UX Design
+  
+  #### 2.6.5.3. Application Layer
+  Orquesta los flujos de negocio mediante commands, queries y servicios de aplicación.
 
-## 3.1. Product Design
+| Clase                    | Tipo                | Propósito                                                                 | Métodos                                                                 |
+|---------------------------|---------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **PaymentCommandService** | Application Service | Gestiona creación de sesiones de pago y actualización de estado desde Stripe. | `Handle(CreatePaymentSessionCommand)`, `Handle(ProcessPaymentWebhookCommand)` |
+| **SubscriptionCommandService** | Application Service | Gestiona la lógica de crear, actualizar y eliminar suscripciones.          | `Handle(CreateSubscriptionCommand)`, `Handle(UpgradePlanCommand)`, `Handle(DeleteSubscriptionCommand)` |
+| **SubscriptionQueryService** | Query Service     | Ejecuta consultas de lectura de suscripciones.                            | `Handle(GetPlansQuery)`, `Handle(GetSubscriptionByIdQuery)`              |
+| **Commands**              | DTOs               | Expresan intenciones de modificar el dominio.                             | CreateSubscriptionCommand, UpgradePlanCommand, DeleteSubscriptionCommand, CreatePaymentSessionCommand, ProcessPaymentWebhookCommand |
+| **Queries**               | DTOs               | Expresan intenciones de consultar información.                            | GetPlansQuery, GetSubscriptionByIdQuery                                 |
+
+---
+
+   #### 2.6.5.4. Infrastructure Layer
+   Implementa persistencia, integración con Stripe y configuración externa.
+
+| Clase                    | Tipo             | Propósito                                                                 | Tecnologías                     |
+|---------------------------|------------------|---------------------------------------------------------------------------|---------------------------------|
+| **PaymentRepository**    | Repository       | Implementación de `IPaymentRepository` con EF Core.                       | EF Core, LINQ                   |
+| **SubscriptionRepository** | Repository     | Implementación de `ISubscriptionRepository` con EF Core.                  | EF Core                         |
+| **StripeService (IStripeService)** | External Service | Gestiona la comunicación con la API de Stripe.                           | Stripe API                      |
+| **StripeSettings**       | Configuración    | Contiene claves y secretos de Stripe.                                     | PublishableKey, SecretKey, WebhookSecret |
+| **UnitOfWork**           | Infraestructura  | Coordina transacciones.                                                   | EF Core                         |
+| **AppDbContext**         | Persistence      | DbContext para persistir Payment y Subscription.                          | EF Core                         |
+
+
+   
+   #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
+En esta sección explicaremos el bounded context SubscriptionsAndPayments.<br>
+**App Web OsitoPolar**<br>
+•	Tipo: Container<br>
+•	Función: Aplicación web usada por usuarios y proveedores para gestionar planes de suscripción y pagos.<br>
+•	Interacción: Realiza llamadas HTTP a la API de SubscriptionsAndPayments.<br>
+**SubscriptionsController**<br>
+•	Tipo: REST Controller.<br>
+•	Función: Expone endpoints REST para gestionar suscripciones.<br>
+•	Interacción: Invoca servicios de aplicación (ISubscriptionCommandService, ISubscriptionQueryService).<br>
+PaymentsController <br>
+•	Tipo: REST Controller.<br>
+•	Función: Expone endpoints REST para iniciar sesiones de pago y procesar webhooks de Stripe.<br>
+•	Interacción: Invoca PaymentCommandService.<br>
+CreateSubscriptionCommandHandler <br>
+•	Tipo: Application Service.<br>
+•	Función: Orquesta la creación de un nuevo plan de suscripción.<br>
+•	Interacción: Construye una instancia válida de Subscription. Persiste mediante ISubscriptionRepository.<br>
+UpgradeSubscriptionCommandHandler<br>
+•	Tipo: Application Service.<br>
+•	Función: Gestiona la actualización de un plan de suscripción existente.<br>
+•	Interacción: Recupera y actualiza el Subscription en ISubscriptionRepository.<br>
+DeleteSubscriptionCommandHandler<br>
+•	Tipo: Application Service.<br>
+•	Función: Gestiona la eliminación de un plan de suscripción.<br>
+•	Interacción: Elimina un Subscription de ISubscriptionRepository.<br>
+PaymentCommandService<br>
+•	Tipo: Application Service.<br>
+•	Función: Orquesta la creación de pagos y el procesamiento de webhooks de Stripe.<br>
+•	Interacción:<br>
+o	Crea sesión de pago con IStripeService.<br>
+o	Construye entidad Payment.<br>
+o	Persiste con IPaymentRepository.<br>
+o	Si el pago es exitoso, dispara comando UpgradePlanCommand en ISubscriptionCommandService.<br>
+StripeService<br>
+•	Tipo: Infrastructure Service.<br>
+•	Función: Encapsula la integración con Stripe para crear sesiones de checkout y validar eventos de webhook<br>
+•	Interacción: Recibe solicitudes desde PaymentCommandService.<br>
+Repositories<br>
+•	IPaymentRepository<br>
+o	Tipo: Repository.<br>
+o	Función: Maneja la persistencia de la entidad Payment.<br>
+o	Interacción: Usado por PaymentCommandService.<br>
+ISubscriptionRepository<br>
+o	Tipo: Repository.<br>
+o	Función: Maneja la persistencia de la entidad Subscription.<br>
+o	Interacción: Usado por ISubscriptionCommandService<br><br>
+![alt text](assets/chapter02/component-diagram-p&s.png)
+
+
+   #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
+A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Pagos y Suscripciones. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
+
+   #### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
+**Capa de Dominio:** Contiene las entidades (Payment, Subscription) y objetos de valor (Price, Feature, PaymentStatus, StripeSession, BillingCycle).
+**Capa de Repositorio:** Maneja la persistencia de datos (IPaymentRepository, ISubscriptionRepository).<br>
+**Capa de Servicio:** Coordina las operaciones de negocio (ISubscriptionCommandService, PaymentCommandService).<br>
+**Capa de Comandos:** Encapsula acciones específicas (CreateSubscriptionCommand, UpgradePlanCommand, DeleteSubscriptionCommand, CreatePaymentSessionCommand, ProcessPaymentWebhookCommand).<br>
+![alt text](assets/chapter02/class-diagram-p&s.png)
+
+   
+   #### 2.6.5.6.2. Bounded Context Database Design Diagram
+   ![alt text](assets/chapter02/database-diagram-p&s.png)
+
+
+#### 2.6.6. Bounded Context: Ver Equipos
+##### 2.6.6.1. Domain Layer
+El contexto Ver Equipos representa la funcionalidad que permite a los usuarios del sistema OsitoPolar visualizar y  consultar la información de los equipos de refrigeración registrados.
+
+Las principales entidades de dominio son:
+- Equipo: unidad de refrigeración registrada (atributos: idEquipo, nombre, tipo, ubicación, estado, fechaRegistro).
+- Sensor (Value Object): mide métricas como temperatura, voltaje o consumo de energía.
+- RegistroMantenimiento (Entity): historial técnico de cada equipo con fecha, técnico responsable y observaciones.
+- Alerta (Domain Event): notificación que se dispara cuando un sensor registra valores fuera del rango esperado.
+
+Servicios de dominio:
+- EquipoService: encapsula lógica de negocio para listar, filtrar y detallar equipos.
+- AlertaService: gestiona la emisión de eventos cuando se generan anomalías.
+  
+
+
+   #### 2.6.6.2. Interface Layer
+Esta capa define cómo los usuarios interactúan con el sistema y expone la lógica de negocio a través de interfaces:
+- Pantalla móvil “Ver Equipos”: módulo de la app donde los usuarios visualizan los equipos, estado y métricas.
+- EquiposController (REST API): expone endpoints como:
+  - GET /equipos → lista de equipos.
+  - GET /equipos/{id} → detalle de un equipo específico.
+  - GET /equipos/{id}/sensores → métricas de sensores asociados.
+    
+Seguridad: acceso restringido mediante autenticación JWT.
+
+   #### 2.6.6.3. Application Layer
+Orquesta los casos de uso del contexto “Ver Equipos”:
+
+- ListarEquiposHandler: obtiene todos los equipos registrados.
+- ConsultarEquipoHandler: devuelve información detallada de un equipo.
+- FiltrarEquiposHandler: busca equipos por estado, tipo o ubicación.
+- GenerarReporteEquipoHandler: compila historial de sensores y mantenimientos.
+
+Se utiliza un enfoque CQRS para separar operaciones de lectura (queries) de escritura (commands).
+
+   #### 2.6.6.4. Infrastructure Layer
+La capa de infraestructura implementa la persistencia y las integraciones externas:
+
+- EquipoRepositoryImpl: implementación concreta para almacenar y consultar equipos (PostgreSQL).
+- SensorDataAdapter: integra la captura de datos en tiempo real desde dispositivos IoT.
+- NotificaciónService: envío de alertas vía email o notificaciones push.
+- ORM (Hibernate/JPA o Sequelize): para el mapeo objeto-relacional.
+  
+  #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
+El diagrama de componentes del contexto “Ver Equipos” se organiza en cuatro capas:
+
+- Interface Layer → Pantalla móvil y API REST.
+- Application Layer → Handlers de casos de uso.
+- Domain Layer → Entidades (Equipo, Sensor, RegistroMantenimiento, Alerta) y servicios de dominio.
+- Infrastructure Layer → Repositorios, adaptadores IoT y notificaciones.
+
+<img width="1335" height="590" alt="image" src="https://github.com/user-attachments/assets/ac7ab40a-df1f-48a6-af81-d95656258a78" />
+
+
+   #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
+   #### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
+El siguiente diagrama de clases muestra las principales entidades y relaciones:
+
+- Equipo (Entity) → relación 1..* con Sensor.
+- Equipo (Entity) → relación 1..* con RegistroMantenimiento.
+- Alerta (Domain Event) → asociada a Equipo y generada por AlertaService.
+- EquipoService → utiliza EquipoRepository.
+
+<img width="469" height="529" alt="image" src="https://github.com/user-attachments/assets/8031265c-17b8-41f9-8e6b-90273ca3f08d" />
+
+
+   - 2.6.6.6.2. Bounded Context Database Design Diagram        
+La base de datos del contexto “Ver Equipos” está compuesta por las siguientes tablas:
+
+- Equipos: idEquipo (PK), nombre, tipo, ubicación, estado, fechaRegistro.
+- Sensores: idSensor (PK), idEquipo (FK), tipo, valorActual, unidad.
+- RegistrosMantenimiento: idRegistro (PK), idEquipo (FK), fecha, técnico, detalle.
+- Alertas: idAlerta (PK), idEquipo (FK), tipo, severidad, fechaGenerada.
+
+<img width="1712" height="520" alt="image" src="https://github.com/user-attachments/assets/6b81b3d0-cb3a-48f6-ad5d-0b024c6382c7" />
+
+# Chapter III: Solution UI/UX Design
+- 3.1. Product Design
+
 En esta sección se presenta el diseño del producto **Osito Polar** como una parte esencial de la arquitectura del sistema. El diseño busca alinear las funcionalidades principales con las necesidades detectadas durante el análisis y modelado del dominio, garantizando una experiencia fluida, intuitiva y estéticamente consistente.
 
-### 3.1.1. Style Guidelines
-#### 3.1.1.1. General Style Guidelines
+**Osito Polar** está centrado en brindar una plataforma moderna e interactiva que combina diseño minimalista con funcionalidad avanzada. El sistema permite a los usuarios interactuar con un entorno visual claro, limpio y coherente con los principios de usabilidad, accesibilidad y consistencia visual.
+
+La arquitectura del producto contempla una **aplicación móvil desarrollada en Kotlin**, respaldada por un **backend en Spring Boot** y una **base de datos relacional en PostgreSQL**. Estas decisiones tecnológicas garantizan escalabilidad, rendimiento y mantenibilidad a largo plazo.
+
+---
+  - 3.1.1. Style Guidelines
+
+El objetivo de esta sección es establecer una guía visual clara y compartida por todo el equipo de desarrollo y diseño, asegurando una experiencia consistente en todas las pantallas y plataformas.  
+Se definen los criterios para colores, tipografía, iconografía, botones, espaciados y usabilidad.
+
+---
+ - 3.1.1.1. General Style Guidelines
+
 #### Paleta de colores principal
+
+La estética de **Osito Polar** se basa en un estilo **minimalista y moderno**, utilizando tonos suaves con acentos contrastantes para transmitir profesionalismo y confianza.
+
 | Color | Hex | Uso principal |
 |--------|------|----------------|
 | Azul Polar | `#2B6CB0` | Color primario para botones, íconos y acentos. |
@@ -1530,38 +2073,137 @@ En esta sección se presenta el diseño del producto **Osito Polar** como una pa
 | Gris Oscuro | `#333333` | Textos secundarios o subtítulos. |
 
 #### Tipografía
+
 El proyecto emplea una tipografía sans-serif moderna que asegura claridad y legibilidad:
+
 - **Fuente principal:** Poppins (o Montserrat, según la versión final del Figma)
 - **Títulos:** Bold o Semi-Bold  
 - **Texto general:** Regular  
-- **Botones:** Medium 
+- **Botones:** Medium  
 
-### 3.1.2. Information Architecture
-#### 3.1.2.1. Organization Systems
+#### Iconografía y botones
+
+- Iconos minimalistas en **negro o azul polar**, alineados con el estilo limpio del producto.  
+- Bordes con **radio de 8px** para transmitir suavidad visual.  
+- Botones primarios con fondo azul polar y texto blanco.  
+- En estado *hover*: fondo blanco con borde azul y texto azul.  
+- Uso consistente del espaciado interno y márgenes para crear ritmo visual.  
+
+#### Estilo visual general
+
+- Diseño **limpio y espacioso**, aprovechando el uso de “espacio en blanco”.  
+- **Tarjetas** para agrupar contenido (componentes, builds, o información de usuario).  
+- **Sombras ligeras** (`box-shadow: 0 2px 4px rgba(0,0,0,0.1)`) para destacar elementos interactivos.  
+- Animaciones suaves al pasar el cursor o al presionar botones.  
+
+#### Usabilidad y accesibilidad
+
+- Contraste de texto y fondo que cumpla estándares **WCAG AA**.  
+- Soporte para navegación por teclado (tabulador y foco visible).  
+- Uso de atributos **aria-*** para lectores de pantalla.  
+- Botones con altura mínima de **44px** para accesibilidad táctil.  
+- Estructura visual compatible con distintos tamaños de pantalla.
+
+---
+  - 3.1.2. Information Architecture
+    
+La arquitectura de la información de **Osito Polar** fue diseñada para facilitar la navegación, el descubrimiento de funcionalidades y la organización jerárquica de los datos.  
+Tanto la landing page como la aplicación móvil siguen principios de jerarquía, consistencia y categorización.
+
+---
+  - 3.1.2.1. Organization Systems
+
 Se aplican distintos sistemas de organización según la sección o funcionalidad:
-- **Jerárquico:** En la navegación principal (Catálogo → Categorías → Detalle de componente), y en la gestión de builds guardadas del usuario.  
-- **Secuencial:** En el flujo de creación de una build.
-- **Matricial:** En la comparación de builds o especificaciones.
 
-#### 3.1.2.2. Labelling Systems
-Las etiquetas de texto fueron cuidadosamente seleccionadas para ser **claras, cortas y coherentes**.
+- **Jerárquico:**  
+  En la navegación principal (Catálogo → Categorías → Detalle de componente), y en la gestión de builds guardadas del usuario.  
+
+- **Secuencial:**  
+  En el flujo de creación de una build: seleccionar categoría → seleccionar componente → validar compatibilidad → guardar.  
+
+- **Matricial:**  
+  En la comparación de builds o especificaciones, donde se visualizan datos tabulados.  
+
+- **Categorización temática:**  
+  Guías y tutoriales agrupados por temas como Overclocking, Ensamblaje o Mantenimiento.  
+
+- **Por audiencia:**  
+  Contenido separado para usuarios principiantes, intermedios o expertos.
+
+---
+  - 3.1.2.2. Labelling Systems
+
+Las etiquetas de texto fueron cuidadosamente seleccionadas para ser **claras, cortas y coherentes** con la experiencia del usuario.
+
+**Ejemplos de etiquetas:**
+
 - **Botones:** Agregar, Guardar Build, Comparar, Eliminar, Filtrar, Ver Detalles.  
+- **Secciones:**  
+  - Catálogo → Componentes  
+  - Builds → Mis Builds, Builds Populares  
+  - Comunidad → Comentarios, Valoraciones  
+  - Guías → Tips, Tutoriales, Guías Técnicas  
+- **Filtros de búsqueda:** Nombre, Tipo, Fabricante, Compatibilidad, Categoría.
 
-#### 3.1.2.3. SEO Tags and Meta Tags
-**Landing Page – SEO**
+La iconografía refuerza las etiquetas mediante símbolos intuitivos y colores distintivos.
+
+---
+  - 3.1.2.3. SEO Tags and Meta Tags
+
+Se definen metadatos para optimizar la visibilidad tanto en motores de búsqueda (SEO) como en tiendas de aplicaciones (ASO).
+
+#### Landing Page – SEO
+
 - **Title:** Osito Polar – Crea y Personaliza tus Builds  
-- **Meta Description:** Plataforma intuitiva para armar y compartir builds de PC personalizados con validación de compatibilidad.
+- **Meta Description:** Plataforma intuitiva para armar y compartir builds de PC personalizados con validación de compatibilidad.  
+- **Keywords:** build pc, componentes, hardware, compatibilidad, builds personalizadas  
+- **Author:** Equipo Osito Polar  
 
-#### 3.1.2.4. Searching Systems
+#### Mobile App – ASO
+
+- **App Title:** Osito Polar  
+- **Subtitle:** Tu asistente inteligente para armar PCs.  
+- **Description:** Con Osito Polar puedes crear builds personalizadas, analizar compatibilidad de componentes, guardar configuraciones y compartirlas con la comunidad.  
+- **App Keywords:** hardware, build pc, compatibilidad, tecnología, comunidad gamer  
+---
+
+  - 3.1.2.4. Searching Systems
+
 El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexible**.
-- Campo de búsqueda global con **autocompletado** y **sugerencias dinámicas**.
 
-#### 3.1.2.5. Navigation Systems
-**Landing Page**: Menú superior o hamburguesa con secciones: **Inicio**, **Sobre Nosotros**, **FAQ**, **Contacto**.
-**Aplicación móvil**: Barra inferior con íconos principales: **Catálogo**, **Mis Builds**, **Crear**, **Comunidad**, **Perfil**.
+- Campo de búsqueda global con **autocompletado** y **sugerencias dinámicas**.  
+- Filtros y ordenamientos avanzados (por precio, nombre, marca, compatibilidad, eficiencia).  
+- Etiquetas destacadas (chips) para filtros activos.  
+- Historial de búsqueda y recomendaciones personalizadas.
 
-### 3.1.3. Landing Page UI Design
-#### 3.1.3.1. Landing Page Wireframe
+---
+
+  - 3.1.2.5. Navigation Systems
+
+#### Landing Page
+- Menú superior o hamburguesa con secciones: **Inicio**, **Sobre Nosotros**, **FAQ**, **Contacto**.  
+- Botones **CTA (Call To Action)** visibles: *Explorar Builds*, *Comenzar Build*, *Descargar App*.  
+- Transiciones suaves entre secciones mediante anclas y scroll dinámico.
+
+#### Aplicación móvil
+- Barra inferior con íconos principales: **Catálogo**, **Mis Builds**, **Crear**, **Comunidad**, **Perfil**.  
+- Botón flotante (+) para crear rápidamente una nueva build.  
+- Breadcrumbs y pasos visibles en el flujo de creación.  
+- Estado activo resaltado en cada pestaña para orientar al usuario.
+
+---
+
+  - 3.1.3. Landing Page UI Design
+
+El diseño de la landing page de **Osito Polar** fue desarrollado en **Figma**, priorizando la claridad visual, la jerarquía informativa y la usabilidad.  
+El enlace oficial al diseño es el siguiente:  
+[🔗 Ver en Figma](https://www.figma.com/design/THgrVQALngRCsSDgrhme2M/Osito-Polar-Figma?node-id=2-87&p=f)
+
+---
+
+  - 3.1.3.1. Landing Page Wireframe
+El wireframe de la página de inicio de OsitoPolar organiza los elementos clave para ofrecer una navegación intuitiva. Incluye un encabezado con el logo y un menú de navegación, seguido de una propuesta de valor clara con botones de acción destacados como "Solicitar Demo" y "¿Cómo Funciona?". La página cuenta con secciones para describir a los usuarios objetivo, las funcionalidades clave del sistema, y los beneficios que ofrece OsitoPolar. Al final, se encuentra un formulario de contacto para que los usuarios soliciten una demo, junto con enlaces legales en el pie de página.
+
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter04/LandingPageWireframe.png"
        alt="Wireframe de la Landing Page: Diseño de baja fidelidad de la página principal."
@@ -1571,19 +2213,361 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
   </figcaption>
 </figure>
 
-#### 3.1.3.2. Landing Page Mock-up
-(Imágenes Mockups Landing 1 a 11)
 
+  - 3.1.3.2. Landing Page Mock-up
+El Landing Page Mock-up de OsitoPolar muestra un diseño limpio y organizado, con una estructura intuitiva que guía a los usuarios a través de la plataforma. Incluye una propuesta de valor destacada en la parte superior, seguida de secciones clave como las funcionalidades del sistema, los beneficios para empresas y proveedores, y una explicación clara de cómo funciona el servicio. También cuenta con testimonios de clientes, detalles sobre la empresa y un formulario para solicitar una demo, todo con un enfoque en facilitar la conversión de visitantes a usuarios activos.
+
+- Esta es la primera sección, llamada "Inicio". En esta se puede ver la propuesta de valor que ofrece nuestra plataforma junto con un "Call to Action" que se agregará a futuro.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup1.png"
+       alt="Mockup 1 de la Landing Page: Diseño visual de la sección superior."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 1:</strong> Mockup 1 - Inicio - Landing Page.
+  </figcaption>
+</figure>
+
+
+- Esta segunda sección hace una breve descripción de a quiénes está dirigido la plataforma.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup2.png"
+       alt="Mockup 2 de la Landing Page: Diseño visual de la sección de características."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 2:</strong> Mockup 2  - ¿Para quién es? - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Funcionalidades Clave" se presentan las principales funcionalidades que ofrece la plataforma.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup3.png"
+       alt="Mockup 3 de la Landing Page: Diseño visual de la sección de testimonios."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 3:</strong> Mockup 3 - Funcionalidades - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Beneficios" se presentan los beneficios que ofrece la plataforma para empresas y proveedores.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup4.png"
+       alt="Mockup 4 de la Landing Page: Diseño visual de la sección de precios."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 4:</strong> Mockup 4 - Beneficios para negocios - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Beneficios" se presentan los beneficios que ofrece la plataforma para proveedores.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup5.png"
+       alt="Mockup 5 de la Landing Page: Diseño visual de la sección de preguntas frecuentes."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 5:</strong> Mockup 5 - Beneficios para proveedores - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Como funciona" se describe el flujo del funcionamiento de la plataforma.
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup6.png"
+       alt="Mockup 6 de la Landing Page: Diseño visual del pie de página."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 6:</strong> Mockup 6 - ¿Como funciona? - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Sobre Nosotros" se presenta nuestra Misión y Visión como startup. 
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup7.png"
+       alt="Mockup 7 de la Landing Page: Vista detallada de un elemento interactivo."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 7:</strong> Mockup 7 - Sobre Nosotros - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Lo que dicen nuestros clientes" se visualizan las reseñas de los usuarios que usaron nuestra plataforma.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup8.png"
+       alt="Mockup 8 de la Landing Page: Vista detallada de un formulario de contacto."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 8:</strong> Mockup 8 - Lo que dicen nuestros clientes - Landing Page.
+  </figcaption>
+</figure>
+
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup9.png"
+       alt="Mockup 9 de la Landing Page: Sección de llamada a la acción."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 9:</strong> Mockup 9 - Lo que dicen nuestros clientes - Landing Page.
+  </figcaption>
+</figure>
+
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup10.png"
+       alt="Mockup 10 de la Landing Page: Vista de la navegación superior."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 10:</strong> Mockup 10 - Lo que dicen nuestros clientes - Landing Page.
+  </figcaption>
+</figure>
+
+
+- En "Contacto" se presenta un formulario de contacto para que los usuarios puedan solicitar una demo.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter04/Landing%20Page%20Mockups/mockup11.png"
+       alt="Mockup 11 de la Landing Page: Vista de la sección de beneficios clave."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 11:</strong> Mockup 11 - Contacto - Landing Page.
+  </figcaption>
+</figure>
+
+
+    
+  - 3.1.4. Mobile Applications UX/UI Design
+    - 3.1.4.1. Mobile Applications Wireframes
 ### 3.1.4. Mobile Applications UX/UI Design
-
 #### 3.1.4.1. Mobile Applications Wireframes
-## Cliente
-(Imágenes Wireframes Cliente 1-8)
-## Empresa
-(Imágenes Wireframes Empresa 9-17)
 
-#### 3.1.4.2. Mobile Applications Wireflow Diagrams
-### User Goal 1
+---
+
+## Cliente
+
+### **1. Inicio – Clientes**
+<img src="assets/chapter03/Inicio-Clientes.png"
+     alt="Wireframe de la pantalla de inicio para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 1:</strong> Pantalla de inicio del cliente. Muestra accesos rápidos a funciones principales como equipos, estado de cuenta y soporte.
+</figcaption>
+
+Esta vista aplica principios de **jerarquía visual** mediante íconos grandes y textos claros, facilitando la navegación. Se aplica **diseño inclusivo** con colores contrastantes y legibles, y una **arquitectura de información** simple que prioriza tareas frecuentes del usuario.
+
+---
+
+### **2. Mis Equipos – Clientes**
+<img src="assets/chapter03/MisEquipos-Clientes.png"
+     alt="Wireframe de la vista Mis Equipos para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 2:</strong> Vista de los equipos registrados por el cliente.
+</figcaption>
+
+La pantalla presenta una **organización por tarjetas** que mejora la lectura visual y promueve la claridad informativa. Los botones y etiquetas mantienen consistencia cromática y textual, favoreciendo la **accesibilidad**. La disposición sigue una **arquitectura jerárquica vertical**, guiando la vista del usuario.
+
+---
+
+### **3. Control de Equipo – Cliente**
+<img src="assets/chapter03/ControlEquipo-Cliente.png"
+     alt="Wireframe de la vista Control de Equipo para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 3:</strong> Control de los equipos del cliente.
+</figcaption>
+
+Se aplican **principios de proximidad y alineación**, agrupando los valores del sensor en áreas visualmente coherentes. El uso de íconos facilita la **comprensión inclusiva** para usuarios no técnicos. La **arquitectura de información** permite monitorear el estado de cada dispositivo en tiempo real.
+
+---
+
+### **4. Estado de Cuenta – Clientes**
+<img src="assets/chapter03/EstadoCuenta-Clientes.png"
+     alt="Wireframe del estado de cuenta del cliente."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 4:</strong> Estado de cuenta del cliente con detalle de pagos y saldo.
+</figcaption>
+
+El diseño enfatiza la **claridad visual** mediante una tabla estructurada con contraste y jerarquía tipográfica. Se prioriza la **legibilidad** y el acceso rápido a la información financiera, alineado con principios de **usabilidad y diseño inclusivo**.
+
+---
+
+### **5. Notificaciones – Clientes**
+<img src="assets/chapter03/Notificaciones-Clientes.png"
+     alt="Wireframe de la vista de notificaciones para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 5:</strong> Notificaciones relevantes para el cliente.
+</figcaption>
+
+La pantalla emplea **contraste y consistencia** para resaltar los mensajes prioritarios. Se asegura la **legibilidad** con tipografía simple y jerarquía clara, mientras que la **arquitectura informativa** categoriza las alertas según su importancia.
+
+---
+
+### **6. Mi Cuenta – Clientes**
+<img src="assets/chapter03/Micuenta-Clientes.png"
+     alt="Wireframe de la vista Mi Cuenta para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 6:</strong> Configuración del perfil y preferencias del cliente.
+</figcaption>
+
+El diseño se basa en **equilibrio visual** y **alineación de elementos**, permitiendo una interacción cómoda. Los campos están organizados por categorías, lo que refuerza la **arquitectura de información** y facilita el acceso inclusivo.
+
+---
+
+### **7. Contacto – Clientes**
+<img src="assets/chapter03/Contacto-Clientes.png"
+     alt="Wireframe de la vista Contacto del cliente."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 7:</strong> Sección de contacto con soporte técnico.
+</figcaption>
+
+El uso de **formularios claros y botones contrastantes** demuestra la aplicación de **principios de accesibilidad** y **retroalimentación visual**. La estructura de los campos responde a una **arquitectura secuencial**, guiando paso a paso al usuario.
+
+---
+
+### **8. Registro – Clientes**
+<img src="assets/chapter03/Registro Clientes.png"
+     alt="Wireframe de la pantalla de registro para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 8:</strong> Registro de nuevos clientes en la aplicación.
+</figcaption>
+
+Se aplica **simplicidad visual** para reducir la carga cognitiva. Los campos tienen buena separación y etiquetas descriptivas, lo que favorece la **inclusión digital** y la correcta **navegación jerárquica** dentro del flujo de alta de usuarios.
+
+---
+
+## Empresa
+
+### **9. Inicio – Empresa**
+<img src="assets/chapter03/Inicio-Empresa.png"
+     alt="Wireframe de la vista de inicio para empresas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 9:</strong> Pantalla inicial del panel empresarial.
+</figcaption>
+
+El diseño utiliza **distribución modular** para mostrar métricas clave. Se mantiene una paleta sobria y profesional, promoviendo **jerarquía y legibilidad**, junto con una **arquitectura informativa** centrada en el control de operaciones.
+
+---
+
+### **10. Inicio de Sesión – Empresa**
+<img src="assets/chapter03/Inicio de Sesión - Empresa.png"
+     alt="Wireframe de inicio de sesión para empresas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 10:</strong> Pantalla de autenticación empresarial.
+</figcaption>
+
+La vista aplica **contraste y equilibrio** para guiar la atención al formulario. Los campos y botones son accesibles, cumpliendo **criterios inclusivos** y reforzando una **arquitectura de acceso simple**.
+
+---
+
+### **11. Mis Clientes/Técnicos – Empresa**
+<img src="assets/chapter03/MisClientes,Técnicos-Empresa.png"
+     alt="Wireframe de la vista de gestión de clientes y técnicos para empresas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 11:</strong> Módulo de gestión de clientes y técnicos.
+</figcaption>
+
+Se aplican principios de **alineación y repetición**, unificando la estructura de tarjetas. Se promueve la **accesibilidad** mediante contraste y tipografía uniforme, y la **arquitectura de información** separa claramente los roles.
+
+---
+
+### **12. Órdenes de Trabajo – Empresa**
+<img src="assets/chapter03/ÓrdenesDeTrabajo-Empresa.png"
+     alt="Wireframe del módulo de órdenes de trabajo para empresas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 12:</strong> Sección de órdenes de trabajo activas y completadas.
+</figcaption>
+
+La disposición prioriza la **legibilidad jerárquica**, usando bloques diferenciados para cada estado. Se aplican principios de **contraste y proximidad**, junto con una **arquitectura de información** que favorece el seguimiento eficiente.
+
+---
+
+### **13. Solicitudes – Empresa**
+<img src="assets/chapter03/Solicitudes-Empresa.png"
+     alt="Wireframe del módulo de solicitudes empresariales."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 13:</strong> Solicitudes y requerimientos de clientes.
+</figcaption>
+
+La pantalla aplica **diseño centrado en tareas**, priorizando la acción principal. La interfaz mantiene **claridad visual** y estructura por secciones, sustentando la **arquitectura informativa** del módulo operativo.
+
+---
+
+### **14. Estado de Cuenta – Empresa**
+<img src="assets/chapter03/EstadoCuenta-Empresa.png"
+     alt="Wireframe de estado de cuenta empresarial."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 14:</strong> Estado de cuenta y facturación de la empresa.
+</figcaption>
+
+Se prioriza la **usabilidad y simplicidad**, usando columnas claras y buena separación de datos. La **tipografía contrastante** y la **disposición estructurada** evidencian principios de diseño limpio e inclusivo.
+
+---
+
+### **15. Mi Cuenta – Empresa**
+<img src="assets/chapter03/MiCuenta-Empresa.png"
+     alt="Wireframe de la vista Mi Cuenta empresarial."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 15:</strong> Configuración de perfil y plan empresarial.
+</figcaption>
+
+El diseño presenta **organización modular**, destacando la jerarquía entre información del plan y configuración. Se aplican **principios de accesibilidad** y **consistencia visual** para garantizar una experiencia inclusiva.
+
+---
+
+### **16. Notificaciones – Empresa**
+<img src="assets/chapter03/Notificaciones-Empresa.png"
+     alt="Wireframe del módulo de notificaciones empresariales."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 16:</strong> Panel de notificaciones empresariales.
+</figcaption>
+
+Se aplican **principios de contraste, repetición y proximidad**. Las alertas están jerarquizadas según prioridad, reforzando la **arquitectura de información** y garantizando una **lectura accesible**.
+
+---
+
+### **17. Contacto – Empresa**
+<img src="assets/chapter03/Contacto-Empresa.png"
+     alt="Wireframe de la vista de contacto para empresas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 17:</strong> Formulario de contacto empresarial.
+</figcaption>
+
+La vista evidencia **claridad y estructura secuencial**, guiando al usuario en cada paso. Se aplican **principios de accesibilidad y contraste**, y una **arquitectura jerárquica** que optimiza la interacción con el soporte técnico.
+
+---
+
+  - 3.1.4.2. Mobile Applications Wireflow Diagrams
+En esta sección se presentan los Wireflows para cada objetivo del usuario, teniendo en cuenta los User Personas relevantes. Cada diagrama ilustra el flujo de interacción del usuario y cómo las acciones realizadas afectan las pantallas dentro de la aplicación.
+
+
+### **User Goal 1**: 
+Como dueño de un negocio que utiliza equipos de refrigeración quiero estar pendiente del estado de cada equipo registrado.
+
+**Task Flow**
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter03/flujos/taskflow1.png"
        alt="Diagrama de Taskflow 1: Flujo de tareas para una acción específica del usuario."
@@ -1592,70 +2576,389 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
     <strong>Figura 1:</strong> Taskflow 1.
   </figcaption>
 </figure>
-(Task Flow 1, Wireflow 1)
-### User Goal 2
-(Task Flow 2, Wireflow 2)
-### User Goal 3
-(Task Flow 3, Wireflow 3)
-### User Goal 4
-(Task Flow 4, Wireflow 4)
 
-#### 3.1.4.3. Mobile Applications Mock-ups
-## Cliente
-(Mockups Cliente 18-42)
+
+**Wireflow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/Wireflow1.png"
+       alt="Diagrama de Wireflow 1: Combinación de wireframes y flujo de interacción del usuario."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 2:</strong> Wireflow 1.
+  </figcaption>
+</figure>
+
+
+### **User Goal 2**:
+Como dueño de un negocio que utiliza equipos de refrigeración quiero lograr administrar los nuevos equipos que registre.
+
+**Task Flow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/taskflow2.png"
+       alt="Diagrama de Taskflow 2: Flujo de tareas para un proceso de usuario."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 3:</strong> Taskflow 2.
+  </figcaption>
+</figure>
+
+
+**Wireflow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/Wireflow2.png"
+       alt="Diagrama de Wireflow 2: Representación visual del flujo de usuario entre pantallas."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 4:</strong> Wireflow 2.
+  </figcaption>
+</figure>
+
+
+### **User Goal 3**:
+Como dueño de un negocio que utiliza equipos de refrigeración quiero revisar las estadísticas completas de mis equipos.
+
+**Task Flow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/taskflow3.png"
+       alt="Diagrama de Taskflow 3: Secuencia de tareas para una interacción compleja."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 5:</strong> Taskflow 3.
+  </figcaption>
+</figure>
+
+
+**Wireflow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/Wireflow3.png"
+       alt="Diagrama de Wireflow 3: Detalle del flujo de usuario con elementos de la interfaz."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 6:</strong> Wireflow 3.
+  </figcaption>
+</figure>
+
+
+### **User Goal 4**:
+Como proveedor de equipos de refrigeración quiero estar pendiente de los ordenes de pedios de mis clientes.
+
+**Task Flow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/taskflow4.png"
+       alt="Diagrama de Taskflow 4: Flujo de tareas para la interacción del usuario con el sistema."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 9:</strong> Taskflow 4.
+  </figcaption>
+</figure>
+
+
+**Wireflow**
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter03/flujos/Wireflow4.png"
+       alt="Diagrama de Wireflow 4: Resumen visual del flujo de interacción y las pantallas clave."
+       style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 10:</strong> Wireflow 4.
+  </figcaption>
+</figure>
+
+    
+  ### 3.1.4.3. Mobile Applications Mock-ups
+---
+
+##  Cliente
+
+### **Inicio – Clientes**
+<img src="assets/chapter03/mockupss/Inicio-Clientes-1.png"
+     alt="Mockup de la pantalla de inicio para clientes."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 18:</strong> Mockup 18 - Inicio del cliente.
+</figcaption>
+El diseño presenta una jerarquía visual clara mediante el uso de íconos y tipografía contrastante. Los elementos principales están centrados para priorizar la interacción rápida e intuitiva. La arquitectura de información organiza las funciones esenciales en bloques reconocibles y de fácil acceso.
+
+---
+
+### **Mis Equipos – Clientes (v1)**
+<img src="assets/chapter03/mockupss/MisEquipos-Clientes-2.png"
+     alt="Mockup Mis Equipos cliente versión 1."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 19:</strong> Mockup 19 - Mis Equipos (v1).
+</figcaption>
+El uso de tarjetas independientes y márgenes amplios mejora la legibilidad del contenido. Los colores y botones refuerzan la accesibilidad visual del usuario. La arquitectura de información estructura la lista de equipos de manera vertical para favorecer la exploración progresiva.
+
+---
+
+### **Mis Equipos – Clientes (v2)**
+<img src="assets/chapter03/mockupss/MisEquipos-Clientes-3.png"
+     alt="Mockup Mis Equipos cliente versión 2."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 20:</strong> Mockup 20 - Mis Equipos (v2).
+</figcaption>
+Los componentes mantienen una disposición equilibrada, generando consistencia visual. La tipografía uniforme y los botones amplios promueven la inclusión y accesibilidad. La arquitectura jerarquiza la información según relevancia: primero el equipo, luego las acciones asociadas.
+
+
+---
+
+### **Mis Equipos – Clientes (v5)**
+<img src="assets/chapter03/mockupss/MisEquipos-Clientes-6.png"
+     alt="Mockup Mis Equipos cliente versión 5 con indicador de acción rápida."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 23:</strong> Mockup 23 - Mis Equipos (v5).
+</figcaption>
+Los indicadores visuales permiten identificar rápidamente el estado de cada dispositivo. El diseño prioriza accesos táctiles grandes y colores de alto contraste. La arquitectura de información muestra los datos técnicos de manera ordenada y comprensible.
+
+---
+
+### **Control de Equipo – Cliente (v1)**
+<img src="assets/chapter03/mockupss/ControlEquipo-Cliente-1.png"
+     alt="Mockup Control de Equipo cliente versión 1 con botón Back y analíticas."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 24:</strong> Mockup 24 - Control de Equipo (v1).
+</figcaption>
+Los valores y gráficas se presentan con equilibrio visual y alineación precisa. Se prioriza la inclusión mediante tipografía grande y botones accesibles. La arquitectura divide la información en secciones analíticas e informativas para una lectura eficiente.
+
+---
+
+### **Analytics – Cliente (con datos)**
+<img src="assets/chapter03/mockupss/Analytics-Cliente-1.png"
+     alt="Mockup de panel Analytics con gráficos y KPIs."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 27:</strong> Mockup 27 - Analytics (con datos).
+</figcaption>
+Los gráficos utilizan colores distintivos para resaltar tendencias. La legibilidad se garantiza mediante etiquetas claras y coherentes. La estructura jerarquiza los indicadores de desempeño, permitiendo un análisis progresivo de la información.
+
+---
+
+### **Add Equipment – Cliente**
+<img src="assets/chapter03/mockupss/AddEquipment-Cliente.png"
+     alt="Mockup de formulario para agregar equipo del cliente."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 28:</strong> Mockup 28 - Add Equipment.
+</figcaption>
+El formulario aplica alineación vertical y márgenes amplios para reducir carga cognitiva. Los campos son claros y de fácil interacción, garantizando accesibilidad. La estructura divide la información en secciones lógicas: identificación, consumo y ubicación.
+
+---
+
+### **Manage Equipments – Cliente (lista)**
+<img src="assets/chapter03/mockupss/ManageEquipment-Cliente.png"
+     alt="Mockup de listado de equipos administrables del cliente."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 29:</strong> Mockup 29 - Manage Equipments (lista).
+</figcaption>
+El contraste de botones primarios y secundarios establece jerarquía visual. Los tamaños amplios y tipografía uniforme facilitan la interacción inclusiva. La arquitectura organiza la lista por estado operativo, optimizando la navegación entre registros.
+
+---
+
+### **Manage Equipments – Cliente (confirmación)**
+<img src="assets/chapter03/mockupss/ManageEquipment-Cliente-2.png"
+     alt="Mockup de confirmación de eliminación de equipo."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 30:</strong> Mockup 30 - Confirmación de eliminación.
+</figcaption>
+El diálogo resalta la acción principal mediante color y contraste. Se emplea lenguaje directo y tipografía clara para accesibilidad cognitiva. La arquitectura de información presenta la acción y su confirmación en un flujo coherente.
+
+---
+
+### **Manage Equipments – Cliente (feedback)**
+<img src="assets/chapter03/mockupss/ManageEquipment-Cliente-1.png"
+     alt="Mockup de feedback de eliminación exitosa en Manage Equipments."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 31:</strong> Mockup 31 - Feedback de acción completada.
+</figcaption>
+El mensaje de confirmación usa jerarquía tipográfica para indicar éxito. Los colores y el ícono generan una respuesta visual clara e inmediata. La información se presenta centrada y de manera secuencial, reduciendo el esfuerzo del usuario.
+
+---
+
+### **Estado de Cuenta – Clientes**
+<img src="assets/chapter03/mockupss/EstadoCuenta-Clientes-1.png"
+     alt="Mockup del estado de cuenta del cliente con items y estado."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 32:</strong> Mockup 32 - Estado de Cuenta (cliente).
+</figcaption>
+La tabla utiliza líneas y contraste para una lectura ordenada y fluida. Se prioriza la inclusión visual mediante fuentes grandes y colores claros. La arquitectura de información presenta primero el saldo general y luego los detalles específicos.
+
+---
+
+### **Mi Cuenta – Clientes (v1)**
+<img src="assets/chapter03/mockupss/Micuenta-Clientes-2.png"
+     alt="Mockup Mi Cuenta cliente versión simple."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 33:</strong> Mockup 33 - Mi Cuenta (simple).
+</figcaption>
+El diseño equilibra texto e iconografía para una lectura clara y directa. Los espacios amplios y la alineación centrada mejoran la usabilidad. La información del perfil se agrupa jerárquicamente, facilitando la gestión de datos personales.
+
+---
+
+### **Mi Cuenta – Clientes (v2)**
+<img src="assets/chapter03/mockupss/Micuenta-Clientes-3.png"
+     alt="Mockup Mi Cuenta cliente con ofertas de upgrade de plan."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 34:</strong> Mockup 34 - Mi Cuenta (con planes).
+</figcaption>
+Se aplican tarjetas de color con equilibrio y consistencia visual. Los textos informativos son legibles y contrastados, favoreciendo la accesibilidad. La arquitectura divide la vista entre información personal y opciones de mejora de plan.
+
+---
+
+### **Notificaciones – Clientes**
+<img src="assets/chapter03/mockupss/Notificaciones-Clientes-1.png"
+     alt="Mockup de notificaciones del cliente con acciones de lectura."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 35:</strong> Mockup 35 - Notificaciones (cliente).
+</figcaption>
+Las alertas se presentan con un formato uniforme y jerárquico. El alto contraste mejora la visibilidad en distintas condiciones de luz. La estructura prioriza las notificaciones más recientes y relevantes para una comprensión inmediata.
+
+---
+
+### **Contacto – Clientes (v1-v5)**
+<img src="assets/chapter03/mockupss/Contacto-Clientes-6.png"
+     alt="Mockups Contacto cliente versiones 2-6."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 36-40:</strong> Mockups 36–40 - Contacto (v1 a v5).
+</figcaption>
+Las diferentes versiones mantienen coherencia visual y orden lógico de la información. Se prioriza el contraste de íconos y texto para garantizar legibilidad. La arquitectura agrupa información de contacto, ubicación y redes de manera progresiva y accesible.
+
+---
+
+### **Registro – Clientes (v1-v2)**
+<img src="assets/chapter03/mockupss/Registro Clientes-3.png"
+     alt="Mockups registro clientes versiones 2 y 3."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 41-42:</strong> Mockups 41–42 - Registro (v1 y v2).
+</figcaption>
+El flujo de autenticación emplea formularios simplificados con botones de acción visibles. Las etiquetas descriptivas y la jerarquía visual mejoran la experiencia del usuario. La arquitectura guía la interacción desde el ingreso de datos hasta la validación final.
+
+---
+
 ## Empresa
-(Mockups Empresa 43-48)
 
-#### 3.1.4.4. Mobile Applications User Flow Diagrams
-### User Goal 1
-<img src="assets/chapter03/flujos/UserGoal1.png" alt="User Goal 1">
-### User Goal 2
-<img src="assets/chapter03/flujos/UserGoal2.png" alt="User Goal 2">
-### User Goal 3
-<img src="assets/chapter03/flujos/UserGoal3.png" alt="User Goal 3">
+### **Inicio – Empresa**
+<img src="assets/chapter03/mockupss/Inicio-Empresa-1.png"
+     alt="Mockup pantalla de inicio para empresa."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 43:</strong> Mockup 43 - Inicio (empresa).
+</figcaption>
+El diseño profesional usa tipografía clara y bloques informativos equilibrados. El contraste visual resalta métricas y accesos directos. La arquitectura estructura los módulos de gestión según su prioridad operativa.
 
-#### 3.1.4.5. Mobile Applications Prototyping
+---
 
-<div style="page-break-after: always;"></div>
+### **Inicio de Sesión – Empresa**
+<img src="assets/chapter03/mockupss/Inicio de Sesión - Empresa-1.png"
+     alt="Mockup Sign In de empresa."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 44:</strong> Mockup 44 - Inicio de Sesión (empresa).
+</figcaption>
+El diseño presenta equilibrio entre formulario e identidad visual de marca. La inclusión se garantiza mediante campos amplios y botones de alto contraste. La arquitectura de información organiza el flujo de acceso de manera lineal y sencilla.
+
+---
+
+### **Mis Equipos – Empresa**
+<img src="assets/chapter03/mockupss/MisEquipos-Empresa-1.png"
+     alt="Mockup Mis Equipos para empresa."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 45:</strong> Mockup 45 - Mis Equipos (empresa).
+</figcaption>
+Los equipos se agrupan visualmente por estado y disponibilidad. Los botones grandes y etiquetas descriptivas aseguran una interacción inclusiva. La información se dispone en tarjetas jerárquicas que optimizan la revisión técnica.
+
+---
+
+### **Mis Clientes / Técnicos – Empresa**
+<img src="assets/chapter03/mockupss/MisClientes,Técnicos-Empresa-1.png"
+     alt="Mockup gestión de clientes y técnicos para empresa."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 46:</strong> Mockup 46 - Mis Clientes y Técnicos.
+</figcaption>
+Se aplica alineación vertical y uso repetitivo de componentes para reforzar la consistencia. El contraste y la tipografía uniforme garantizan accesibilidad visual. La arquitectura de información separa los apartados de clientes y técnicos de forma clara.
+
+---
+
+### **Órdenes de Trabajo – Empresa**
+<img src="assets/chapter03/mockupss/ÓrdenesDeTrabajo-Empresa-1.png"
+     alt="Mockup de listado de órdenes de trabajo para empresa."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 47:</strong> Mockup 47 - Órdenes de Trabajo (empresa).
+</figcaption>
+El diseño agrupa órdenes por estado con un código de color fácilmente identificable. La iconografía y el espaciado facilitan la lectura en pantallas pequeñas. La arquitectura prioriza la visualización rápida de tareas activas y completadas.
+
+---
+
+### **Solicitudes – Empresa**
+<img src="assets/chapter03/mockupss/Solicitudes-Empresa-1.png"
+     alt="Mockup de solicitudes para empresa con aceptar/denegar."
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+<figcaption style="font-size: 0.9em; color: #555;">
+  <strong>Figura 48:</strong> Mockup 48 - Solicitudes (empresa).
+</figcaption>
+El contraste cromático resalta las acciones principales de aprobación o rechazo. El uso de íconos intuitivos promueve accesibilidad cognitiva
+
+---
+
+  ### 3.1.4.3. Mobile Applications Mock-ups
+
+---
+
+### User Goal 1: 
+- Como dueño de un negocio que utiliza equipos de refrigeración quiero estar pendiente del estado de cada equipo registrado.
+<img src="assets/chapter03/flujos/UserGoal1.png"
+     alt="User Goal 1"
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+
+### User Goal 2:
+- Como dueño de un negocio que utiliza equipos de refrigeración quiero revisar las estadisticas completas de mis equipos.
+<img src="assets/chapter03/flujos/UserGoal2.png"
+     alt="User Goal 2"
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+
+### User Goal 3:
+- Como dueño de un negocio que utiliza equipos de refrigeración quiero lograr administrar los nuevos equipos que registre.
+ <img src="assets/chapter03/flujos/UserGoal3.png"
+     alt="User Goal 3"
+     style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
+
+   
+    - 3.1.4.5. Mobile Applications Prototyping
 
 # Capítulo IV: Product Implementation & Validation
 
-## 4.1. Software Configuration Management
-### 4.1.1. Software Development Environment Configuration
-El proyecto utiliza **Git** para el control de versiones, alojado en **GitHub**. Se sigue la estrategia de ramas **Gitflow** adaptada:
-- `main`: Código en producción (estable).
-- `develop`: Código de integración de desarrollo.
-- `feature/nombre-funcionalidad`: Ramas para cada User Story.
-- `hotfix/`: Para correcciones urgentes en producción.
-
-El entorno de desarrollo para la aplicación móvil es **Android Studio (Kotlin)** y **Visual Studio Code (Flutter)** según el módulo, con Backend en **.NET 8** y base de datos **PostgreSQL**.
-
-### 4.1.2. Source Code Management
-Se utiliza GitHub como plataforma central. Se han configurado reglas de protección de ramas para `main` y `develop`, requiriendo Pull Requests (PR) con al menos una aprobación antes del merge.
-
-### 4.1.3. Source Code Style Guide & Conventions
-- **Frontend (Flutter):** Se siguen las guías oficiales de estilo de Dart (Effective Dart). Nombres de variables en `camelCase`, clases en `PascalCase`.
-- **Backend (.NET):** Convenciones estándar de C# y .NET. Nombres de interfaces con prefijo `I`, controladores con sufijo `Controller`.
-
-### 4.1.4. Software Deployment Configuration
-- **Frontend:** Despliegue de Landing Page en GitHub Pages.
-- **Backend:** Despliegue continuo mediante GitHub Actions hacia Azure App Service.
-
-## 4.2. Landing Page & Mobile Application Implementation
-
 ### 4.2.1. Sprint 1
 #### 4.2.1.1. Sprint Planning 1
-| **Sprint #** | **Sprint 1** |
+A continuación, se presenta la planificación del sprint. En esta sección se expone la reunión inicial correspondiente, en la cual se establecieron los objetivos, se definieron los acuerdos y se revisaron los aspectos fundamentales que orientarían el desarrollo del sprint.
+
+| **Sprint #**                    | **Sprint 1** |
 |-------------------------------|-------------|
 | **Sprint Planning Background**| En el sprint decidimos reunirnos para verificar el progreso de cada uno de los participantes y el progreso desde el punto de vista grupal, luego de ello buscamos formas y acciones de mejora. |
-| **Date** | 6/10/25    |
-| **Time** | 21:00 horas |
-| **Location** | Via Discord |
-| **Prepared By** | Luis Angel Montañez Moreno |
-| **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
-| **Sprint 1 Goal** | Nuestro enfoque está en implementar la landing page de Osito Polar y además de la aplicación móvil para Android siguiendo la estrategia nativa. Esta ofrecerá a los nuevos usuarios una interfaz clara, informativa y fácil de navegar que comunique los beneficios, servicios y características de la solución. Creemos que esto permitirá a los usuarios comprender de manera sencilla el valor que aporta, generando una primera experiencia positiva y sentando las bases para futuras funcionalidades. |
-| **Sprint 1 Velocity** | 15 |
-| **Sum of Story Points** | 21 |
+| **Date**                      | 6/10/25    |
+| **Time**                      | 21:00 horas |
+| **Location**                  | Via Discord |
+| **Prepared By**               | Luis Angel Montañez Moreno |
+| **Attendees**                 | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
+| **Sprint 1 Review Summary**     | Esta sección se dedicó a mejorar el código de Landing Page, desarrollar la aplicación móvil en Android Studio y la conexión con el Backend. |
+| **Sprint 1 Retrospective Summary** | Todos los integrantes mencionaron tener aciertos en partes del código y en otras partes poder mejorar sus habilidades.  |
+| **Sprint Goal & User Stories** |  |
+| **Sprint 1 Goal**               | Nuestro enfoque está en implementar la landing page de Osito Polar y además de la aplicación móvil para Android siguiendo la estrategia nativa. Esta ofrecerá a los nuevos usuarios una interfaz clara, informativa y fácil de navegar que comunique los beneficios, servicios y características de la solución. Creemos que esto permitirá a los usuarios comprender de manera sencilla el valor que aporta, generando una primera experiencia positiva y sentando las bases para futuras funcionalidades. |
+| **Sprint 1 Velocity**              | 15 |
+| **Sum of Story Points**        | 21 |
 
 #### 4.2.1.2. Sprint Backlog 1
 Sprint # | Sprint 1 | | | | | | |
@@ -1674,32 +2977,43 @@ US24 | Explorar soluciones específicas para mi rubro | UT04 | Crear la sección
 US24 | Explorar soluciones específicas para mi rubro | UT05 | Añadir estilos CSS | Aplicar estilos según el diseño aprobado de "Beneficios" | 2 | Luis Montañez | Done
 US24 | Explorar soluciones específicas para mi rubro | UT06 | Añadir interacciones con JS | Agregar efectos y validaciones según el diseño de Beneficios | 3 | Joseph Rodriguez | Done
 
+
+
 #### 4.2.1.3. Development Evidence for Sprint Review
+
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | c416779 | Feature: Add:Login / Add:Register / Add:Contact | Feature: Add:Login / Add:Register / Add:Contact | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | cb74a69 | Initial import Android project | Initial import Android project | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | rental | c8ddbe4 | feature: add rent equipment and account | feature: add rent equipment and account | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | 44b786c | feature: add my machines | feature: add my machines | 10/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | ecd7da0 | feature: add drawer clients | feature: add drawer clients | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | c45e1fe | feature: add preview in management | feature: add preview in management | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | d2c0298 | feature: add equipment | feature: add equipment | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 7f4266c | feature: add rental equipment | feature: add rental equipment | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 45abbaa | feature: add equipment detail screen | feature: add equipment detail screen | 09/10/25      |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 91f8d44 | feature: add equipment dto | feature: add equipment dto | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | c416779 | Feature: Add:Login / Add:Register / Add:Contact | Feature: Add:Login / Add:Register / Add:Contact | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | cb74a69 | Initial import Android project | Initial import Android project | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | rental | c8ddbe4 | feature: add rent equipment and account | feature: add rent equipment and account | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | 44b786c | feature: add my machines | feature: add my machines | 10/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | ecd7da0 | feature: add drawer clients | feature: add drawer clients | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | c45e1fe | feature: add preview in management | feature: add preview in management | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | d2c0298 | feature: add equipment | feature: add equipment | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 7f4266c | feature: add rental equipment | feature: add rental equipment | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 45abbaa | feature: add equipment detail screen | feature: add equipment detail screen | 09/10/25     |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 91f8d44 | feature: add equipment dto | feature: add equipment dto | 09/10/25     |
+
 
 #### 4.2.1.4. Testing Suite Evidence for Sprint Review
+
 Suite de pruebas con xUnit, FluentAssertions y Moq. 21 pruebas unitarias (100% exitosas), 10 pruebas de integración implementadas. Cobertura: 94.7% en servicios críticos, 88.5% en lógica de dominio. Ejecución en 0.57 segundos.
+
 <img width="844" height="597" alt="image" src="https://github.com/user-attachments/assets/80afee16-8b8f-4ad8-a40a-f78b155ef646" />
+
 <img width="843" height="238" alt="image" src="https://github.com/user-attachments/assets/293107ca-e389-4b6e-8ec4-7dacd438daa1" />
+
+Framework Pattern Driven Refactoring Report
 
 #### 4.2.1.5. Execution Evidence for Sprint Review
 #### 4.2.1.6. Services Documentation Evidence for Sprint Review
 #### 4.2.1.7. Software Deployment Evidence for Sprint Review
+
 <img width="1202" height="607" alt="image" src="https://github.com/user-attachments/assets/8c830c06-9dc1-46a3-83e0-38a753051518" />
 
-**Landing page deployment:**
+### Landing page deployment:
 Para desplegar la landing page, es necesario cumplir con ciertos requisitos previos, como contar con una cuenta personal, una organización y un repositorio donde se alojarán los archivos. Una vez cumplidos estos requisitos, se pueden seguir los pasos detallados a continuación para realizar el despliegue:
+
 1. Verificar que los archivos principales se encuentren en la raíz (root) del repositorio.
 2. Asegurarse de que los archivos sigan las siguientes convenciones de nombres: "index.html" para la página principal, "styles.css" para los estilos, "script.js" para los scripts principales, "languages.js" para gestionar los textos en diferentes idiomas (español e inglés), y una carpeta llamada "assets/images" para las imágenes.
 3. Subir los archivos al repositorio mediante un commit.
@@ -1707,23 +3021,34 @@ Para desplegar la landing page, es necesario cumplir con ciertos requisitos prev
 5. Configurar la carpeta raíz (root) como la fuente de la página.
 6. Esperar a que GitHub realice las verificaciones necesarias. Una vez finalizado el proceso, se generará un enlace que permitirá acceder a la landing page desplegada.
 
+Adicionalmente, se implementó un archivo "languages.js" que contiene los textos en español e inglés. Este archivo es consumido por el script "main.js", el cual permite realizar el cambio de idioma dinámicamente en la landing page.ations Implementation
+
+La URL que nos entrega Github Pages para acceder a la landing page es la siguiente:
+
+### Github Pages:
 #### 4.2.1.8. Team Collaboration Insights during Sprint
 
 ### 4.2.2. Sprint 2
 #### 4.2.2.1. Sprint Planning 2
-| **Sprint #** | **Sprint 2** |
+A continuación, se presenta la planificación del segundo sprint. En esta sección se expone la reunión inicial correspondiente, en la cual se establecieron los objetivos, se definieron los acuerdos y se revisaron los aspectos fundamentales que orientarían el desarrollo del sprint.
+
+| **Sprint #**                    | **Sprint 2** |
 |-------------------------------|-------------|
 | **Sprint Planning Background**| En el sprint decidimos reunirnos para verificar el progreso de cada uno de los participantes y el progreso desde el punto de vista grupal, luego de ello buscamos formas y acciones de mejora. |
-| **Date** | 8/11/25    |
-| **Time** | 20:00 horas |
-| **Location** | Via Discord |
-| **Prepared By** | Sergio Aguirre |
-| **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
-| **Sprint 2 Goal** | En este sprint, nos enfocamos en avanzar en el desarrollo de la aplicación móvil de Osito Polar para Android e iOS utilizando Flutter. Además, se ha completado el despliegue del backend al 100%, lo que asegura que ambos sistemas estén totalmente integrados y funcionales. Este avance nos permitirá ofrecer una experiencia de usuario más completa, asegurando la estabilidad y escalabilidad de la aplicación para las siguientes etapas del proyecto. |
-| **Sprint 2 Velocity** | 15 |
-| **Sum of Story Points** | 21 |
+| **Date**                      | 8/11/25    |
+| **Time**                      | 20:00 horas |
+| **Location**                  | Via Discord |
+| **Prepared By**               | Sergio Aguirre |
+| **Attendees**                 | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
+| **Sprint 2 Review Summary**     | Esta sección se dedicó a avanzar el código en flutter de la aplicación móvil y que el backend esté completamente desplegado. |
+| **Sprint 2 Retrospective Summary** | Todos los integrantes mencionaron tener aciertos en partes del código y en otras partes poder mejorar sus habilidades.  |
+| **Sprint Goal & User Stories** |  |
+| **Sprint 2 Goal**               | En este sprint, nos enfocamos en avanzar en el desarrollo de la aplicación móvil de Osito Polar para Android e iOS utilizando Flutter. Además, se ha completado el despliegue del backend al 100%, lo que asegura que ambos sistemas estén totalmente integrados y funcionales. Este avance nos permitirá ofrecer una experiencia de usuario más completa, asegurando la estabilidad y escalabilidad de la aplicación para las siguientes etapas del proyecto. |
+| **Sprint 2 Velocity**              | 15 |
+| **Sum of Story Points**        | 21 |
 
 #### 4.2.2.2. Sprint Backlog 2
+
 Sprint # | Sprint 2 | | | | | | |
 ---------|----------|---------|-------|-----|----|----|---|
 User Story | Work-Item / Task
@@ -1737,35 +3062,64 @@ US11| Asignar técnico | UT06 | Agregar técnico | Crear los componentes, entida
 US11| Asignar técnico | UT07 | Agregar técnico | Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los técnicos y cada uno de sus atributos | 3 | Maria Muñoz | Done
 US17| Visualizar equipos entregados | UT08 | Funcionalidad de visualización de equipos | Implementar la vista de los equipos que ya han sido entregados | 3 | Joseph Rodriguez | Done
 
+
 #### 4.2.2.3. Development Evidence for Sprint Review
+
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 7bc2b0f | feature/service-requests into develop | feature/service-requests into develop | 12/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c288201 | implement publish and unpublish equipment | implement publish and unpublish equipment | 11/12/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1da2d84 | feat: implement signin and register flow | feat: implement signin and register flow | 11/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 968ad92 | implement get all service requests | feature: implement get all service requests | 10/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1efe93f | implement update equipment functionality with provider integration | implement update equipment functionality with provider integration | 10/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c4ae565 | implement add equipment form and provider integration | feature: implement add equipment form and provider integration | 09/11/25      |
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | development | 70998c9 | feature: complete provider login Flow with dependency injection and shared prefs | feature: complete provider login Flow with dependency injection and shared prefs | 09/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 7bc2b0f | feature/service-requests into develop | feature/service-requests into develop | 12/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c288201 | implement publish and unpublish equipment | implement publish and unpublish equipment | 11/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1da2d84 | feat: implement signin and register flow | feat: implement signin and register flow | 11/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 968ad92 | implement get all service requests | feature: implement get all service requests | 10/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1efe93f | implement update equipment functionality with provider integration | implement update equipment functionality with provider integration | 10/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c4ae565 | implement add equipment form and provider integration | feature: implement add equipment form and provider integration | 09/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | development | 70998c9 | feature: complete provider login Flow with dependency injection and shared prefs | feature: complete provider login Flow with dependency injection and shared prefs | 09/11/25     |
 
 #### 4.2.2.4. Testing Suite Evidence for Sprint Review
+
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 7bc2b0f | feature/service-requests into develop | feature/service-requests into develop | 12/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c288201 | implement publish and unpublish equipment | implement publish and unpublish equipment | 11/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1da2d84 | feat: implement signin and register flow | feat: implement signin and register flow | 11/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 968ad92 | implement get all service requests | feature: implement get all service requests | 10/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1efe93f | implement update equipment functionality with provider integration | implement update equipment functionality with provider integration | 10/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c4ae565 | implement add equipment form and provider integration | feature: implement add equipment form and provider integration | 09/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | development | 70998c9 | feature: complete provider login Flow with dependency injection and shared prefs | feature: complete provider login Flow with dependency injection and shared prefs | 09/11/25     |
 
 #### 4.2.2.5. Execution Evidence for Sprint Review
-**Pantalla inicial** <img src="assets/TF/pantalla1.jpg" height="400"><br>
-**Pantalla de inicio de sesión** <img src="assets/TF/pantalla2login.jpg" height="400"><br>
-**Pantalla de registro de usuario** <img src="assets/TF/pantalla3register.jpg" height="400"><br>
-**Pantalla de Inicio** <img src="assets/TF/pantall4inicio.jpg" height="400"><br>
-**Pantalla de Inventario** <img src="assets/TF/pantalla5inventario.jpg" height="400"><br>
-**Pantalla de nuevo equipo** <img src="assets/TF/pantalla6nuevoequipo.jpg" height="400"><br>
-**Pantalla de técnicos y clientes** <img src="assets/TF/pantalla7tecnicos.jpg" height="400"><br>
-**Nuevo técnico** <img src="assets/TF/pantalla8nuevotecnico.jpg" height="400"><br>
+
+**Pantalla inicial**  
+<img src="assets/TF/pantalla1.jpg" height="400"><br>
+
+**Pantalla de inicio de sesión**  
+<img src="assets/TF/pantalla2login.jpg" height="400"><br>
+
+**Pantalla de registro de usuario**  
+<img src="assets/TF/pantalla3register.jpg" height="400"><br>
+
+**Pantalla de Inicio**  
+<img src="assets/TF/pantall4inicio.jpg" height="400"><br>
+
+**Pantalla de Inventario**  
+<img src="assets/TF/pantalla5inventario.jpg" height="400"><br>
+
+**Pantalla de nuevo equipo**  
+<img src="assets/TF/pantalla6nuevoequipo.jpg" height="400"><br>
+
+**Pantalla de técnicos y clientes**  
+<img src="assets/TF/pantalla7tecnicos.jpg" height="400"><br>
+
+**Nuevo técnico**  
+<img src="assets/TF/pantalla8nuevotecnico.jpg" height="400"><br>
+
 
 #### 4.2.2.6. Services Documentation Evidence for Sprint Review
+
 **OsitoPolarPlatform.api**
+
 <img src="assets/TF/ositopolarswagger.jpg" height="400"><br>
 <img src="assets/TF/workorders.jpg" height="400"><br>
 <img src="assets/TF/profiles.jpg" height="400"><br>
@@ -1775,176 +3129,251 @@ US17| Visualizar equipos entregados | UT08 | Funcionalidad de visualización de 
 #### 4.2.2.7. Software Deployment Evidence for Sprint Review
 #### 4.2.2.8. Team Collaboration Insights during Sprint
 
-### 4.2.3. Sprint 3
-#### 4.2.3.1. Sprint Planning 3
-| **Sprint #** | **Sprint 3** |
-|-------------------------------|-------------|
-| **Sprint Planning Background**| En el tercer y último sprint, el equipo se reunió para definir las funcionalidades finales relacionadas con reportes, consumo energético y control remoto de equipos, cerrando el ciclo de desarrollo principal. |
-| **Date** | 22/11/25    |
-| **Time** | 19:00 horas |
-| **Location** | Via Discord |
-| **Prepared By** | Victor Rojas |
-| **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
-| **Sprint 3 Goal** | Implementar las funcionalidades avanzadas de reportes, monitoreo de consumo energético y control remoto de los equipos. El objetivo es entregar una versión final del producto que permita a los usuarios no solo gestionar sus equipos, sino también tomar decisiones basadas en datos históricos y operar sus dispositivos a distancia. |
-| **Sprint 3 Velocity** | 15 |
-| **Sum of Story Points** | 20 |
+### 4.2.3 Sprint 3
 
-#### 4.2.3.2. Sprint Backlog 3
 Sprint # | Sprint 3 | | | | | | |
 ---------|----------|---------|-------|-----|----|----|---|
 User Story | Work-Item / Task
 ID | Title | ID | Title | Description | Estimation (Hours) | Assigned To | Status
-US05| Ver reporte de servicio realizado | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los reportes | 4 | Sergio Aguirre | Done
-US05| Ver reporte de servicio realizado | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los servicios realizados y cada uno de sus atributos | 3 | Maria Muñoz | Done
-US09| Ver consumo energético | UT03 | Visualizar detalle de consumo | Implementar detalle del consumo energético para cada equipo de refrigeración | 3 | Luis Montañez | Done
-US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Implementar visualizar el historial completo de los servicios realizados | 3 | Victor Rojas | Done
-US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | Done
-US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | Done
+US05| Ver reporte de servicio realizado | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los reportes | 4 | Sergio Aguirre | In process
+US05| Ver reporte de servicio realizado | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los servicios realizados y cada uno de sus atributos | 3 | Maria Muñoz | In process
+US09| Ver consumo energético | UT03 | Visualizar detalle de consumo | Implementar detalle del consumo energético para cada equipo e refrigeración | 3 | Luis Montañez | In process
+US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Implementar visualizar el historial completo de los servicios realizados | 3 | Victor Rojas | In process
+US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | In process
+US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | In process
 
-#### 4.2.3.3. Development Evidence for Sprint Review
-| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
-|---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/reports | a1b2c3d | feat: add report service structure | Added ReportEntity and ReportService with basic CRUD operations | 23/11/25 |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/reports | e5f6g7h | feat: implement report UI screens | Added screens for viewing service reports detail | 24/11/25 |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/energy-consumption | i8j9k0l | feat: add energy consumption chart | Implemented line chart using fl_chart to show daily consumption | 24/11/25 |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/remote-control | m1n2o3p | feat: add remote control buttons | Added ON/OFF toggle and temperature slider to equipment detail | 25/11/25 |
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/remote-control | q4r5s6t | fix: temperature update latency | Optimized API call for temperature adjustment to reduce lag | 26/11/25 |
 
-#### 4.2.3.4. Testing Suite Evidence for Sprint Review
-Se implementaron pruebas unitarias adicionales para los nuevos servicios de reportes y consumo energético.
-- **ReportServiceTests:** Validación de la generación de reportes vacíos y con datos.
-- **EnergyConsumptionTests:** Verificación del cálculo de promedio diario y alertas de consumo excesivo.
-- **RemoteControlTests:** Mocking de la respuesta del dispositivo IoT ante comandos de encendido/apagado.
+#### 4.3. Validation Interviews
+#### 4.3.1. Diseño de Entrevistas
 
-<img src="assets/chapter04/Sprint3/TestResults.png" height="300" alt="Resultados de pruebas unitarias Sprint 3">
+En esta sección se presentan los detalles de las entrevistas de validación realizadas.
 
-#### 4.2.3.5. Execution Evidence for Sprint Review
-**Pantalla de Reportes de Servicio**
-<img src="assets/chapter04/Sprint3/ReportScreen.jpg" height="400">
-**Gráfico de Consumo Energético**
-<img src="assets/chapter04/Sprint3/EnergyChart.jpg" height="400">
-**Control Remoto de Equipo**
-<img src="assets/chapter04/Sprint3/RemoteControl.jpg" height="400">
+### 5.3.1. Diseño de Entrevistas.
 
-#### 4.2.3.6. Services Documentation Evidence for Sprint Review
-Se actualizaron los endpoints en Swagger para incluir las nuevas funcionalidades:
-- `GET /api/v1/reports/{equipmentId}`: Obtener reportes de un equipo.
-- `GET /api/v1/energy/{equipmentId}`: Obtener datos de consumo.
-- `POST /api/v1/equipment/{id}/command`: Enviar comando (ON/OFF, SetTemp).
-
-<img src="assets/chapter04/Sprint3/SwaggerUpdated.jpg" height="400">
-
-#### 4.2.3.7. Software Deployment Evidence for Sprint Review
-El despliegue final se realizó en un entorno de producción simulado.
-- **Backend:** Azure App Service (Production Slot).
-- **Móvil:** APK generado y distribuido internamente para pruebas finales.
-
-#### 4.2.3.8. Team Collaboration Insights during Sprint
-Durante este sprint, el equipo mejoró la comunicación respecto a las dependencias entre el frontend y los nuevos endpoints de control remoto. Se realizaron sesiones de *Pair Programming* para integrar la librería de gráficos (`fl_chart`) correctamente en Flutter.
-
-## 4.3. Validation Interviews
-
-### 4.3.1. Diseño de Entrevistas
 <h4>Objetivo de la Entrevista</h4>
 <p>Validar la usabilidad, efectividad y propuesta de valor de la <strong>aplicación móvil OsitoPolar</strong> para los segmentos clave. Se evaluará si las funcionalidades cubren las necesidades operativas reales y si los flujos táctiles (tap, swipe, notificaciones push) son intuitivos para usuarios con distintos perfiles técnicos.</p>
 
 <h4>Elementos de Validación</h4>
 <ul>
-  <li><strong>Onboarding / Pantalla de inicio (App):</strong> Claridad de la propuesta de valor, permisos (cámara/galería para fotos y QR, ubicación, notificaciones), acceso a funcionalidades clave y llamados a la acción.</li>
-  <li><strong>Aplicación Móvil:</strong> Flujos críticos como registro de equipos (con escaneo QR/foto), solicitud de servicios, visualización de reportes, asignación de técnicos y recepción de alertas <em>push</em>.</li>
+  <li><strong>Onboarding / Pantalla de inicio (App):</strong> Claridad de la propuesta de valor, permisos (cámara/galería para fotos y QR, ubicación, notificaciones), acceso a funcionalidades clave y llamados a la acción.</li>
+  <li><strong>Aplicación Móvil:</strong> Flujos críticos como registro de equipos (con escaneo QR/foto), solicitud de servicios, visualización de reportes, asignación de técnicos y recepción de alertas <em>push</em>.</li>
 </ul>
 
 <h4>User Flows a Validar</h4>
+
 <h5>Para el Segmento: Negocios con Equipos de Refrigeración</h5>
 <ol>
-  <li>Registro y configuración inicial en el móvil</li>
-  <li>Monitoreo y alertas <em>push</em></li>
-  <li>Solicitud de servicios desde la app</li>
-  <li>Visualización de reportes en el dispositivo</li>
-  <li>Evaluación del servicio</li>
+  <li>Registro y configuración inicial en el móvil</li>
+  <li>Monitoreo y alertas <em>push</em></li>
+  <li>Solicitud de servicios desde la app</li>
+  <li>Visualización de reportes en el dispositivo</li>
+  <li>Evaluación del servicio</li>
 </ol>
 
 <h5>Para el Segmento: Empresas Proveedoras de Servicios</h5>
 <ol>
-  <li>Recepción de solicitudes (inbox/push)</li>
-  <li>Gestión y asignación de técnicos</li>
-  <li>Historial técnico desde la app</li>
-  <li>Generación y envío de reportes</li>
-  <li>Gestión de cartera de clientes</li>
+  <li>Recepción de solicitudes (inbox/push)</li>
+  <li>Gestión y asignación de técnicos</li>
+  <li>Historial técnico desde la app</li>
+  <li>Generación y envío de reportes</li>
+  <li>Gestión de cartera de clientes</li>
 </ol>
 
 <h4>Formato de Registro de Entrevista</h4>
 <ul>
-  <li>Nombre completo</li>
-  <li>Edad</li>
-  <li>Distrito de residencia</li>
-  <li>Rol en su empresa</li>
-  <li>Dispositivo utilizado para la prueba (Android/iOS)</li>
+  <li>Nombre completo</li>
+  <li>Edad</li>
+  <li>Distrito de residencia</li>
+  <li>Rol en su empresa</li>
+  <li>Dispositivo utilizado para la prueba (Android/iOS)</li>
 </ul>
 
 <h3>Preguntas para el Segmento 1: Negocios que utilizan Equipos de Refrigeración</h3>
 <ul>
-  <li>¿De qué manera te resultó útil la información del <strong>onboarding</strong> de la app?</li>
+  <li>¿De qué manera te resultó útil la información del <strong>onboarding</strong> de la app?</li>
 </ul>
+
 <h4>Registro y Gestión de Equipos</h4>
 <ul>
-  <li>¿Qué tan fácil fue registrar tus equipos de refrigeración desde el celular (foto/QR)?</li>
-  <li>¿La información solicitada fue clara y necesaria?</li>
-  <li>¿Hubo algún paso que te generó dudas?</li>
+  <li>¿Qué tan fácil fue registrar tus equipos de refrigeración desde el celular (foto/QR)?</li>
+  <li>¿La información solicitada fue clara y necesaria?</li>
+  <li>¿Hubo algún paso que te generó dudas?</li>
 </ul>
+
 <h4>Monitoreo y Alertas</h4>
 <ul>
-  <li>¿Cómo sentiste el proceso para acceder al estado de tus equipos en el móvil?</li>
-  <li>¿De qué manera te sirvió la sección de alertas <em>push</em> de los equipos?</li>
-  <li>¿Cómo afectarían estas alertas tu toma de decisiones?</li>
+  <li>¿Cómo sentiste el proceso para acceder al estado de tus equipos en el móvil?</li>
+  <li>¿De qué manera te sirvió la sección de alertas <em>push</em> de los equipos?</li>
+  <li>¿Cómo afectarían estas alertas tu toma de decisiones?</li>
 </ul>
+
 <h4>Solicitudes de Servicio</h4>
 <ul>
-  <li>¿Cómo fue tu experiencia solicitando un servicio desde la app?</li>
-  <li>¿La opción para programar mantenimiento estaba visible y disponible? ¿Qué te pareció su implementación?</li>
-  <li>¿Cómo fue tu proceso al solicitar un tipo de servicio?</li>
+  <li>¿Cómo fue tu experiencia solicitando un servicio desde la app?</li>
+  <li>¿La opción para programar mantenimiento estaba visible y disponible? ¿Qué te pareció su implementación?</li>
+  <li>¿Cómo fue tu proceso al solicitar un tipo de servicio?</li>
 </ul>
+
 <h4>Visualización de Reportes</h4>
 <ul>
-  <li>¿De qué manera te ayudaron los reportes de los equipos a conocer su estado?</li>
-  <li>¿Cómo te sirvieron los reportes de consumo energético para detectar posibles problemas?</li>
-  <li>¿Qué agregarías o mejorarías en estos reportes (comparativas, recomendaciones, exportación)?</li>
+  <li>¿De qué manera te ayudaron los reportes de los equipos a conocer su estado?</li>
+  <li>¿Cómo te sirvieron los reportes de consumo energético para detectar posibles problemas?</li>
+  <li>¿Qué agregarías o mejorarías en estos reportes (comparativas, recomendaciones, exportación)?</li>
 </ul>
+
 <h4>Evaluación del Servicio</h4>
 <ul>
-  <li>¿Fue sencillo dejar una evaluación después del servicio desde el móvil? ¿Cómo fue tu experiencia al usar esta funcionalidad?</li>
-  <li>¿De qué manera consideras útil poder modificar tu evaluación si hubo cambios posteriores?</li>
+  <li>¿Fue sencillo dejar una evaluación después del servicio desde el móvil? ¿Cómo fue tu experiencia al usar esta funcionalidad?</li>
+  <li>¿De qué manera consideras útil poder modificar tu evaluación si hubo cambios posteriores?</li>
 </ul>
 
 <h3>Preguntas para el Segmento 2: Empresas Proveedoras de Servicios</h3>
+
 <h4>Recepción y Gestión de Solicitudes</h4>
 <ul>
-  <li>¿Puedes describir cómo es el proceso de recibir una nueva solicitud de servicio en la app y qué aspectos destacarías, tanto positivos como áreas de mejora?</li>
-  <li>¿Cómo describirías tu experiencia al asignar un técnico a una solicitud de servicio desde el móvil, y qué elementos del procedimiento te resultaron más útiles o desafiantes?</li>
-  <li>¿Cómo ha sido tu experiencia al realizar el seguimiento del estado de los servicios en tiempo real desde la app, y qué características consideras más valiosas o cuáles mejorarías?</li>
+  <li>¿Puedes describir cómo es el proceso de recibir una nueva solicitud de servicio en la app y qué aspectos destacarías, tanto positivos como áreas de mejora?</li>
+  <li>¿Cómo describirías tu experiencia al asignar un técnico a una solicitud de servicio desde el móvil, y qué elementos del procedimiento te resultaron más útiles o desafiantes?</li>
+  <li>¿Cómo ha sido tu experiencia al realizar el seguimiento del estado de los servicios en tiempo real desde la app, y qué características consideras más valiosas o cuáles mejorarías?</li>
 </ul>
+
 <h4>Gestión de Técnicos</h4>
 <ul>
-  <li>¿Cómo describirías el procedimiento para asignar técnicos a las solicitudes de servicio en la app, y qué sugerencias tendrías para optimizar esta funcionalidad?</li>
-  <li>¿Qué información sobre el desempeño de los técnicos encuentras en la app y cómo te ayuda? ¿Qué aspectos adicionales te gustaría ver (KPIs, rankings, rutas)?</li>
-  <li>¿De qué manera el sistema de métricas de desempeño ha impactado en la gestión de tus técnicos, y qué mejoras sugerirías para hacerlo más útil?</li>
+  <li>¿Cómo describirías el procedimiento para asignar técnicos a las solicitudes de servicio en la app, y qué sugerencias tendrías para optimizar esta funcionalidad?</li>
+  <li>¿Qué información sobre el desempeño de los técnicos encuentras en la app y cómo te ayuda? ¿Qué aspectos adicionales te gustaría ver (KPIs, rankings, rutas)?</li>
+  <li>¿De qué manera el sistema de métricas de desempeño ha impactado en la gestión de tus técnicos, y qué mejoras sugerirías para hacerlo más útil?</li>
 </ul>
+
 <h4>Historial y Reportes Técnicos</h4>
 <ul>
-  <li>¿Cómo ha sido tu experiencia al acceder al historial técnico de los equipos atendidos desde el móvil, y qué aspectos te parecen efectivos o cuáles cambiarías?</li>
-  <li>¿Cómo describirías la utilidad y claridad de los reportes generados por la app para tus clientes, y qué elementos crees que podrían mejorarse?</li>
-  <li>¿Puedes contarme cómo es el proceso de generación automática de reportes en la app y qué aspectos consideras que funcionan bien o podrían optimizarse?</li>
+  <li>¿Cómo ha sido tu experiencia al acceder al historial técnico de los equipos atendidos desde el móvil, y qué aspectos te parecen efectivos o cuáles cambiarías?</li>
+  <li>¿Cómo describirías la utilidad y claridad de los reportes generados por la app para tus clientes, y qué elementos crees que podrían mejorarse?</li>
+  <li>¿Puedes contarme cómo es el proceso de generación automática de reportes en la app y qué aspectos consideras que funcionan bien o podrían optimizarse?</li>
 </ul>
+
 <h4>Gestión de Cartera de Clientes</h4>
 <ul>
-  <li>¿Cómo describirías tu experiencia al visualizar y gestionar la lista de clientes y sus servicios en la app, y qué funcionalidades destacarías o mejorarías?</li>
-  <li>¿Qué tan sencillo o complejo ha sido filtrar información por estado del servicio o tipo de equipo en el móvil, y qué sugerencias tendrías para mejorar esta funcionalidad?</li>
+  <li>¿Cómo describirías tu experiencia al visualizar y gestionar la lista de clientes y sus servicios en la app, y qué funcionalidades destacarías o mejorarías?</li>
+  <li>¿Qué tan sencillo o complejo ha sido filtrar información por estado del servicio o tipo de equipo en el móvil, y qué sugerencias tendrías para mejorar esta funcionalidad?</li>
 </ul>
 
-### 4.3.2. Registro de Entrevistas
+#### 4.3.2. Registro de Entrevistas
+<h4>Objetivo de la Entrevista</h4>
+<p>Validar la usabilidad, efectividad y propuesta de valor de la <strong>aplicación móvil OsitoPolar</strong> para los segmentos clave. Se evaluará si las funcionalidades cubren las necesidades operativas reales y si los flujos táctiles (tap, swipe, notificaciones push) son intuitivos para usuarios con distintos perfiles técnicos.</p>
+
+<h4>Elementos de Validación</h4>
+<ul>
+  <li><strong>Onboarding / Pantalla de Inicio (App):</strong> Claridad en la propuesta de valor, permisos (cámara/galería para fotos y QR, notificaciones), accesos a funcionalidades clave, llamados a la acción.</li>
+  <li><strong>Aplicación Móvil:</strong> Flujos críticos como registro de equipos (con escaneo de código/QR y fotos), solicitud de servicios, visualización de reportes, asignación de técnicos y recepción de alertas <em>push</em>.</li>
+</ul>
+
+<h4>User Flows a Validar</h4>
+
+<h5>Para el Segmento: Negocios con Equipos de Refrigeración</h5>
+<ol>
+  <li>Registro y configuración inicial</li>
+  <li>Monitoreo y alertas (push)</li>
+  <li>Solicitud de servicios</li>
+  <li>Visualización de reportes</li>
+  <li>Evaluación del servicio</li>
+</ol>
+
+<h5>Para el Segmento: Empresas Proveedoras de Servicios</h5>
+<ol>
+  <li>Recepción de solicitudes (push/inbox)</li>
+  <li>Gestión de técnicos</li>
+  <li>Historial técnico</li>
+  <li>Generación de reportes</li>
+  <li>Gestión de cartera de clientes</li>
+</ol>
+
+<h4>Formato de Registro de Entrevista</h4>
+<ul>
+  <li>Nombre completo</li>
+  <li>Edad</li>
+  <li>Distrito de residencia</li>
+  <li>Rol en su empresa</li>
+  <li>Dispositivo utilizado para la prueba (Android/iOS)</li>
+</ul>
+
+<h3>Preguntas para el Segmento 1: Negocios que utilizan Equipos de Refrigeración</h3>
+<ul>
+  <li>¿De qué manera te pareció útil la información del onboarding en la app?</li>
+</ul>
+<h4>Registro y Gestión de Equipos</h4>
+<ul>
+  <li>¿Qué tan fácil fue registrar tus equipos de refrigeración desde el celular (foto/QR)?</li>
+  <li>¿La información solicitada fue clara y necesaria?</li>
+  <li>¿Hubo algún paso que te generó dudas?</li>
+</ul>
+
+<h4>Monitoreo y Alertas</h4>
+<ul>
+  <li>¿Cómo sentiste el proceso para acceder al estado de tus equipos en el móvil?</li>
+  <li>¿De qué manera te sirvió la sección de alertas <em>push</em> de los equipos?</li>
+  <li>¿Cómo afectarían estas alertas tu toma de decisiones?</li>
+</ul>
+
+<h4>Solicitudes de Servicio</h4>
+<ul>
+  <li>¿Cómo fue tu experiencia solicitando un servicio desde la app?</li>
+  <li>¿La opción para programar mantenimiento estaba visible y disponible? ¿Qué te pareció su implementación?</li>
+  <li>¿Cómo fue tu proceso al solicitar un tipo de servicio?</li>
+</ul>
+
+<h4>Visualización de Reportes</h4>
+<ul>
+  <li>¿De qué manera te ayudaron los reportes de los equipos a conocer su estado?</li>
+  <li>¿Cómo es que los reportes de consumo energético te sirvieron para detectar posibles problemas?</li>
+  <li>¿Qué agregarías o mejorarías en estos reportes?</li>
+</ul>
+
+<h4>Evaluación del Servicio</h4>
+<ul>
+  <li>¿Fue sencillo dejar una evaluación después del servicio desde el móvil? ¿Cómo fue tu experiencia al usar esta funcionalidad?</li>
+  <li>¿De qué manera consideras útil poder modificar tu evaluación si hubo cambios posteriores?</li>
+</ul>
+
+<h3>Preguntas para el Segmento 2: Empresas Proveedoras de Servicios</h3>
+
+<h4>Recepción y Gestión de Solicitudes</h4>
+<ul>
+  <li>¿Puedes describir cómo es el proceso de recibir una nueva solicitud de servicio en la app y qué aspectos destacarías, tanto positivos como áreas de mejora?</li>
+  <li>¿Cómo describirías tu experiencia al asignar un técnico a una solicitud de servicio, y qué elementos del procedimiento te resultaron más útiles o desafiantes?</li>
+  <li>¿Cómo ha sido tu experiencia al realizar el seguimiento del estado de los servicios en tiempo real, y qué características consideras más valiosas o cuáles mejorarías?</li>
+</ul>
+
+<h4>Gestión de Técnicos</h4>
+<ul>
+  <li>¿Cómo describirías el procedimiento para asignar técnicos a las solicitudes de servicio, y qué sugerencias tendrías para optimizar esta funcionalidad?</li>
+  <li>¿Qué información sobre el desempeño de los técnicos encuentras en la app, y cómo te ayuda o qué aspectos adicionales te gustaría ver?</li>
+  <li>¿De qué manera el sistema de métricas de desempeño ha impactado en la gestión de tus técnicos, y qué mejoras sugerirías para hacerlo más útil?</li>
+</ul>
+
+<h4>Historial y Reportes Técnicos</h4>
+<ul>
+  <li>¿Cómo ha sido tu experiencia al acceder al historial técnico de los equipos atendidos, y qué aspectos te parecen efectivos o cuáles cambiarías?</li>
+  <li>¿Cómo describirías la utilidad y claridad de los reportes generados para tus clientes, y qué elementos crees que podrían mejorarse?</li>
+  <li>¿Puedes contarme cómo es el proceso de generación automática de reportes en la app y qué aspectos consideras que funcionan bien o podrían optimizarse?</li>
+</ul>
+
+<h4>Gestión de Cartera de Clientes</h4>
+<ul>
+  <li>¿Cómo describirías tu experiencia al visualizar y gestionar la lista de clientes y sus servicios, y qué funcionalidades destacarías o mejorarías?</li>
+  <li>¿Qué tan sencillo o complejo ha sido filtrar información por estado del servicio o tipo de equipo, y qué sugerencias tendrías para mejorar esta funcionalidad?</li>
+</ul>
+
+
+---
+
+### 5.3.2. Registro de Entrevistas.
 En esta sección tenemos el análisis de las entrevistas por segmentos objetivos.
 
-| Entrevista 1: Negocio que utiliza máquinas de refrigeración (App móvil) |  |
+<br>
+
+
+<br><br>
+
+| Entrevista 1: Negocio que utiliza máquinas de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Luis Salazar Cotrina** |
 | **Edad** | 28 |
@@ -1953,14 +3382,16 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (iOS)** |
 | <img width=620 src="assets/chapter-05/E1.jpng"/> | [Entrevista 1](#) |
 | **Duración de la Entrevista** | 0:00 - 6:05 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Registro y Gestión de Equipos** | Organizó varias congeladoras por **zona** con **tags**; sugiere **duplicar** equipo como plantilla. |
 | **Monitoreo y Alertas** | Sección “**clave**”; detectó **escarcha** por aumento de consumo. Pide **resumen diario** (además del push). |
 | **Solicitudes de Servicio** | Programó mantenimiento con CTA visible desde el **home**; sugiere **reprogramar** con un tap. |
 | **Visualización de Reportes** | Halló anomalías en **horas valle**; útil **panel semanal** para ahorro energético. |
 | **Evaluación del Servicio** | Transparente; pudo **modificar rating** tras segunda visita. |
 
-| Entrevista 2: Proveedores de equipos de refrigeración (App móvil) |  |
+<br>
+
+| Entrevista 2: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Piero Medina Rojas** |
 | **Edad** | 30 |
@@ -1969,13 +3400,15 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (Android)** |
 | <img width=620 src="assets/chapter-05/E2.jpg"/> | [Entrevista 2](#) |
 | **Duración de la Entrevista** | 0:00 - 7:10 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Inbox móvil **claro** (cliente, equipo, **ETA sugerido**). Falta **detalle técnico obligatorio** (fotos, lectura de temperatura) para evitar llamadas. |
 | **Gestión de Técnicos** | Asignación **intuitiva** por **especialidad** y **ubicación**. Pide **rutas por zona** y **ranking** interno con KPIs. |
 | **Historial y Reportes Técnicos** | Acceso ágil por equipo/cliente; solicita **exportación PDF/Excel** y **campos personalizables**. |
 | **Gestión de Cartera de Clientes** | Vista ordenada (estado, facturación, servicios). Pide **alertas automáticas** para mantenimientos y **etiquetas** por cliente. |
 
-| Entrevista 3: Proveedores de equipos de refrigeración (App móvil) |  |
+<br>
+
+| Entrevista 3: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Sandra Ramos Delgado** |
 | **Edad** | 23 |
@@ -1984,13 +3417,15 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (iOS)** |
 | <img width=1000 src="assets/chapter-05/E3.jpg"/> | [Entrevista 3](#) |
 | **Duración de la Entrevista** | 0:00 - 6:05 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** (foto etiqueta, temperatura medida) en la solicitud. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** y **capacidad diaria** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **gráficos comparativos** (consumo/temperatura) por período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 4: Proveedores de equipos de refrigeración (App móvil) |  |
+<br>
+
+| Entrevista 4: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Giancarlo Rodriguez Pastor** |
 | **Edad** | 26 |
@@ -1999,13 +3434,15 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (Android)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista1.jpg"/> | [Entrevista 4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQBQ8RnA8EfyRY3gUcS-2zDHATy9aSJ6EMdTlVbBVSZbDU8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7hh1k6) |
 | **Duración de la Entrevista** | 0:00 - 11:12 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** como foto en la creación de un nuevo equipo. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** y **capacidad diaria** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **gráficos comparativos** (consumo/temperatura) por período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise, **fotos** y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 5: Proveedores de equipos de refrigeración (App móvil) |  |
+<br>
+
+| Entrevista 5: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Ingrid Pacheco Uribe** |
 | **Edad** | 25 |
@@ -2014,13 +3451,15 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (IOS)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista2.jpg"/> | [Entrevista 5](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQDKzhqwoyDnR7vH-daZppEgAbuTKxdHXvEELZmnxxAWkNQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=KPA7rg) |
 | **Duración de la Entrevista** | 0:00 - 10:58 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** (foto etiqueta, temperatura medida) en la solicitud. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **ordenar por nombre o por especialidad** . |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **Historial por equipo** (consumo/temperatura) en un período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **edición** para clientes en sus datos y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 6: Proveedores de equipos de refrigeración (App móvil) |  |
+<br>
+
+| Entrevista 6: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Giusephi Carlos Lavado** |
 | **Edad** | 25 |
@@ -2029,14 +3468,15 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (IOS)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista3.jpg"/> | [Entrevista 6](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQACSe8PTr90QLxKymrskpiaATLKxd_lC1O_rwzh8mQficE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5icPCQ) |
 | **Duración de la Entrevista** | 0:00 - 10:25 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere menos campos técnicos **obligatorios** y más facilidad para crear una solicitud |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **cambiar temperatura** para cada equipo. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise y **push** por vencimiento de mantenimiento programado. |
 
-### 4.3.3. Evaluaciones según heurísticas
-**UX Heuristics & Principles Evaluation** **Usability – Inclusive Design – Information Architecture**
+#### 4.3.3. Evaluaciones según heurísticas
+**UX Heuristics & Principles Evaluation**  
+**Usability – Inclusive Design – Information Architecture**
 
 **Información del Proyecto**
 - **Carrera:** Ingeniería de Software
@@ -2045,7 +3485,10 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 - **Cliente:** Inteligencia Artesanal
 - **Site o App a Evaluar:** OsitoPolar (aplicación móvil iOS/Android)
 
+---
+
 ### Tareas a Evaluar
+
 **Para el Segmento Negocios que utilizan equipos de refrigeración (App móvil):**
 1. Registro y gestión de equipos (foto/QR, tags, plantillas)
 2. Monitoreo y alertas (push, silenciamiento por horario)
@@ -2058,7 +3501,10 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 3. Visualización de historial y reportes técnicos (exportación, campos personalizables)
 4. Gestión de cartera de clientes (alertas de mantenimiento, carpetas/etiquetas)
 
+---
+
 ### Escala de Severidad
+
 | Nivel | Descripción |
 |------:|-------------|
 | 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No necesita ser arreglado a no ser que exista disponibilidad de tiempo. |
@@ -2066,74 +3512,97 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | 3 | Problema mayor: ocurre frecuentemente o los usuarios no son capaces de resolverlo. Debería tener alta prioridad para corregirse. |
 | 4 | Problema muy grave: error que impide al usuario continuar utilizando la herramienta. Debe corregirse antes del lanzamiento. |
 
+---
+
 ### Tabla Resumen
-| # | Problema                                                                                          | Escala de severidad | Heurística/Principio violado                           | Tarea evaluada                                  |
+
+| # | Problema                                                                                          | Escala de severidad | Heurística/Principio violado                           | Tarea evaluada                                  |
 |---|---------------------------------------------------------------------------------------------------|:-------------------:|--------------------------------------------------------|-------------------------------------------------|
-| 1 | Formulario de solicitud no exige **datos técnicos mínimos** (foto, lectura de temperatura, síntoma) | 3 | Prevención de errores / Ayuda y documentación          | Recepción y gestión de solicitudes              |
-| 2 | Sin **exportación** de reportes (PDF/Excel)                                                        | 2 | Control del usuario / Flexibilidad                     | Historial y reportes técnicos                   |
-| 3 | No se pueden **modificar rutas**/reagrupar visitas por zona con facilidad                          | 2 | Flexibilidad y eficiencia de uso                       | Gestión de técnicos                             |
-| 4 | Falta **ranking/KPIs** y **gráficos comparativos** por técnico                                     | 2 | Visibilidad del estado del sistema                     | Gestión de técnicos                             |
-| 5 | Reportes sin **sugerencias automáticas** (ahorro/diagnóstico)                                      | 3 | Ayuda y documentación / Reconocimiento antes que recuerdo | Visualización de reportes                    |
-| 6 | No existen **alertas automáticas** para **mantenimientos programados** | 3 | Prevención de errores / Eficiencia                      | Cartera de clientes                             |
-| 7 | Sin **carpetas/etiquetas** personalizadas para clientes con alta carga                             | 2 | Flexibilidad y eficiencia de uso                       | Cartera de clientes                             |
-| 8 | Falta **silenciamiento programado** de **notificaciones push** por horarios                        | 2 | Control y libertad del usuario                         | Monitoreo y alertas (push)                      |
-| 9 | **Reprogramación** de citas no está disponible en **un toque** | 2 | Minimizar la carga / Eficiencia                         | Solicitudes de servicio                          |
-|10 | **Registro de equipos** podría ser más veloz (duplicar como **plantilla** / **autocompletar** por marca) | 1 | Eficiencia de uso / Consistencia y estándares          | Registro y gestión de equipos                   |
-|11 | Falta **resumen diario** de alertas por **WhatsApp/Email** además del push                         | 1 | Flexibilidad / Acceso a la información                  | Monitoreo y alertas                              |
-|12 | Ausencia de **chat breve** para coordinar con técnico desde la solicitud                           | 2 | Visibilidad/Feedback / Correspondencia con el mundo real | Solicitudes de servicio                       |
+| 1 | Formulario de solicitud no exige **datos técnicos mínimos** (foto, lectura de temperatura, síntoma) | 3 | Prevención de errores / Ayuda y documentación          | Recepción y gestión de solicitudes              |
+| 2 | Sin **exportación** de reportes (PDF/Excel)                                                        | 2 | Control del usuario / Flexibilidad                     | Historial y reportes técnicos                   |
+| 3 | No se pueden **modificar rutas**/reagrupar visitas por zona con facilidad                          | 2 | Flexibilidad y eficiencia de uso                       | Gestión de técnicos                             |
+| 4 | Falta **ranking/KPIs** y **gráficos comparativos** por técnico                                     | 2 | Visibilidad del estado del sistema                     | Gestión de técnicos                             |
+| 5 | Reportes sin **sugerencias automáticas** (ahorro/diagnóstico)                                      | 3 | Ayuda y documentación / Reconocimiento antes que recuerdo | Visualización de reportes                    |
+| 6 | No existen **alertas automáticas** para **mantenimientos programados**                             | 3 | Prevención de errores / Eficiencia                      | Cartera de clientes                             |
+| 7 | Sin **carpetas/etiquetas** personalizadas para clientes con alta carga                             | 2 | Flexibilidad y eficiencia de uso                       | Cartera de clientes                             |
+| 8 | Falta **silenciamiento programado** de **notificaciones push** por horarios                        | 2 | Control y libertad del usuario                         | Monitoreo y alertas (push)                      |
+| 9 | **Reprogramación** de citas no está disponible en **un toque**                                     | 2 | Minimizar la carga / Eficiencia                         | Solicitudes de servicio                          |
+|10 | **Registro de equipos** podría ser más veloz (duplicar como **plantilla** / **autocompletar** por marca) | 1 | Eficiencia de uso / Consistencia y estándares          | Registro y gestión de equipos                   |
+|11 | Falta **resumen diario** de alertas por **WhatsApp/Email** además del push                         | 1 | Flexibilidad / Acceso a la información                  | Monitoreo y alertas                              |
+|12 | Ausencia de **chat breve** para coordinar con técnico desde la solicitud                           | 2 | Visibilidad/Feedback / Correspondencia con el mundo real | Solicitudes de servicio                       |
+
+---
 
 ### Descripción de Problemas
+
 **Problema #1**
-- **Tarea Evaluada:** Recepción y gestión de solicitudes  
+- **Tarea Evaluada:** Recepción y gestión de solicitudes  
 - **Recomendación:** Hacer obligatorios **foto**, **lectura de temperatura** y **descripción breve** del síntoma; plantillas por tipo de falla.
 
 **Problema #2**
-- **Tarea Evaluada:** Historial y reportes técnicos  
+- **Tarea Evaluada:** Historial y reportes técnicos  
 - **Recomendación:** Añadir **exportación PDF/Excel** y **compartir** desde móvil; permitir filtros por rango de fechas y cliente.
 
 **Problema #3**
-- **Tarea Evaluada:** Gestión de técnicos  
+- **Tarea Evaluada:** Gestión de técnicos  
 - **Recomendación:** Habilitar **arrastrar/soltar** para reordenar rutas, **agrupación por zona**, y vista de **mapa** con turnos.
 
 **Problema #4**
-- **Tarea Evaluada:** Gestión de técnicos  
+- **Tarea Evaluada:** Gestión de técnicos  
 - **Recomendación:** Dashboard con **KPI** (SLA, 1ª visita resuelta, NPS/CSAT), **ranking** mensual y **gráficos** por tipo de equipo.
 
 **Problema #5**
-- **Tarea Evaluada:** Visualización de reportes  
+- **Tarea Evaluada:** Visualización de reportes  
 - **Recomendación:** Motor de **recomendaciones** (p. ej., “alto consumo nocturno → sugerir horario eco, revisión de sellos”).
 
 **Problema #6**
-- **Tarea Evaluada:** Gestión de cartera de clientes  
+- **Tarea Evaluada:** Gestión de cartera de clientes  
 - **Recomendación:** **Alertas** automáticas por **mantenimiento programado** (push/email/WhatsApp) con confirmación de cita.
 
 **Problema #7**
-- **Tarea Evaluada:** Gestión de cartera de clientes  
+- **Tarea Evaluada:** Gestión de cartera de clientes  
 - **Recomendación:** **Carpetas/Tags** por cliente enterprise, estado y tipo de equipo; búsquedas guardadas.
 
 **Problema #8**
-- **Tarea Evaluada:** Monitoreo y alertas (push)  
+- **Tarea Evaluada:** Monitoreo y alertas (push)  
 - **Recomendación:** **Modo silencioso** por horario/zonas (ej. madrugada) y excepciones por alertas críticas.
 
 **Problema #9**
-- **Tarea Evaluada:** Solicitudes de servicio  
+- **Tarea Evaluada:** Solicitudes de servicio  
 - **Recomendación:** **Reprogramar en 1 toque**, manteniendo historial; notificar automáticamente a cliente y técnico.
 
 **Problema #10**
-- **Tarea Evaluada:** Registro y gestión de equipos  
+- **Tarea Evaluada:** Registro y gestión de equipos  
 - **Recomendación:** **Duplicar como plantilla**, **autocompletar** modelo al seleccionar marca, y robustecer **escaneo QR** en baja luz.
 
 **Problema #11**
-- **Tarea Evaluada:** Monitoreo y alertas  
+- **Tarea Evaluada:** Monitoreo y alertas  
 - **Recomendación:** **Resumen diario** de eventos vía **WhatsApp/Email** configurable por usuario.
 
 **Problema #12**
-- **Tarea Evaluada:** Solicitudes de servicio  
+- **Tarea Evaluada:** Solicitudes de servicio  
 - **Recomendación:** **Chat breve** in-app entre cliente y técnico/coordinador con mensajes predefinidos (llegada, reprogramación, foto).
 
-<div style="page-break-after: always;"></div>
+---
 
-# Conclusiones
+### User Flows a Validar
+
+**Para el Segmento Negocios que utilizan equipos de refrigeración (App móvil):**
+1. **Registro de vitrinas/congeladoras** con **foto/QR**, uso de **tags** y **duplicado como plantilla**.  
+2. **Gestión y visualización de alertas** por temperatura/puerta abierta con **silenciamiento programado** y **resumen diario**.  
+3. **Solicitud y evaluación de técnicos** desde la misma interfaz, con **reprogramación en 1 toque** y **chat breve**.  
+4. **Consulta de reportes** de consumo/estado con **recomendaciones automáticas**.
+
+**Para el Segmento Empresas proveedoras de servicios y equipos de refrigeración (App móvil):**
+1. **Recepción detallada** de solicitudes (con **foto + temperatura + descripción** obligatorias).  
+2. **Asignación eficiente** de técnicos por **especialidad/zona** y **capacidad diaria**, con **reordenamiento de rutas**.  
+3. **Revisión de historial técnico** y **descarga/exportación** de reportes (PDF/Excel) con **campos personalizables**.  
+4. **Gestión avanzada por cliente** con **alertas de mantenimiento programado** y **carpetas/etiquetas** personalizadas.
+
+---
+
+## Conclusiones
+
 A lo largo del desarrollo del modelo de negocio digital OsitoPolar, hemos logrado validar la necesidad real y urgente de soluciones tecnológicas en el sector de refrigeración, tanto en los negocios que dependen de estos equipos como en las empresas proveedoras de servicios técnicos.
 El proceso de investigación, entrevistas y análisis ha revelado importantes hallazgos que refuerzan la relevancia de nuestra propuesta de valor.
 
@@ -2157,43 +3626,42 @@ Algunas recomendaciones que tomamos en cuenta que podrían impulsar el desarroll
 
 Este trabajo ha demostrado que OsitoPolar no solo resuelve un problema real, sino que tiene el potencial de transformar la forma en que se gestiona la refrigeración comercial y técnica en el Perú. Los próximos pasos deberán enfocarse en escalar esta solución de manera sostenible y centrada en el usuario.
 
-# Videos
-- **Video About the Product:** En este video presentamos la propuesta de valor de OsitoPolar, destacando sus funcionalidades principales como el monitoreo en tiempo real y la gestión de servicios técnicos. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder1)
-- **Video About the Team:** Conoce al equipo detrás de OsitoPolar, nuestros roles y cómo colaboramos para hacer realidad este proyecto. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder2)
-- **Video App Validation:** Demostración de la validación de la aplicación con usuarios reales, mostrando flujos de uso y feedback recibido. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder3)
 
-# Glosario
-1.  **API (Application Programming Interface):** Conjunto de reglas y definiciones que permiten que diferentes aplicaciones de software se comuniquen entre sí.
-2.  **Backend:** La parte del lado del servidor de una aplicación web o móvil, responsable de la lógica de negocio, la base de datos y la autenticación.
-3.  **Bounded Context:** Un límite conceptual dentro del cual un modelo de dominio específico es aplicable y consistente. Concepto clave en Domain-Driven Design.
-4.  **Chiller:** Sistema de refrigeración que enfría agua o una mezcla de agua y glicol, que luego se circula para enfriar aire o equipos.
-5.  **CRUD (Create, Read, Update, Delete):** Las cuatro operaciones básicas para el almacenamiento persistente de datos.
-6.  **DDD (Domain-Driven Design):** Enfoque de desarrollo de software que conecta la implementación con un modelo evolutivo de los conceptos centrales del negocio.
-7.  **Endpoint:** Un punto final de comunicación en una API, generalmente una URL específica donde se puede acceder a un recurso.
-8.  **Flutter:** Kit de desarrollo de software de interfaz de usuario de código abierto creado por Google para crear aplicaciones nativas compiladas para móvil, web y escritorio desde una única base de código.
-9.  **HVAC (Heating, Ventilation, and Air Conditioning):** Sistemas de calefacción, ventilación y aire acondicionado.
-10. **IoT (Internet of Things):** Red de objetos físicos ("cosas") que llevan incorporados sensores, software y otras tecnologías con el fin de conectar e intercambiar datos con otros dispositivos y sistemas a través de Internet.
-11. **KPI (Key Performance Indicator):** Métrica cuantificable utilizada para evaluar el éxito de una organización o actividad en particular.
-12. **MVP (Minimum Viable Product):** Versión de un producto con las características suficientes para satisfacer a los primeros clientes y proporcionar retroalimentación para el desarrollo futuro.
+## Bibliografía
 
-# Bibliografía
 - Axios. (s.f.). *Axios: Promise based HTTP client for the browser and node.js*. Recuperado el 10 de julio de 2025, de https://axios-http.com/docs/intro
+
 - Cohn, M. (s.f.). *User stories articles*. Mountain Goat Software. Recuperado el 10 de julio de 2025, de https://www.mountaingoatsoftware.com/blog/tag/user-stories
+
 - Conventional Commits. (s.f.). *Conventional commits*. Recuperado el 10 de julio de 2025, de https://www.conventionalcommits.org/
+
 - Google. (s.f.). *Firebase Hosting*. Recuperado el 10 de julio de 2025, de https://firebase.google.com/docs/hosting?hl=es-419
+
 - Google. (s.f.). *Google HTML/CSS style guide*. Recuperado el 10 de julio de 2025, de https://google.github.io/styleguide/htmlcssguide.html
+
 - Nielsen Norman Group. (s.f.). *Front-end style-guides: Definition, requirements, component checklist*. Recuperado el 10 de julio de 2025, de https://www.nngroup.com/articles/front-end-style-guides/
+
 - Nielsen Norman Group. (s.f.). *The four dimensions of tone of voice*. Recuperado el 10 de julio de 2025, de https://www.nngroup.com/articles/tone-of-voice-dimensions/
+
 - Nvie. (s.f.). *A successful Git branching model*. Recuperado el 10 de julio de 2025, de https://nvie.com/posts/a-successful-git-branching-model/
+
 - Preston-Werner, T. (s.f.). *Semantic versioning 2.0.0*. Recuperado el 10 de julio de 2025, de https://semver.org/
+
 - PrimeVue. (s.f.). *PrimeVue: The most complete UI component library for Vue.js*. Recuperado el 10 de julio de 2025, de https://primevue.org
+
 - Render. (s.f.). *Deployments*. Recuperado el 10 de julio de 2025, de https://render.com/docs/deploys
+
 - REST API Tutorial. (s.f.). *What is REST?*. Recuperado el 10 de julio de 2025, de https://www.restapitutorial.com/introduction/whatisrest
+
 - RESTfulAPI.net. (s.f.). *REST API tutorial*. Recuperado el 10 de julio de 2025, de https://restfulapi.net
+
 - Stripe. (s.f.). *Payments overview*. Recuperado el 10 de julio de 2025, de https://docs.stripe.com/payments?payments=popular
+
 - UXPressia. (s.f.). *User vs. buyer persona: Differences and free template*. Recuperado el 10 de julio de 2025, de https://uxpressia.com/blog/user-persona-vs-buyer-persona-difference
+
 - W3Schools. (s.f.). *HTML style guide and coding conventions*. Recuperado el 10 de julio de 2025, de https://www.w3schools.com/html/html5_syntax.asp
 
-# Anexos
-- Organización GitHub: [https://github.com/Equipo5-Aplicaciones-Moviles](https://github.com/Equipo5-Aplicaciones-Moviles)
+## Anexos
+
+- Organización GitHub: [https://github.com/Inteligencia-Artesanal-Aplicaciones-Web](https://github.com/Equipo5-Aplicaciones-Moviles/upc-Aplicaciones-Moviles-Equipo5)
 - Miro : https://miro.com/app/board/uXjVJGeldZw=/
