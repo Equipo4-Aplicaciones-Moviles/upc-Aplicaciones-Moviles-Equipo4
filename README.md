@@ -1247,6 +1247,9 @@ Criterios de Aceptación (Given-When-Then)
 
 
 ### 2.4.2. Impact Mapping
+
+El siguiente Impact Mapping fue desarrollado en UXPressia de manera colaborativa por el equipo de OsitoPolar para alinear los objetivos de negocio con los requerimientos funcionales de la plataforma.
+
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter03/Impact-Mapping.png"
        alt="Diagrama de Impact Mapping: Objetivo, actores, impactos y entregables clave."
