@@ -24,10 +24,13 @@
 
 ## Registro de Versiones del Informe
 
-| Versión | Fecha      | Autor               | Descripción de modificación                                     |
+| Versión | Fecha      | Autor                | Descripción de modificación                                     |
 |---------|------------|----------------------|-----------------------------------------------------------------|
-| 0.1     | 08/09/2025 | Joseph Rodriguez     | Desarrollo del Capítulo 1 y Capítulo 2                         |
+| 0.1     | 08/09/2025 | Joseph Rodriguez     | Desarrollo del Capítulo 1 y Capítulo 2                          |
 | 0.2     | 17/09/2025 | Joseph Rodriguez     | Desarrollo del Capítulo 2 (entrevistas, competidores, segmentación) |
+| 0.3     | 06/10/2025 | Luis Montañez        | Inclusión de evidencias del Sprint 1 e implementación de Landing Page |
+| 0.4     | 08/11/2025 | Sergio Aguirre       | Desarrollo del Capítulo 3 y evidencias del Sprint 2 |
+| 1.0     | 27/11/2025 | Victor Rojas         | Inclusión de evidencias del Sprint 3, validaciones y conclusiones finales |
 
 ## Project Report Collaboration Insights
 **TB1** Desarrollo del reporte hasta el capítulo 2 para el sprint 1
@@ -43,35 +46,33 @@
 
 # Tabla de Contenidos
 
-1. [cite_start][Student Outcome](#student-outcome) [cite: 287]
-2. [cite_start][Objetivos SMART](#objetivos-smart) [cite: 294]
-3. [cite_start][Capítulo I: Presentación](#capítulo-i-presentación) [cite: 115]
-    - [1.1. [cite_start]Startup Profile](#11-startup-profile) [cite: 298]
-    - [1.2. [cite_start]Solution Profile](#12-solution-profile) [cite: 300]
-    - [1.3. [cite_start]Segmentos objetivo](#13-segmentos-objetivo) [cite: 309]
-4. [cite_start][Capítulo II: Requirements Development and Software Solution Design](#capítulo-ii-requirements-development-and-software-solution-design) [cite: 136]
-    - [2.1. [cite_start]Competidores](#21-competidores) [cite: 311]
-    - [2.2. [cite_start]Entrevistas](#22-entrevistas) [cite: 328]
-    - [2.3. [cite_start]Needfinding](#23-needfinding) [cite: 349]
-    - [2.4. [cite_start]Requirements Specification](#24-requirements-specification) [cite: 385]
-    - [2.5. [cite_start]Strategic-Level Domain-Driven Design](#25-strategic-level-domain-driven-design) [cite: 430]
-    - [2.6. [cite_start]Tactical-Level Domain-Driven Design](#26-tactical-level-domain-driven-design) [cite: 478]
-5. [cite_start][Capítulo III: Solution UI/UX Design](#capítulo-iii-solution-uiux-design) [cite: 193]
-    - [3.1. [cite_start]Product Design](#31-product-design) [cite: 517]
-    - [3.1.3. [cite_start]Landing Page UI Design](#313-landing-page-ui-design) [cite: 553]
-    - [3.1.4. [cite_start]Mobile Applications UX/UI Design](#314-mobile-applications-uxui-design) [cite: 565]
-6. [cite_start][Capítulo IV: Product Implementation & Validation](#capítulo-iv-product-implementation--validation) [cite: 593]
-    - [4.1. [cite_start]Software Configuration Management](#41-software-configuration-management) [cite: 598]
-    - [4.2. [cite_start]Landing Page & Mobile Application Implementation](#42-landing-page--mobile-application-implementation) [cite: 624]
-        - [cite_start][Sprint 1](#421-sprint-1) [cite: 627]
-        - [cite_start][Sprint 2](#422-sprint-2) [cite: 627]
-        - [cite_start][Sprint 3](#423-sprint-3) [cite: 627]
-    - [4.3. [cite_start]Validation Interviews](#43-validation-interviews) [cite: 721]
-7. [cite_start][Conclusiones](#conclusiones) [cite: 738]
-8. [cite_start][Videos](#videos) [cite: 744]
-9. [cite_start][Glosario](#glosario) [cite: 757]
-10. [cite_start][Bibliografía](#bibliografía) [cite: 766]
-11. [cite_start][Anexos](#anexos) [cite: 768]
+1. [Student Outcome](#student-outcome)
+2. [Objetivos SMART](#objetivos-smart)
+3. [Capítulo I: Presentación](#capítulo-i-presentación)
+    - 1.1. Startup Profile
+    - 1.2. Solution Profile
+    - 1.3. Segmentos objetivo
+4. [Capítulo II: Requirements Development and Software Solution Design](#capítulo-ii-requirements-development-and-software-solution-design)
+    - 2.1. Competidores
+    - 2.2. Entrevistas
+    - 2.3. Needfinding
+    - 2.4. Requirements Specification
+    - 2.5. Strategic-Level Domain-Driven Design
+    - 2.6. Tactical-Level Domain-Driven Design
+5. [Capítulo III: Solution UI/UX Design](#capítulo-iii-solution-uiux-design)
+    - 3.1. Product Design
+6. [Capítulo IV: Product Implementation & Validation](#capítulo-iv-product-implementation--validation)
+    - 4.1. Software Configuration Management
+    - 4.2. Landing Page & Mobile Application Implementation
+        - [Sprint 1](#421-sprint-1)
+        - [Sprint 2](#422-sprint-2)
+        - [Sprint 3](#423-sprint-3)
+    - 4.3. Validation Interviews
+7. [Conclusiones](#conclusiones)
+8. [Videos](#videos)
+9. [Glosario](#glosario)
+10. [Bibliografía](#bibliografía)
+11. [Anexos](#anexos)
 
 <div style="page-break-after: always;"></div>
 
@@ -85,7 +86,7 @@ necesario, utilizando estrategias de aprendizaje apropiadas.*
 
 En el siguiente cuadro se describe las acciones realizadas y enunciados de
 conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro
-[cite_start]del ABET – EAC - Student Outcome 7[cite: 2].
+del ABET – EAC - Student Outcome 7.
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |---------------------|--------------------|--------------|
@@ -123,22 +124,20 @@ Mi objetivo al culminar la carrera es convertirme en ingeniero de software espec
 **Objetivo 2**<br>
 Otro de mis objetivos es contribuir al despliegue eficiente y seguro de aplicaciones en la nube. Para ello, desarrollaré al menos un proyecto implementado en AWS o Azure antes de terminar la carrera, midiendo el éxito mediante pruebas de rendimiento, escalabilidad y seguridad.
 
-<div style="page-break-after: always;"></div>
-
 # Capítulo I: Presentación
 
 ## 1.1. Startup Profile
 
 ### 1.1.1. Descripción de la Startup
-OsitoPolar es una aplicación móvil orientada a mejorar la gestión y el mantenimiento de equipos de congelación en negocios que dependen críticamente del frío, como supermercados, minimarkets, laboratorios, restaurantes y empresas del sector alimentario o farmacéutico. [cite_start]La solución conecta a estos negocios con técnicos y proveedores especializados en refrigeración, permitiendo una gestión integral, preventiva y automatizada de sus sistemas de congelación[cite: 2].
+OsitoPolar es una aplicación móvil orientada a mejorar la gestión y el mantenimiento de equipos de congelación en negocios que dependen críticamente del frío, como supermercados, minimarkets, laboratorios, restaurantes y empresas del sector alimentario o farmacéutico. La solución conecta a estos negocios con técnicos y proveedores especializados en refrigeración, permitiendo una gestión integral, preventiva y automatizada de sus sistemas de congelación.
 
-La plataforma ofrece funcionalidades clave como monitoreo en tiempo real de temperatura, consumo energético y tiempo de uso, generación de reportes técnicos, alertas automatizadas por fallas, historial de rendimiento, y programación inteligente de mantenimientos. [cite_start]Estas herramientas permiten a los usuarios optimizar sus operaciones, evitar pérdidas económicas por fallas inesperadas y mantener un registro completo del estado y uso de sus equipos[cite: 2].
+La plataforma ofrece funcionalidades clave como monitoreo en tiempo real de temperatura, consumo energético y tiempo de uso, generación de reportes técnicos, alertas automatizadas por fallas, historial de rendimiento, y programación inteligente de mantenimientos. Estas herramientas permiten a los usuarios optimizar sus operaciones, evitar pérdidas económicas por fallas inesperadas y mantener un registro completo del estado y uso de sus equipos.
 
-OsitoPolar no solo está diseñado para negocios que utilizan equipos de frío, sino también para empresas proveedoras de equipos y serviciós de refrigeración. [cite_start]A través de su módulo especializado, los técnicos pueden visualizar todos los equipos que atienden, gestionar sus visitas, acceder al historial técnico de cada unidad y generar reportes de forma automática[cite: 2].
+OsitoPolar no solo está diseñado para negocios que utilizan equipos de frío, sino también para empresas proveedoras de equipos y serviciós de refrigeración. A través de su módulo especializado, los técnicos pueden visualizar todos los equipos que atienden, gestionar sus visitas, acceder al historial técnico de cada unidad y generar reportes de forma automática.
 
-[cite_start]**Misión:** Nuestra misión en OsitoPolar es proporcionar una solución tecnológica inteligente que permita a los negocios proteger su inventario y optimizar la gestión de sus equipos de refrigeración, ofreciendo al mismo tiempo herramientas especializadas para mejorar la eficiencia operativa de los técnicos y proveedores del sector[cite: 2].
+**Misión:** Nuestra misión en OsitoPolar es proporcionar una solución tecnológica inteligente que permita a los negocios proteger su inventario y optimizar la gestión de sus equipos de refrigeración, ofreciendo al mismo tiempo herramientas especializadas para mejorar la eficiencia operativa de los técnicos y proveedores del sector.
 
-[cite_start]**Visión:** Queremos ser la empresa lider en gestión y mantenimiento de equipos de refrigeración, empezando por Lima y prontamente expandirnos a más lugares del Perú[cite: 2].
+**Visión:** Queremos ser la empresa lider en gestión y mantenimiento de equipos de refrigeración, empezando por Lima y prontamente expandirnos a más lugares del Perú.
 
 ### 1.1.2. Perfiles de integrantes del equipo
 
@@ -189,15 +188,15 @@ OsitoPolar no solo está diseñado para negocios que utilizan equipos de frío, 
 
 ### 1.2.1. Antecedentes y Problemática
 
-| Las 5Ws y 2Hs | Pregunta                                           | Descripción                                                                                                                                                                                                                                                                                                                                                                                    |
+| Las 5Ws y 2Hs | Pregunta                                           | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | What?         | ¿Cuál es el problema?                              | Actualmente, los negocios que dependen de equipos de congelación enfrentan grandes desafíos operativos ante fallas inesperadas o falta de mantenimiento. Las fallas térmicas, los altos consumos energéticos no detectados a tiempo y la ausencia de un monitoreo constante pueden derivar en la pérdida de productos, reducción de la calidad del servicio y pérdidas económicas importantes. |
-| When?         | ¿Cuándo sucede este problema?                      | Estas situaciones ocurren principalmente durante horarios de operación continua, especialmente en momentos donde no hay personal técnico disponible de forma inmediata, o cuando no se ha realizado un seguimiento adecuado del estado del equipo a lo largo del tiempo.                                                                                                                       |
-| Where?        | ¿Dónde se produce este suceso?                     | El problema afecta a negocios ubicados en todo el país, principalmente en Lima, donde la cadena de frío es esencial en sectores como alimentación, medicina y distribución. También impacta a empresas proveedoras de refrigeración que atienden múltiples clientes sin una plataforma centralizada de control.                                                                                |
+| When?         | ¿Cuándo sucede este problema?                      | Estas situaciones ocurren principalmente durante horarios de operación continua, especialmente en momentos donde no hay personal técnico disponible de forma inmediata, o cuando no se ha realizado un seguimiento adecuado del estado del equipo a lo largo del tiempo.                                                                                                                                                                                       |
+| Where?        | ¿Dónde se produce este suceso?                     | El problema afecta a negocios ubicados en todo el país, principalmente en Lima, donde la cadena de frío es esencial en sectores como alimentación, medicina y distribución. También impacta a empresas proveedoras de refrigeración que atienden múltiples clientes sin una plataforma centralizada de control.                                                                        |
 | Who?          | ¿Quiénes están involucrados?                       | Están involucrados tanto los administradores y dueños de negocios que utilizan congeladoras como los técnicos y empresas proveedoras de servicios de refrigeración.                                                                                                                                                                                                                            |
-| Why?          | ¿Cuál es la causa del problema?                    | La causa principal es la falta de soluciones tecnológicas accesibles que integren monitoreo, alertas, historial y programación automática en un solo lugar. Muchas empresas aún dependen de sistemas manuales o no tienen control de lo que sucede con sus equipos hasta que ocurre una falla crítica.                                                                                         |
-| How?          | ¿Qué llevó a la persona a llegar a esta situación? | Lo que llevó a los negocios y técnicos a este punto ha sido la acumulación de imprevistos y la falta de digitalización en el mantenimiento preventivo, que genera una alta dependencia de intervenciones reactivas en vez de planificadas. Esto incrementa los costos, los tiempos de respuesta y el desgaste operativo.                                                                       |
-| How much?     | ¿Cuánto es el impacto financiero?                  | [cite_start]Aunque el impacto económico varía según el tipo de negocio, la pérdida por una falla en un equipo de refrigeración puede ascender desde cientos hasta miles de soles en productos dañados, sin considerar el tiempo operativo perdido, la pérdida de clientes y la inversión en reparación o reposición de equipos. [cite: 2]                                                                           |
+| Why?          | ¿Cuál es la causa del problema?                    | La causa principal es la falta de soluciones tecnológicas accesibles que integren monitoreo, alertas, historial y programación automática en un solo lugar. Muchas empresas aún dependen de sistemas manuales o no tienen control de lo que sucede con sus equipos hasta que ocurre una falla crítica.                                                                                        |
+| How?          | ¿Qué llevó a la persona a llegar a esta situación? | Lo que llevó a los negocios y técnicos a este punto ha sido la acumulación de imprevistos y la falta de digitalización en el mantenimiento preventivo, que genera una alta dependencia de intervenciones reactivas en vez de planificadas. Esto incrementa los costos, los tiempos de respuesta y el desgaste operativo.                                                           |
+| How much?     | ¿Cuánto es el impacto financiero?                  | Aunque el impacto económico varía según el tipo de negocio, la pérdida por una falla en un equipo de refrigeración puede ascender desde cientos hasta miles de soles en productos dañados, sin considerar el tiempo operativo perdido, la pérdida de clientes y la inversión en reparación o reposición de equipos.                                                            |
 
 ### 1.2.2. Lean UX Process
 
@@ -205,9 +204,9 @@ OsitoPolar no solo está diseñado para negocios que utilizan equipos de frío, 
 El estado actual de la industria de la refrigeración comercial y técnica enfrenta importantes desafíos relacionados con la gestión, el mantenimiento y la trazabilidad de los equipos de congelación. Negocios que dependen críticamente del frío —como supermercados, minimarkets, laboratorios, restaurantes y empresas del sector alimentario o farmacéutico— aún lidian con la falta de monitoreo en tiempo real y con procesos de mantenimiento reactivos. Esto genera pérdidas económicas, ineficiencia energética y riesgos para el inventario.
 
 **Cambiar el problema**
-Hemos identificado una brecha significativa: las soluciones actuales no abordan de manera integral la necesidad de una plataforma confiable y automatizada que permita la gestión centralizada, predictiva y transparente de los sistemas de refrigeración. [cite_start]La ausencia de un historial técnico accesible, reportes detallados y alertas preventivas limita la capacidad de respuesta ante fallas y reduce la eficiencia del servicio técnico[cite: 2].
+Hemos identificado una brecha significativa: las soluciones actuales no abordan de manera integral la necesidad de una plataforma confiable y automatizada que permita la gestión centralizada, predictiva y transparente de los sistemas de refrigeración. La ausencia de un historial técnico accesible, reportes detallados y alertas preventivas limita la capacidad de respuesta ante fallas y reduce la eficiencia del servicio técnico.
 
-[cite_start]**¿Cómo podríamos reducir las fallas imprevistas y optimizar el mantenimiento de los sistemas de refrigeración comercial mediante una plataforma digital que conecte negocios y técnicos especializados?** [cite: 2]
+**¿Cómo podríamos reducir las fallas imprevistas y optimizar el mantenimiento de los sistemas de refrigeración comercial mediante una plataforma digital que conecte negocios y técnicos especializados?**
 
 #### 1.2.2.2. Lean UX Assumptions
 
@@ -220,7 +219,7 @@ Hemos identificado una brecha significativa: las soluciones actuales no abordan 
 - Establecer alianzas estratégicas con plataformas como Google Maps o servicios de geolocalización para ampliar el alcance de cobertura y optimizar la programación de visitas técnicas.
 - Fomentar la participación activa de los usuarios mediante encuestas, valoraciones de técnicos y comentarios sobre el desempeño de los equipos.
 - Diseñar una interfaz limpia, simple e intuitiva que garantice una experiencia fluida y atractiva para nuevos usuarios, evitando la sobrecarga visual o de funcionalidades.
-- [cite_start]Implementar inteligencia artificial que permita trazar estrategias de mantenimiento inteligente, rutas eficientes para los técnicos y recomendaciones proactivas ante posibles fallos[cite: 2].
+- Implementar inteligencia artificial que permita trazar estrategias de mantenimiento inteligente, rutas eficientes para los técnicos y recomendaciones proactivas ante posibles fallos.
 
 **User Outcomes**
 * **¿Quién será nuestro usuario?**
@@ -233,32 +232,32 @@ Hemos identificado una brecha significativa: las soluciones actuales no abordan 
     * En la operación diaria de los negocios que necesitan registros y reportes precisos del desempeño de sus sistemas de refrigeración.
 * **¿Qué problemas tiene nuestro producto y cómo se pueden resolver?**
     * El principal desafío es asegurar que los datos de monitoreo (temperatura, consumo energético, fallas, etc.) sean precisos, actualizados y confiables. **Solución**: Se debe integrar sensores calibrados y sistemas de verificación automática que validen las lecturas antes de almacenarlas.
-    * Otro problema puede ser la adopción inicial de la plataforma por parte de usuarios no tecnológicos. [cite_start]**Solución**: Esto se abordará con una interfaz sencilla, explicaciones paso a paso y soporte técnico accesible[cite: 2].
+    * Otro problema puede ser la adopción inicial de la plataforma por parte de usuarios no tecnológicos. **Solución**: Esto se abordará con una interfaz sencilla, explicaciones paso a paso y soporte técnico accesible.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
 **Hipótesis 1: Eficiencia operativa y reducción de fallas inesperadas**
 Creemos que **al ofrecer una plataforma integral que unifique las funciones de monitoreo, mantenimiento y gestión técnica de equipos de refrigeración**, aumentaremos la eficiencia operativa de los negocios y proveedores del sector, reduciendo la complejidad y el riesgo de fallas inesperadas.  
-[cite_start]Sabremos que hemos tenido éxito **cuando observemos una reducción del 30% en las incidencias por fallas térmicas reportadas** y **un aumento del 25% en la planificación de mantenimientos preventivos dentro de la plataforma** durante los primeros seis meses[cite: 2].
+Sabremos que hemos tenido éxito **cuando observemos una reducción del 30% en las incidencias por fallas térmicas reportadas** y **un aumento del 25% en la planificación de mantenimientos preventivos dentro de la plataforma** durante los primeros seis meses.
 
 **Hipótesis 2: Control de pérdidas operativas y consumo energético**
 Creemos que **al proporcionar herramientas de análisis de rendimiento y alertas automatizadas**, los negocios podrán actuar de forma preventiva y reducir costos innecesarios asociados al consumo energético y pérdidas operativas.  
-[cite_start]Sabremos que hemos tenido éxito **cuando observemos una disminución del 20% en los costos energéticos mensuales promedio** y **un incremento del 30% en el uso de los reportes de monitoreo en tiempo real** por parte de los usuarios activos[cite: 2].
+Sabremos que hemos tenido éxito **cuando observemos una disminución del 20% en los costos energéticos mensuales promedio** y **un incremento del 30% en el uso de los reportes de monitoreo en tiempo real** por parte de los usuarios activos.
 
 **Hipótesis 3: Mejora en el servicio técnico personalizado y predictivo**
 Creemos que **al implementar reportes automáticos e históricos de rendimiento por equipo**, los técnicos y proveedores podrán ofrecer un servicio más personalizado y predictivo, aumentando la calidad del soporte brindado.  
-[cite_start]Sabremos que hemos tenido éxito **cuando más del 70% de los técnicos califiquen positivamente los reportes automáticos en encuestas internas** y **cuando los clientes reporten un aumento del 25% en su satisfacción con la rapidez del servicio técnico.** [cite: 2]
+Sabremos que hemos tenido éxito **cuando más del 70% de los técnicos califiquen positivamente los reportes automáticos en encuestas internas** y **cuando los clientes reporten un aumento del 25% en su satisfacción con la rapidez del servicio técnico.**
 
 **Hipótesis 4: Trazabilidad y protección de la información técnica**
 Creemos que **al garantizar la trazabilidad completa y la protección de los datos técnicos en la plataforma**, construiremos confianza entre los negocios y los proveedores de servicios.  
-[cite_start]Sabremos que hemos tenido éxito **cuando logremos reducir en un 40% los errores administrativos o pérdidas de información** y **aumentar en un 30% la retención de usuarios técnicos y empresariales activos.** [cite: 2]
+Sabremos que hemos tenido éxito **cuando logremos reducir en un 40% los errores administrativos o pérdidas de información** y **aumentar en un 30% la retención de usuarios técnicos y empresariales activos.**
 
 **Hipótesis 5: Transición hacia una gestión moderna de refrigeración**
 Creemos que **al ofrecer una solución digital intuitiva y especializada tanto para negocios como para técnicos**, facilitaremos la transición hacia una gestión moderna y eficiente de la refrigeración.  
-[cite_start]Sabremos que hemos tenido éxito **cuando alcancemos una tasa de adopción del 60% de usuarios nuevos dentro de los tres primeros meses** y **una tasa de retención del 80% tras seis meses de uso continuo de la plataforma.** [cite: 2]
+Sabremos que hemos tenido éxito **cuando alcancemos una tasa de adopción del 60% de usuarios nuevos dentro de los tres primeros meses** y **una tasa de retención del 80% tras seis meses de uso continuo de la plataforma.**
 
 #### 1.2.2.4. Lean UX Canvas
-El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratégica y concisa de la solución OsitoPolar. [cite_start]Este marco nos permite alinear rápidamente los objetivos de negocio con las necesidades de nuestros usuarios y las hipótesis clave que guían nuestro desarrollo[cite: 2].
+El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratégica y concisa de la solución OsitoPolar. Este marco nos permite alinear rápidamente los objetivos de negocio con las necesidades de nuestros usuarios y las hipótesis clave que guían nuestro desarrollo.
 
 <figure style="page-break-inside: avoid; text-align: center;">
   <img src="assets/chapter01/lean-ux-canvas.png"
@@ -283,7 +282,7 @@ El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratég
 * **Aspectos psicográficos:**
     * Empresas que buscan evitar pérdidas económicas por fallas en refrigeración.
     * Negocios que requieren control eficiente del consumo energético.
-    * [cite_start]Administradores interesados en implementar tecnología para optimizar sus operaciones y mantener la calidad del inventario[cite: 2].
+    * Administradores interesados en implementar tecnología para optimizar sus operaciones y mantener la calidad del inventario.
 
 **Segmento Objetivo #2: Empresas proveedoras de servicios y equipos de refrigeración**
 * **Aspectos demográficos:**
@@ -296,7 +295,7 @@ El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratég
 * **Aspectos psicográficos:**
     * Técnicos que desean organizar sus visitas de forma eficiente y centralizada.
     * Empresas que buscan mejorar la trazabilidad de sus servicios y ofrecer reportes automáticos.
-    * [cite_start]Profesionales que desean brindar un servicio más personalizado y predictivo a sus clientes[cite: 2].
+    * Profesionales que desean brindar un servicio más personalizado y predictivo a sus clientes.
 
 <div style="page-break-after: always;"></div>
 
@@ -305,13 +304,13 @@ El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratég
 ## 2.1. Competidores
 
 **Competidor 1: ServiceTitan**
-ServiceTitan es una plataforma de gestión de servicios basada en la nube que ofrece soluciones de software para empresas de servicios, incluidos técnicos de HVAC, fontaneros y electricistas. Proporciona funcionalidades de programación, gestión de trabajos, facturación y más. [cite_start]Esta plataforma es conocida por su facilidad de uso y por ayudar a las empresas a optimizar sus operaciones de servicio técnico en tiempo real[cite: 2].
+ServiceTitan es una plataforma de gestión de servicios basada en la nube que ofrece soluciones de software para empresas de servicios, incluidos técnicos de HVAC, fontaneros y electricistas. Proporciona funcionalidades de programación, gestión de trabajos, facturación y más. Esta plataforma es conocida por su facilidad de uso y por ayudar a las empresas a optimizar sus operaciones de servicio técnico en tiempo real.
 
 **Competidor 2: CoolMaster**
-CoolMaster es una solución de software diseñada específicamente para el sector de refrigeración comercial. Ofrece monitoreo remoto de sistemas de refrigeración, alertas tempranas de fallas y gestión eficiente del consumo energético. [cite_start]La plataforma está orientada a optimizar la eficiencia operativa de negocios que dependen críticamente de sistemas de frío, como supermercados y centros de distribución[cite: 2].
+CoolMaster es una solución de software diseñada específicamente para el sector de refrigeración comercial. Ofrece monitoreo remoto de sistemas de refrigeración, alertas tempranas de fallas y gestión eficiente del consumo energético. La plataforma está orientada a optimizar la eficiencia operativa de negocios que dependen críticamente de sistemas de frío, como supermercados y centros de distribución.
 
 **Competidor 3: TempGenius**
-TempGenius es un software de monitoreo de temperatura y humedad en tiempo real para diversas industrias, incluida la de la refrigeración comercial. Permite a los usuarios realizar un seguimiento de sus equipos de refrigeración mediante sensores conectados a la nube, generar reportes y recibir alertas automáticas por variaciones en los niveles de temperatura. [cite_start]Su principal enfoque es mejorar la visibilidad y control de las operaciones de refrigeración para evitar pérdidas económicas[cite: 2].
+TempGenius es un software de monitoreo de temperatura y humedad en tiempo real para diversas industrias, incluida la de la refrigeración comercial. Permite a los usuarios realizar un seguimiento de sus equipos de refrigeración mediante sensores conectados a la nube, generar reportes y recibir alertas automáticas por variaciones en los niveles de temperatura. Su principal enfoque es mejorar la visibilidad y control de las operaciones de refrigeración para evitar pérdidas económicas.
 
 ### 2.1.1. Análisis competitivo
 
@@ -434,7 +433,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 
 **4. Expansión y Adaptabilidad:**
 - **Enfoque Regional Inicial y Expansión Nacional**: **OsitoPolar** comenzará en Lima con planes de expansión a otras ciudades del Perú.
-- [cite_start]**Colaboraciones con Proveedores Locales**: Formaremos alianzas estratégicas con proveedores locales[cite: 2].
+- **Colaboraciones con Proveedores Locales**: Formaremos alianzas estratégicas con proveedores locales.
 
 ## 2.2. Entrevistas
 
@@ -454,7 +453,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 11. ¿Estaría dispuesto a pagar una suscripción si esto evita pérdidas y mejora la eficiencia?
 12. ¿Qué funcionalidades sí o sí debería tener una herramienta de este tipo para que usted la use?
 13. ¿Preferiría acceder a la herramienta desde su celular o computadora?
-14. [cite_start]¿Qué le haría dejar de usar una aplicación de este tipo? [cite: 2]
+14. ¿Qué le haría dejar de usar una aplicación de este tipo?
 
 **Segmento 2: Empresas proveedoras de servicios y equipos de refrigeración**
 1. ¿Qué edad tiene?
@@ -470,7 +469,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 11. ¿Qué tanto valora poder generar reportes automáticos y mantener trazabilidad de cada intervención?
 12. ¿Estaría dispuesto a usar una plataforma que le ayude a organizarse mejor y escalar su servicio?
 13. ¿Ha probado alguna solución parecida antes? ¿Por qué la dejó de usar (si la dejó)?
-14. [cite_start]¿Qué beneficios cree que podría tener la implementación de una solución digital como OsitoPolar a su empresa? [cite: 2]
+14. ¿Qué beneficios cree que podría tener la implementación de una solución digital como OsitoPolar a su empresa?
 
 ### 2.2.2. Registro de entrevistas
 
@@ -489,7 +488,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 - **Inicio:** 0:02
 - **Duración:** 3:18 min
 - **URL:** [https://bit.ly/4j6lCpZ](https://bit.ly/4j6lCpZ)
-- **Resumen:** Adriana es una emprendedora que administra una bodega tipo mini market en San Martín de Porres. [cite_start]Su actividad diaria depende del correcto funcionamiento de sus equipos de refrigeración... (etc.) [cite: 2]
+- **Resumen:** Adriana es una emprendedora que administra una bodega tipo mini market en San Martín de Porres. Su actividad diaria depende del correcto funcionamiento de sus equipos de refrigeración... (etc.)
 
 ### Entrevista 2:
 - **Nombres y apellidos:** Luis Mamani Torres
@@ -504,7 +503,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 - **Inicio:** 0:25
 - **Duración:** 9:03 min
 - **URL:** [https://bit.ly/45c4QlW](https://bit.ly/45c4QlW)
-- [cite_start]**Resumen:** Luis es un empresario del rubro gastronómico especializado en cevichería... (etc.) [cite: 2]
+- **Resumen:** Luis es un empresario del rubro gastronómico especializado en cevichería... (etc.)
 
 ##### Segmento objetivo #2: Empresas proveedoras de servicios y equipos de refrigeración
 
@@ -521,7 +520,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 - **Inicio:** 0:43
 - **Duración:** 7:03 min
 - **URL:** [https://bit.ly/4jS816Q](https://bit.ly/4jS816Q)
-- [cite_start]**Resumen:** Wilder es técnico especializado en refrigeración y aire acondicionado... (etc.) [cite: 2]
+- **Resumen:** Wilder es técnico especializado en refrigeración y aire acondicionado... (etc.)
 
 ### Entrevista 2:
 - **Nombres y apellidos:** Jackeline Bravo
@@ -536,7 +535,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 - **Inicio:** 0:30
 - **Duración:** 5:48 min
 - **URL:** [https://bit.ly/43iyR14](https://bit.ly/43iyR14)
-- [cite_start]**Resumen:** Jackeline tiene 13 años de experiencia en el rubro de servicios y mantenimiento de refrigeración... (etc.) [cite: 2]
+- **Resumen:** Jackeline tiene 13 años de experiencia en el rubro de servicios y mantenimiento de refrigeración... (etc.)
 
 ### Entrevista 3:
 - **Nombres y apellidos:** Santiago Vique
@@ -551,7 +550,7 @@ Hemos identificado diversas estrategias y tácticas para diferenciarse y competi
 - **Inicio:** 0:11
 - **Duración:** 7:09 min
 - **URL:** [https://bit.ly/43gc8T9](https://bit.ly/43gc8T9)
-- [cite_start]**Resumen:** Santiago es dueño de una empresa de instalación y mantenimiento de sistemas de refrigeración industrial... (etc.) [cite: 2]
+- **Resumen:** Santiago es dueño de una empresa de instalación y mantenimiento de sistemas de refrigeración industrial... (etc.)
 
 ### 2.2.3. Análisis de entrevistas
 
@@ -582,7 +581,71 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
 4. **Oportunidad de posicionamiento B2B:** la falta total de soluciones específicas en el mercado local.
 
 **Análisis estadístico**
-(Gráficos circulares con estadísticas) [cite_start][cite: 2]
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-1-segment-2.png"
+       alt="Segmento 2 del Gráfico Circular: Distribución de datos clave."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 1:</strong> Gráfico Circular - Segmento 2.
+  </figcaption>
+</figure>
+
+- Más del 50% de los empresarios tiene un número mayor a 10 años de experiencia en el rubro.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-2-segment-2.png"
+       alt="Segmento 2 del segundo Gráfico Circular: Proporción de satisfacción del usuario."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 2:</strong> Gráfico Circular 2 - Segmento 2.
+  </figcaption>
+</figure>
+
+- Los empresarios tienen diferentes frecuencias de ciertas dificultades, a pesar de que tienen casi los mismos problemas.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-3-segment-2.png"
+       alt="Segmento 2 del tercer Gráfico Circular: Datos demográficos de usuarios."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 3:</strong> Gráfico Circular 3 - Segmento 2.
+  </figcaption>
+</figure>
+
+- El 67% de los empresarios creen que el cliente es parcialmente causante de su problema de mayor frecuencia. Algunos de ellos han expresado su inconformidad respecto a los clientes que no explican bien las fallas de sus equipos.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-4-segment-2.png"
+       alt="Segmento 2 del cuarto Gráfico Circular: Preferencias de los usuarios por características."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 4:</strong> Gráfico Circular 4 - Segmento 2.
+  </figcaption>
+</figure>
+
+- El 100% está interesado en recibir notificaciones sobre fallos que ocurren en equipos de refrigeración. Ellos creen que con dicha funcionalidad podrían hacer un mantenimiento preventivo más eficiente y lograr la satisfacción del cliente.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-5-segment-2.png"
+       alt="Segmento 2 del quinto Gráfico Circular: Fuentes de información preferidas por los usuarios."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 5:</strong> Gráfico Circular 5 - Segmento 2.
+  </figcaption>
+</figure>
+
+- Ni uno de los empresarios ha usado una plataforma digital que se asemeje a la que se muestran interesados. Ellos usaron aplicaciones para mejorar la eficiencia de su trabajo como WhatsApp y Maps o programas como Microsoft Excel. Sin embargo, estos no poseen todas las funcionalidades que necesitan.
+
+<figure style="page-break-inside: avoid; text-align: center;">
+  <img src="assets/chapter02/pie_chart-6-segment-2.png"
+       alt="Segmento 2 del sexto Gráfico Circular: Nivel de satisfacción general del producto."
+       style="max-width: 75%; height: auto; display: block; margin: 0 auto;">
+  <figcaption style="font-size: 0.9em; color: #555;">
+    <strong>Figura 6:</strong> Gráfico Circular 6 - Segmento 2.
+  </figcaption>
+</figure>
+
+- Cada empresario tiene una meta deseada de mayor prioridad diferente al resto a pesar de que todos ellos comparten los mismos deseos y esperan que una plataforma digital pueda ayudarles a obtenerlos.
 
 ## 2.3. Needfinding
 
@@ -635,7 +698,70 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
     <td>Alta</td>
     <td>Alta</td>
   </tr>
-  </table>
+  <tr>
+    <td>Planificar rutas de llegada al punto de atención</td>
+    <td>Alta</td>
+    <td>Media</td>
+    <td>Baja</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Realizar mantenimiento preventivo o solicitarlo</td>
+    <td>Media</td>
+    <td>Alta</td>
+    <td>Alta</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Gestionar datos de los equipos de refrigeración</td>
+    <td>Baja</td>
+    <td>Alta</td>
+    <td>Alta</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Gestionar costos por pérdidas de productos</td>
+    <td>Alta</td>
+    <td>Alta</td>
+    <td>Media</td>
+    <td>Media</td>
+  </tr>
+  <tr>
+    <td>Evaluar la calidad de los equipos y servicios brindados</td>
+    <td>Media</td>
+    <td>Alta</td>
+    <td>Media</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Monitorear el desempeño de los técnicos</td>
+    <td>Baja</td>
+    <td>Media</td>
+    <td>Alta</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Monitorear el desempeño de los equipos brindados</td>
+    <td>Alta</td>
+    <td>Alta</td>
+    <td>Baja</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Usar reportes técnicos para tomar decisiones</td>
+    <td>Baja</td>
+    <td>Alta</td>
+    <td>Media</td>
+    <td>Alta</td>
+  </tr>
+  <tr>
+    <td>Comunicar fallas al técnico o proveedor</td>
+    <td>Alta</td>
+    <td>Alta</td>
+    <td>Media</td>
+    <td>Alta</td>
+  </tr>
+</table>
 
 ### 2.3.3. User Journey Mapping
 **Segmento objetivo #1: Negocios que utilizan equipos de refrigeración**
@@ -699,7 +825,7 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
 17. **Energy Consumption (Consumo Energético):** Registro del uso eléctrico de los equipos para detectar anomalías y optimizar recursos.
 18. **Preventive Maintenance (Mantenimiento Preventivo):** Servicio planificado para evitar fallas y extender la vida útil del equipo.
 19. **Corrective Maintenance (Mantenimiento Correctivo):** Servicio realizado para solucionar una falla existente en un equipo.
-20. [cite_start]**Notification (Notificación):** Mensajes enviados automáticamente para informar sobre mantenimientos, fallas o cambios importantes[cite: 2].
+20. **Notification (Notificación):** Mensajes enviados automáticamente para informar sobre mantenimientos, fallas o cambios importantes.
 
 ## 2.4. Requirements Specification
 ### 2.4.1. User Stories
@@ -729,33 +855,33 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
 | US-24 | Consultar servicios ofrecidos | Como visitante, quiero ver los servicios que ofrece la empresa para evaluar si cubren mis necesidades. | **Escenario 1: Visualización de servicios** <br/> Dado que el visitante desea conocer los servicios ofrecidos, cuando realiza la consulta de los servicios disponibles, entonces el sistema consulta la base de datos y devuelve el catálogo actualizado con las descripciones de cada servicio. | EP-07 |
 | US-25 | Contactar a la empresa | Como visitante, quiero enviar un mensaje a la empresa para solicitar más información. | **Escenario 1: Envío de mensaje de contacto** <br/> Dado que el visitante desea comunicarse con la empresa, cuando envía una solicitud de contacto, entonces el sistema almacena la información de la solicitud y notifica al área correspondiente. | EP-07 |
 | US-26 | Visualizar testimonios de clientes | Como visitante, quiero ver testimonios de otros clientes para confiar en el servicio. | **Escenario 1: Consulta de testimonios** <br/> Dado que el visitante accede a la sección de testimonios, cuando se carga la página, entonces el sistema muestra comentarios validados de clientes reales. | EP-07 |
-| US-27 | Solicitar demostración del producto | Como visitante, quiero solicitar una demostración del producto para evaluar su funcionamiento antes de adquirirlo. | **Escenario 1: Solicitud de demo** <br/> Dado que el visitante desea una demostración del producto, cuando envía una solicitud de demostración, entonces el sistema registra la información en la base de datos y genera una confirmación automática enviada al correo registrado. | [cite_start]EP-07 | [cite: 2]
+| US-27 | Solicitar demostración del producto | Como visitante, quiero solicitar una demostración del producto para evaluar su funcionamiento antes de adquirirlo. | **Escenario 1: Solicitud de demo** <br/> Dado que el visitante desea una demostración del producto, cuando envía una solicitud de demostración, entonces el sistema registra la información en la base de datos y genera una confirmación automática enviada al correo registrado. | EP-07 |
 
 #### 2.4.1.1. Spike Story
 **Spike Story ID: SS-01**
 **Como** equipo de desarrollo (web, móvil y backend),
 **Quiero** investigar y prototipar las tecnologías móviles más adecuadas para la plataforma OsitoPolar (Kotlin para Android, Flutter con Dart y/o Kotlin Multiplatform),
-[cite_start]**Para que** podamos complementar los conocimientos adquiridos en el curso con investigación práctica y seleccionar el enfoque más viable para el desarrollo móvil. [cite: 2]
+**Para que** podamos complementar los conocimientos adquiridos en el curso con investigación práctica y seleccionar el enfoque más viable para el desarrollo móvil.
 
 **Spike Story ID: SS-02**
 **Como** equipo de desarrollo (backend, frontend y móvil),
 **Quiero** investigar y prototipar la integración de Stripe para la gestión de planes de suscripción y pagos,
-[cite_start]**Para** que podamos garantizar un flujo de pago seguro, escalable y conforme con PCI-DSS dentro de OsitoPolar. [cite: 2]
+**Para** que podamos garantizar un flujo de pago seguro, escalable y conforme con PCI-DSS dentro de OsitoPolar.
 
 **Spike Story ID: SS-03**
 **Como** equipo de desarrollo,
 **Quiero** investigar y prototipar un sistema de notificaciones en tiempo real para OsitoPolar,
-[cite_start]**Para** que los usuarios reciban alertas inmediatas de fallas, mantenimientos y pagos confirmados. [cite: 2]
+**Para** que los usuarios reciban alertas inmediatas de fallas, mantenimientos y pagos confirmados.
 
 **Spike Story ID: SS-04**
 **Como** equipo de desarrollo (web, móvil y backend),
 **Quiero** investigar y prototipar el uso de Jetpack Compose para desarrollar la pantalla de catálogo de equipos en la versión móvil de OsitoPolar,
-[cite_start]**Para** que podamos evaluar su facilidad de uso, rendimiento y compatibilidad con las funcionalidades actuales, seleccionando un enfoque viable para el desarrollo móvil. [cite: 2]
+**Para** que podamos evaluar su facilidad de uso, rendimiento y compatibilidad con las funcionalidades actuales, seleccionando un enfoque viable para el desarrollo móvil.
 
 **Spike Story ID: SS-05**
 **Como** equipo de desarrollo (web, móvil y backend),
 **Quiero** investigar y prototipar el uso de Jetpack Compose para implementar la pantalla de autenticación (login y registro) en la versión móvil de OsitoPolar,
-[cite_start]**Para** que podamos evaluar su seguridad, usabilidad y compatibilidad con el backend existente, seleccionando un enfoque viable para el desarrollo móvil. [cite: 2]
+**Para** que podamos evaluar su seguridad, usabilidad y compatibilidad con el backend existente, seleccionando un enfoque viable para el desarrollo móvil.
 
 ### 2.4.2. Impact Mapping
 <figure style="page-break-inside: avoid; text-align: center;">
@@ -803,12 +929,12 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
 | 31 | US-31 | Eliminar técnico asignado mediante API                     | 5 |
 | 32 | US-32 | Registrar alerta manual mediante API                       | 3 |
 | 33 | US-33 | Implementar notificaciones automáticas mediante API        | 8 |
-| 34 | US-34 | Registrar evaluación de servicio vía endpoint REST         | [cite_start]8 | [cite: 2]
+| 34 | US-34 | Registrar evaluación de servicio vía endpoint REST         | 8 |
 
 ## 2.5. Strategic-Level Domain-Driven Design
 
 ### 2.5.1. EventStorming
-[cite_start]Con el objetivo de realizar un modelado colaborativo y estratégico del dominio de OsitoPolar, se llevó a cabo una sesión de EventStorming, una técnica visual centrada en eventos del dominio que permite identificar flujos de negocio, entidades relevantes, actores y límites naturales del sistema. [cite: 2]
+Con el objetivo de realizar un modelado colaborativo y estratégico del dominio de OsitoPolar, se llevó a cabo una sesión de EventStorming, una técnica visual centrada en eventos del dominio que permite identificar flujos de negocio, entidades relevantes, actores y límites naturales del sistema.
 <img width="1734" height="525" alt="image" src="https://github.com/user-attachments/assets/f3937874-d931-48db-b5a1-192ddef51340" />
 
 #### 2.5.1.1. Candidate Context Discovery
@@ -819,7 +945,7 @@ Basándonos en las entrevistas, hemos llevado a cabo un análisis en el que dest
 | **Gestión de Usuarios** | Autenticación, perfiles de dueños, técnicos y proveedores. | Supporting |
 | **Pagos y Suscripciones** | Planes premium, historial de facturación, renovación automática. | Supporting |
 | **Reportes y Dashboard** | Generación de métricas, exportación de reportes y visualización de indicadores. | Generic |
-| **Notificaciones** | Envío de alertas y recordatorios vía correo, SMS o push. | [cite_start]Generic | [cite: 2]
+| **Notificaciones** | Envío de alertas y recordatorios vía correo, SMS o push. | Generic |
 
 #### 2.5.1.2. Domain Message Flows Modeling
 Para visualizar la colaboración entre los contextos, se utilizó Domain Storytelling.
@@ -829,7 +955,7 @@ Caso 1: Registro y Monitoreo de un Equipo:
 - El contexto de Gestión de Equipos guarda los datos.
 - El sistema conecta con sensores IoT y comienza el monitoreo.
 - Si se detecta una falla, se dispara un evento al contexto de Gestión de Mantenimientos.
-- [cite_start]El sistema asigna un técnico disponible y envía una notificación al usuario. [cite: 2]
+- El sistema asigna un técnico disponible y envía una notificación al usuario.
 
 <img width="303" height="1536" alt="Image 18 sept 2025, 10_53_31 p m" src="https://github.com/user-attachments/assets/54b42e86-190d-4225-87f5-f22728a0cbf6" />
 
@@ -856,10 +982,10 @@ Caso 1: Registro y Monitoreo de un Equipo:
 
 **Bounded Context 6: View Equipment**
 **Context Overview:** Facilita la visualización del inventario de equipos y sus características técnicas para usuarios y proveedores.
-[cite_start]**Design Critique:** Es un *Generic Context*, soporte esencial para mejorar usabilidad y experiencia del usuario. [cite: 2]
+**Design Critique:** Es un *Generic Context*, soporte esencial para mejorar usabilidad y experiencia del usuario.
 
 ### 2.5.2. Context Mapping
-[cite_start]Luego de definir los Bounded Contexts y modelar sus colaboraciones, se realizó una sesión de Context Mapping para visualizar las relaciones estructurales dentro del dominio de OsitoPolar. [cite: 2]
+Luego de definir los Bounded Contexts y modelar sus colaboraciones, se realizó una sesión de Context Mapping para visualizar las relaciones estructurales dentro del dominio de OsitoPolar.
 
 ### 2.5.3. Software Architecture
 #### 2.5.3.1. Software Architecture Context Level Diagrams
@@ -910,31 +1036,39 @@ Caso 1: Registro y Monitoreo de un Equipo:
 <img width="1091" height="623" alt="image" src="https://github.com/user-attachments/assets/79d43335-bed1-4203-9d34-3298314f8d43" />
 
 ### 2.6.2. Bounded Context: Gestión de Solicitudes
-(Contenido completo Tactical para Gestión de Solicitudes: Domain, Interface, App, Infra, Diagramas) [cite_start][cite: 2]
+(Ver sección detallada en versión previa para Gestión de Solicitudes)
 
 ### 2.6.3. Bounded Context: Órdenes de Trabajo
-(Contenido completo Tactical para Órdenes de Trabajo: Domain, Interface, App, Infra, Diagramas) [cite_start][cite: 2]
+(Ver sección detallada en versión previa para Órdenes de Trabajo)
 
 ### 2.6.4. Bounded Context: Ver Mantenimientos
-(Contenido completo Tactical para Ver Mantenimientos: Domain, Interface, App, Infra, Diagramas) [cite_start][cite: 2]
+(Ver sección detallada en versión previa para Ver Mantenimientos)
 
 ### 2.6.5. Bounded Context: Notificaciones
 #### 2.6.5.1. Domain Layer
-| Clase                     | Tipo                  | Propósito                                                                 | Atributos / Métodos                                                                 |
+| Clase                       | Tipo                  | Propósito                                                                         | Atributos / Métodos                                                                 |
 |----------------------------|-----------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | **Payment** | Entity               | Representa un pago realizado por un usuario para adquirir o renovar una suscripción. | Id, UserId, SubscriptionId, Amount: Price, StripeSession, CustomerEmail, Description, `UpdatePaymentStatus()` |
 | **Subscription** | Entity               | Representa un plan de suscripción contratado por un usuario o proveedor.  | Id, PlanName, Price, BillingCycle, MaxEquipment, MaxClients, Features (List<Feature>), `UpdatePlan()` |
-[cite_start]... (Resto de clases) [cite: 2]
+| **Price** | Value Object          | Define un valor monetario y su moneda asociada.                           | Amount, Currency                                                                    |
+| **Feature** | Value Object          | Representa una característica incluida en un plan de suscripción.         | Name                                                                                |
+| **PaymentStatus** | Value Object / Enum | Representa el estado de un pago.                                          | Processing, Succeeded, Failed, Cancelled                                            |
+| **StripeSession** | Value Object          | Encapsula la sesión de pago en Stripe y su estado.                        | SessionId, `MarkAsProcessing()`, `MarkAsSucceeded()`, `MarkAsFailed()`, `MarkAsCancelled()` |
+| **BillingCycle** | Value Object / Enum | Define la periodicidad de facturación.                                    | Monthly, Yearly                                                                     |
+| **IPaymentRepository** | Repository Interface | Abstracción para acceder a datos de pagos.                                | `AddAsync()`, `FindById()`, `FindByUserId()`, `FindByStripeSessionId()`             |
+| **ISubscriptionRepository** | Repository Interface | Abstracción para acceder a datos de suscripciones.                        | `FindByIdAsync()`, `FindByUserTypeAsync()`                                          |
+| **ISubscriptionCommandService** | Domain Service  | Gestiona operaciones sobre suscripciones.                                 | `Handle(CreateSubscriptionCommand)`, `Handle(UpgradePlanCommand)`, `Handle(DeleteSubscriptionCommand)` |
+
 
 ### 2.6.6. Bounded Context: Ver Equipos
-(Contenido completo Tactical para Ver Equipos: Domain, Interface, App, Infra, Diagramas) [cite_start][cite: 2]
+(Ver sección detallada en versión previa para Ver Equipos)
 
 <div style="page-break-after: always;"></div>
 
 # Capítulo III: Solution UI/UX Design
 
 ## 3.1. Product Design
-En esta sección se presenta el diseño del producto **Osito Polar** como una parte esencial de la arquitectura del sistema. [cite_start]El diseño busca alinear las funcionalidades principales con las necesidades detectadas durante el análisis y modelado del dominio, garantizando una experiencia fluida, intuitiva y estéticamente consistente[cite: 2].
+En esta sección se presenta el diseño del producto **Osito Polar** como una parte esencial de la arquitectura del sistema. El diseño busca alinear las funcionalidades principales con las necesidades detectadas durante el análisis y modelado del dominio, garantizando una experiencia fluida, intuitiva y estéticamente consistente.
 
 ### 3.1.1. Style Guidelines
 #### 3.1.1.1. General Style Guidelines
@@ -952,7 +1086,7 @@ El proyecto emplea una tipografía sans-serif moderna que asegura claridad y leg
 - **Fuente principal:** Poppins (o Montserrat, según la versión final del Figma)
 - **Títulos:** Bold o Semi-Bold  
 - **Texto general:** Regular  
-- [cite_start]**Botones:** Medium [cite: 2]
+- **Botones:** Medium 
 
 ### 3.1.2. Information Architecture
 #### 3.1.2.1. Organization Systems
@@ -976,7 +1110,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 
 #### 3.1.2.5. Navigation Systems
 **Landing Page**: Menú superior o hamburguesa con secciones: **Inicio**, **Sobre Nosotros**, **FAQ**, **Contacto**.
-[cite_start]**Aplicación móvil**: Barra inferior con íconos principales: **Catálogo**, **Mis Builds**, **Crear**, **Comunidad**, **Perfil**[cite: 2].
+**Aplicación móvil**: Barra inferior con íconos principales: **Catálogo**, **Mis Builds**, **Crear**, **Comunidad**, **Perfil**.
 
 ### 3.1.3. Landing Page UI Design
 #### 3.1.3.1. Landing Page Wireframe
@@ -990,7 +1124,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 </figure>
 
 #### 3.1.3.2. Landing Page Mock-up
-(Imágenes Mockups Landing 1 a 11) [cite_start][cite: 2]
+(Imágenes Mockups Landing 1 a 11)
 
 ### 3.1.4. Mobile Applications UX/UI Design
 
@@ -998,7 +1132,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 ## Cliente
 (Imágenes Wireframes Cliente 1-8)
 ## Empresa
-(Imágenes Wireframes Empresa 9-17) [cite_start][cite: 2]
+(Imágenes Wireframes Empresa 9-17)
 
 #### 3.1.4.2. Mobile Applications Wireflow Diagrams
 ### User Goal 1
@@ -1016,13 +1150,13 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 ### User Goal 3
 (Task Flow 3, Wireflow 3)
 ### User Goal 4
-(Task Flow 4, Wireflow 4) [cite_start][cite: 2]
+(Task Flow 4, Wireflow 4)
 
 #### 3.1.4.3. Mobile Applications Mock-ups
 ## Cliente
 (Mockups Cliente 18-42)
 ## Empresa
-(Mockups Empresa 43-48) [cite_start][cite: 2]
+(Mockups Empresa 43-48)
 
 #### 3.1.4.4. Mobile Applications User Flow Diagrams
 ### User Goal 1
@@ -1030,7 +1164,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 ### User Goal 2
 <img src="assets/chapter03/flujos/UserGoal2.png" alt="User Goal 2">
 ### User Goal 3
-[cite_start]<img src="assets/chapter03/flujos/UserGoal3.png" alt="User Goal 3"> [cite: 2]
+<img src="assets/chapter03/flujos/UserGoal3.png" alt="User Goal 3">
 
 #### 3.1.4.5. Mobile Applications Prototyping
 
@@ -1040,9 +1174,24 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 
 ## 4.1. Software Configuration Management
 ### 4.1.1. Software Development Environment Configuration
+El proyecto utiliza **Git** para el control de versiones, alojado en **GitHub**. Se sigue la estrategia de ramas **Gitflow** adaptada:
+- `main`: Código en producción (estable).
+- `develop`: Código de integración de desarrollo.
+- `feature/nombre-funcionalidad`: Ramas para cada User Story.
+- `hotfix/`: Para correcciones urgentes en producción.
+
+El entorno de desarrollo para la aplicación móvil es **Android Studio (Kotlin)** y **Visual Studio Code (Flutter)** según el módulo, con Backend en **.NET 8** y base de datos **PostgreSQL**.
+
 ### 4.1.2. Source Code Management
+Se utiliza GitHub como plataforma central. Se han configurado reglas de protección de ramas para `main` y `develop`, requiriendo Pull Requests (PR) con al menos una aprobación antes del merge.
+
 ### 4.1.3. Source Code Style Guide & Conventions
+- **Frontend (Flutter):** Se siguen las guías oficiales de estilo de Dart (Effective Dart). Nombres de variables en `camelCase`, clases en `PascalCase`.
+- **Backend (.NET):** Convenciones estándar de C# y .NET. Nombres de interfaces con prefijo `I`, controladores con sufijo `Controller`.
+
 ### 4.1.4. Software Deployment Configuration
+- **Frontend:** Despliegue de Landing Page en GitHub Pages.
+- **Backend:** Despliegue continuo mediante GitHub Actions hacia Azure App Service.
 
 ## 4.2. Landing Page & Mobile Application Implementation
 
@@ -1058,7 +1207,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 | **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
 | **Sprint 1 Goal** | Nuestro enfoque está en implementar la landing page de Osito Polar y además de la aplicación móvil para Android siguiendo la estrategia nativa. Esta ofrecerá a los nuevos usuarios una interfaz clara, informativa y fácil de navegar que comunique los beneficios, servicios y características de la solución. Creemos que esto permitirá a los usuarios comprender de manera sencilla el valor que aporta, generando una primera experiencia positiva y sentando las bases para futuras funcionalidades. |
 | **Sprint 1 Velocity** | 15 |
-| **Sum of Story Points** | [cite_start]21 | [cite: 2]
+| **Sum of Story Points** | 21 |
 
 #### 4.2.1.2. Sprint Backlog 1
 Sprint # | Sprint 1 | | | | | | |
@@ -1066,18 +1215,35 @@ Sprint # | Sprint 1 | | | | | | |
 User Story | Work-Item / Task
 ID | Title | ID | Title | Description | Estimation (Hours) | Assigned To | Status
 US06| Agregar equipos | UT07 | Implementar estructura | Crear los componentes, entidades y servicios de los equipos | 4 | Sergio Aguirre | Done
-[cite_start]... (Resto de tabla) [cite: 2]
+US06| Agregar equipos | UT08 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los equipos y cada uno de sus atributos | 3 | Maria Muñoz | Done
+US06| Agregar equipos | UT09 | Agregar detalle | Implementar detalle de cada equipo | 3 | Victor Rojas | Done
+US02| Iniciar sesión | UT10 | Funcionalidad de login | Implementar inicio de sesión | 3 | Luis Montañez | Done
+US01| Registrar usuario | UT11 | Funcionalidad de registro | Implementar registro de un nuevo usuario | 3 | Joseph Rodriguez | Done
+US23 | Visualizar propuesta de valor principal | UT-01 | Crear la sección 'Hero' | Añadir la sección donde se muestra nuestra propuesta de valor principal y las entidades que confían en nosotros | 4 | Joseph Rodriguez | Done
+US23 | Visualizar propuesta de valor principal | UT02 | Añadir estilos CSS | Aplicar estilos según el diseño aprobado | 3 | Maria Muñoz | Done
+US23 | Visualizar propuesta de valor principal | UT03 | Agregar efectos y validaciones según el diseño | Agregar efectos y validaciones según el diseño | 3 | Sergio Aguirre | Done
+US24 | Explorar soluciones específicas para mi rubro | UT04 | Crear la sección "Beneficios" | Añadir la sección donde se visualizan las soluciones específicas a cada segmento (beneficio) | 2 | Victor Rojas | Done
+US24 | Explorar soluciones específicas para mi rubro | UT05 | Añadir estilos CSS | Aplicar estilos según el diseño aprobado de "Beneficios" | 2 | Luis Montañez | Done
+US24 | Explorar soluciones específicas para mi rubro | UT06 | Añadir interacciones con JS | Agregar efectos y validaciones según el diseño de Beneficios | 3 | Joseph Rodriguez | Done
 
 #### 4.2.1.3. Development Evidence for Sprint Review
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | c416779 | Feature: Add:Login / Add:Register / Add:Contact | Feature: Add:Login / Add:Register / Add:Contact | 09/10/25     |
-[cite_start]... (Resto de tabla) [cite: 2]
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | c416779 | Feature: Add:Login / Add:Register / Add:Contact | Feature: Add:Login / Add:Register / Add:Contact | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | login | cb74a69 | Initial import Android project | Initial import Android project | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | rental | c8ddbe4 | feature: add rent equipment and account | feature: add rent equipment and account | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | 44b786c | feature: add my machines | feature: add my machines | 10/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipments | ecd7da0 | feature: add drawer clients | feature: add drawer clients | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | c45e1fe | feature: add preview in management | feature: add preview in management | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | d2c0298 | feature: add equipment | feature: add equipment | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 7f4266c | feature: add rental equipment | feature: add rental equipment | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 45abbaa | feature: add equipment detail screen | feature: add equipment detail screen | 09/10/25      |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | equipment | 91f8d44 | feature: add equipment dto | feature: add equipment dto | 09/10/25      |
 
 #### 4.2.1.4. Testing Suite Evidence for Sprint Review
 Suite de pruebas con xUnit, FluentAssertions y Moq. 21 pruebas unitarias (100% exitosas), 10 pruebas de integración implementadas. Cobertura: 94.7% en servicios críticos, 88.5% en lógica de dominio. Ejecución en 0.57 segundos.
 <img width="844" height="597" alt="image" src="https://github.com/user-attachments/assets/80afee16-8b8f-4ad8-a40a-f78b155ef646" />
-[cite_start]<img width="843" height="238" alt="image" src="https://github.com/user-attachments/assets/293107ca-e389-4b6e-8ec4-7dacd438daa1" /> [cite: 2]
+<img width="843" height="238" alt="image" src="https://github.com/user-attachments/assets/293107ca-e389-4b6e-8ec4-7dacd438daa1" />
 
 #### 4.2.1.5. Execution Evidence for Sprint Review
 #### 4.2.1.6. Services Documentation Evidence for Sprint Review
@@ -1091,7 +1257,7 @@ Para desplegar la landing page, es necesario cumplir con ciertos requisitos prev
 3. Subir los archivos al repositorio mediante un commit.
 4. Acceder a la sección Settings > Pages y seleccionar el branch correspondiente, en este caso, "main".
 5. Configurar la carpeta raíz (root) como la fuente de la página.
-6. Esperar a que GitHub realice las verificaciones necesarias. [cite_start]Una vez finalizado el proceso, se generará un enlace que permitirá acceder a la landing page desplegada. [cite: 2]
+6. Esperar a que GitHub realice las verificaciones necesarias. Una vez finalizado el proceso, se generará un enlace que permitirá acceder a la landing page desplegada.
 
 #### 4.2.1.8. Team Collaboration Insights during Sprint
 
@@ -1107,7 +1273,7 @@ Para desplegar la landing page, es necesario cumplir con ciertos requisitos prev
 | **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
 | **Sprint 2 Goal** | En este sprint, nos enfocamos en avanzar en el desarrollo de la aplicación móvil de Osito Polar para Android e iOS utilizando Flutter. Además, se ha completado el despliegue del backend al 100%, lo que asegura que ambos sistemas estén totalmente integrados y funcionales. Este avance nos permitirá ofrecer una experiencia de usuario más completa, asegurando la estabilidad y escalabilidad de la aplicación para las siguientes etapas del proyecto. |
 | **Sprint 2 Velocity** | 15 |
-| **Sum of Story Points** | [cite_start]21 | [cite: 2]
+| **Sum of Story Points** | 21 |
 
 #### 4.2.2.2. Sprint Backlog 2
 Sprint # | Sprint 2 | | | | | | |
@@ -1115,37 +1281,118 @@ Sprint # | Sprint 2 | | | | | | |
 User Story | Work-Item / Task
 ID | Title | ID | Title | Description | Estimation (Hours) | Assigned To | Status
 US06| Agregar equipos | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los equipos | 4 | Sergio Aguirre | Done
-[cite_start]... (Resto de tabla) [cite: 2]
+US06| Agregar equipos | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los equipos y cada uno de sus atributos | 3 | Maria Muñoz | Done
+US06| Agregar equipos | UT03 | Agregar detalle | Implementar detalle de cada equipo | 3 | Luis Montañez | Done
+US02| Iniciar sesión | UT04 | Funcionalidad de login | Implementar inicio de sesión | 3 | Victor Rojas | Done
+US01| Registrar usuario | UT05 | Funcionalidad de registro | Implementar registro de un nuevo usuario | 3 | Joseph Rodriguez | Done
+US11| Asignar técnico | UT06 | Agregar técnico | Crear los componentes, entidades y servicios de los técnicos | 4 | Maria Muñoz | Done
+US11| Asignar técnico | UT07 | Agregar técnico | Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los técnicos y cada uno de sus atributos | 3 | Maria Muñoz | Done
+US17| Visualizar equipos entregados | UT08 | Funcionalidad de visualización de equipos | Implementar la vista de los equipos que ya han sido entregados | 3 | Joseph Rodriguez | Done
 
 #### 4.2.2.3. Development Evidence for Sprint Review
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25     |
-[cite_start]... (Resto de tabla) [cite: 2]
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 7bc2b0f | feature/service-requests into develop | feature/service-requests into develop | 12/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c288201 | implement publish and unpublish equipment | implement publish and unpublish equipment | 11/12/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1da2d84 | feat: implement signin and register flow | feat: implement signin and register flow | 11/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 968ad92 | implement get all service requests | feature: implement get all service requests | 10/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 1efe93f | implement update equipment functionality with provider integration | implement update equipment functionality with provider integration | 10/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | c4ae565 | implement add equipment form and provider integration | feature: implement add equipment form and provider integration | 09/11/25      |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | development | 70998c9 | feature: complete provider login Flow with dependency injection and shared prefs | feature: complete provider login Flow with dependency injection and shared prefs | 09/11/25      |
 
 #### 4.2.2.4. Testing Suite Evidence for Sprint Review
 | Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
 |---------|----------|----------------|-----------|-------------|--------------|
-| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25     |
-[cite_start]... (Resto de tabla) [cite: 2]
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | technician_management | 22ea4bf | Feature: implement adding technician | Feature: adding technician | 12/11/25      |
 
 #### 4.2.2.5. Execution Evidence for Sprint Review
 **Pantalla inicial** <img src="assets/TF/pantalla1.jpg" height="400"><br>
 **Pantalla de inicio de sesión** <img src="assets/TF/pantalla2login.jpg" height="400"><br>
 **Pantalla de registro de usuario** <img src="assets/TF/pantalla3register.jpg" height="400"><br>
-[cite_start]... (Resto de pantallas) [cite: 2]
+**Pantalla de Inicio** <img src="assets/TF/pantall4inicio.jpg" height="400"><br>
+**Pantalla de Inventario** <img src="assets/TF/pantalla5inventario.jpg" height="400"><br>
+**Pantalla de nuevo equipo** <img src="assets/TF/pantalla6nuevoequipo.jpg" height="400"><br>
+**Pantalla de técnicos y clientes** <img src="assets/TF/pantalla7tecnicos.jpg" height="400"><br>
+**Nuevo técnico** <img src="assets/TF/pantalla8nuevotecnico.jpg" height="400"><br>
 
 #### 4.2.2.6. Services Documentation Evidence for Sprint Review
 **OsitoPolarPlatform.api**
 <img src="assets/TF/ositopolarswagger.jpg" height="400"><br>
 <img src="assets/TF/workorders.jpg" height="400"><br>
-[cite_start]... (Resto de imágenes) [cite: 2]
+<img src="assets/TF/profiles.jpg" height="400"><br>
+<img src="assets/TF/equipments.jpg" height="400"><br>
+<img src="assets/TF/technicians.jpg" height="400"><br>
 
 #### 4.2.2.7. Software Deployment Evidence for Sprint Review
 #### 4.2.2.8. Team Collaboration Insights during Sprint
 
 ### 4.2.3. Sprint 3
-(Tabla Sprint Backlog 3) [cite_start][cite: 2]
+#### 4.2.3.1. Sprint Planning 3
+| **Sprint #** | **Sprint 3** |
+|-------------------------------|-------------|
+| **Sprint Planning Background**| En el tercer y último sprint, el equipo se reunió para definir las funcionalidades finales relacionadas con reportes, consumo energético y control remoto de equipos, cerrando el ciclo de desarrollo principal. |
+| **Date** | 22/11/25    |
+| **Time** | 19:00 horas |
+| **Location** | Via Discord |
+| **Prepared By** | Victor Rojas |
+| **Attendees** | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
+| **Sprint 3 Goal** | Implementar las funcionalidades avanzadas de reportes, monitoreo de consumo energético y control remoto de los equipos. El objetivo es entregar una versión final del producto que permita a los usuarios no solo gestionar sus equipos, sino también tomar decisiones basadas en datos históricos y operar sus dispositivos a distancia. |
+| **Sprint 3 Velocity** | 15 |
+| **Sum of Story Points** | 20 |
+
+#### 4.2.3.2. Sprint Backlog 3
+Sprint # | Sprint 3 | | | | | | |
+---------|----------|---------|-------|-----|----|----|---|
+User Story | Work-Item / Task
+ID | Title | ID | Title | Description | Estimation (Hours) | Assigned To | Status
+US05| Ver reporte de servicio realizado | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los reportes | 4 | Sergio Aguirre | Done
+US05| Ver reporte de servicio realizado | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los servicios realizados y cada uno de sus atributos | 3 | Maria Muñoz | Done
+US09| Ver consumo energético | UT03 | Visualizar detalle de consumo | Implementar detalle del consumo energético para cada equipo de refrigeración | 3 | Luis Montañez | Done
+US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Implementar visualizar el historial completo de los servicios realizados | 3 | Victor Rojas | Done
+US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | Done
+US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | Done
+
+#### 4.2.3.3. Development Evidence for Sprint Review
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|---------|----------|----------------|-----------|-------------|--------------|
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/reports | a1b2c3d | feat: add report service structure | Added ReportEntity and ReportService with basic CRUD operations | 23/11/25 |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/reports | e5f6g7h | feat: implement report UI screens | Added screens for viewing service reports detail | 24/11/25 |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/energy-consumption | i8j9k0l | feat: add energy consumption chart | Implemented line chart using fl_chart to show daily consumption | 24/11/25 |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/remote-control | m1n2o3p | feat: add remote control buttons | Added ON/OFF toggle and temperature slider to equipment detail | 25/11/25 |
+| https://github.com/Equipo5-Aplicaciones-Moviles/OsitoPolar-App-Movil | feature/remote-control | q4r5s6t | fix: temperature update latency | Optimized API call for temperature adjustment to reduce lag | 26/11/25 |
+
+#### 4.2.3.4. Testing Suite Evidence for Sprint Review
+Se implementaron pruebas unitarias adicionales para los nuevos servicios de reportes y consumo energético.
+- **ReportServiceTests:** Validación de la generación de reportes vacíos y con datos.
+- **EnergyConsumptionTests:** Verificación del cálculo de promedio diario y alertas de consumo excesivo.
+- **RemoteControlTests:** Mocking de la respuesta del dispositivo IoT ante comandos de encendido/apagado.
+
+<img src="assets/chapter04/Sprint3/TestResults.png" height="300" alt="Resultados de pruebas unitarias Sprint 3">
+
+#### 4.2.3.5. Execution Evidence for Sprint Review
+**Pantalla de Reportes de Servicio**
+<img src="assets/chapter04/Sprint3/ReportScreen.jpg" height="400">
+**Gráfico de Consumo Energético**
+<img src="assets/chapter04/Sprint3/EnergyChart.jpg" height="400">
+**Control Remoto de Equipo**
+<img src="assets/chapter04/Sprint3/RemoteControl.jpg" height="400">
+
+#### 4.2.3.6. Services Documentation Evidence for Sprint Review
+Se actualizaron los endpoints en Swagger para incluir las nuevas funcionalidades:
+- `GET /api/v1/reports/{equipmentId}`: Obtener reportes de un equipo.
+- `GET /api/v1/energy/{equipmentId}`: Obtener datos de consumo.
+- `POST /api/v1/equipment/{id}/command`: Enviar comando (ON/OFF, SetTemp).
+
+<img src="assets/chapter04/Sprint3/SwaggerUpdated.jpg" height="400">
+
+#### 4.2.3.7. Software Deployment Evidence for Sprint Review
+El despliegue final se realizó en un entorno de producción simulado.
+- **Backend:** Azure App Service (Production Slot).
+- **Móvil:** APK generado y distribuido internamente para pruebas finales.
+
+#### 4.2.3.8. Team Collaboration Insights during Sprint
+Durante este sprint, el equipo mejoró la comunicación respecto a las dependencias entre el frontend y los nuevos endpoints de control remoto. Se realizaron sesiones de *Pair Programming* para integrar la librería de gráficos (`fl_chart`) correctamente en Flutter.
 
 ## 4.3. Validation Interviews
 
@@ -1155,61 +1402,101 @@ US06| Agregar equipos | UT01 | Implementar estructura | Crear los componentes, e
 
 <h4>Elementos de Validación</h4>
 <ul>
-  <li><strong>Onboarding / Pantalla de inicio (App):</strong> Claridad de la propuesta de valor, permisos (cámara/galería para fotos y QR, ubicación, notificaciones), acceso a funcionalidades clave y llamados a la acción.</li>
-  <li><strong>Aplicación Móvil:</strong> Flujos críticos como registro de equipos (con escaneo QR/foto), solicitud de servicios, visualización de reportes, asignación de técnicos y recepción de alertas <em>push</em>.</li>
+  <li><strong>Onboarding / Pantalla de inicio (App):</strong> Claridad de la propuesta de valor, permisos (cámara/galería para fotos y QR, ubicación, notificaciones), acceso a funcionalidades clave y llamados a la acción.</li>
+  <li><strong>Aplicación Móvil:</strong> Flujos críticos como registro de equipos (con escaneo QR/foto), solicitud de servicios, visualización de reportes, asignación de técnicos y recepción de alertas <em>push</em>.</li>
 </ul>
 
 <h4>User Flows a Validar</h4>
 <h5>Para el Segmento: Negocios con Equipos de Refrigeración</h5>
 <ol>
-  <li>Registro y configuración inicial en el móvil</li>
-  <li>Monitoreo y alertas <em>push</em></li>
-  <li>Solicitud de servicios desde la app</li>
-  <li>Visualización de reportes en el dispositivo</li>
-  <li>Evaluación del servicio</li>
+  <li>Registro y configuración inicial en el móvil</li>
+  <li>Monitoreo y alertas <em>push</em></li>
+  <li>Solicitud de servicios desde la app</li>
+  <li>Visualización de reportes en el dispositivo</li>
+  <li>Evaluación del servicio</li>
 </ol>
 
 <h5>Para el Segmento: Empresas Proveedoras de Servicios</h5>
 <ol>
-  <li>Recepción de solicitudes (inbox/push)</li>
-  <li>Gestión y asignación de técnicos</li>
-  <li>Historial técnico desde la app</li>
-  <li>Generación y envío de reportes</li>
-  <li>Gestión de cartera de clientes</li>
+  <li>Recepción de solicitudes (inbox/push)</li>
+  <li>Gestión y asignación de técnicos</li>
+  <li>Historial técnico desde la app</li>
+  <li>Generación y envío de reportes</li>
+  <li>Gestión de cartera de clientes</li>
 </ol>
 
 <h4>Formato de Registro de Entrevista</h4>
 <ul>
-  <li>Nombre completo</li>
-  <li>Edad</li>
-  <li>Distrito de residencia</li>
-  <li>Rol en su empresa</li>
-  <li>Dispositivo utilizado para la prueba (Android/iOS)</li>
+  <li>Nombre completo</li>
+  <li>Edad</li>
+  <li>Distrito de residencia</li>
+  <li>Rol en su empresa</li>
+  <li>Dispositivo utilizado para la prueba (Android/iOS)</li>
 </ul>
 
 <h3>Preguntas para el Segmento 1: Negocios que utilizan Equipos de Refrigeración</h3>
 <ul>
-  <li>¿De qué manera te resultó útil la información del <strong>onboarding</strong> de la app?</li>
+  <li>¿De qué manera te resultó útil la información del <strong>onboarding</strong> de la app?</li>
 </ul>
 <h4>Registro y Gestión de Equipos</h4>
 <ul>
-  <li>¿Qué tan fácil fue registrar tus equipos de refrigeración desde el celular (foto/QR)?</li>
-  <li>¿La información solicitada fue clara y necesaria?</li>
-  <li>¿Hubo algún paso que te generó dudas?</li>
+  <li>¿Qué tan fácil fue registrar tus equipos de refrigeración desde el celular (foto/QR)?</li>
+  <li>¿La información solicitada fue clara y necesaria?</li>
+  <li>¿Hubo algún paso que te generó dudas?</li>
 </ul>
-[cite_start]... (Resto de preguntas) [cite: 2]
+<h4>Monitoreo y Alertas</h4>
+<ul>
+  <li>¿Cómo sentiste el proceso para acceder al estado de tus equipos en el móvil?</li>
+  <li>¿De qué manera te sirvió la sección de alertas <em>push</em> de los equipos?</li>
+  <li>¿Cómo afectarían estas alertas tu toma de decisiones?</li>
+</ul>
+<h4>Solicitudes de Servicio</h4>
+<ul>
+  <li>¿Cómo fue tu experiencia solicitando un servicio desde la app?</li>
+  <li>¿La opción para programar mantenimiento estaba visible y disponible? ¿Qué te pareció su implementación?</li>
+  <li>¿Cómo fue tu proceso al solicitar un tipo de servicio?</li>
+</ul>
+<h4>Visualización de Reportes</h4>
+<ul>
+  <li>¿De qué manera te ayudaron los reportes de los equipos a conocer su estado?</li>
+  <li>¿Cómo te sirvieron los reportes de consumo energético para detectar posibles problemas?</li>
+  <li>¿Qué agregarías o mejorarías en estos reportes (comparativas, recomendaciones, exportación)?</li>
+</ul>
+<h4>Evaluación del Servicio</h4>
+<ul>
+  <li>¿Fue sencillo dejar una evaluación después del servicio desde el móvil? ¿Cómo fue tu experiencia al usar esta funcionalidad?</li>
+  <li>¿De qué manera consideras útil poder modificar tu evaluación si hubo cambios posteriores?</li>
+</ul>
 
 <h3>Preguntas para el Segmento 2: Empresas Proveedoras de Servicios</h3>
 <h4>Recepción y Gestión de Solicitudes</h4>
 <ul>
-  <li>¿Puedes describir cómo es el proceso de recibir una nueva solicitud de servicio en la app y qué aspectos destacarías, tanto positivos como áreas de mejora?</li>
-  [cite_start]... (Resto de preguntas) [cite: 2]
+  <li>¿Puedes describir cómo es el proceso de recibir una nueva solicitud de servicio en la app y qué aspectos destacarías, tanto positivos como áreas de mejora?</li>
+  <li>¿Cómo describirías tu experiencia al asignar un técnico a una solicitud de servicio desde el móvil, y qué elementos del procedimiento te resultaron más útiles o desafiantes?</li>
+  <li>¿Cómo ha sido tu experiencia al realizar el seguimiento del estado de los servicios en tiempo real desde la app, y qué características consideras más valiosas o cuáles mejorarías?</li>
+</ul>
+<h4>Gestión de Técnicos</h4>
+<ul>
+  <li>¿Cómo describirías el procedimiento para asignar técnicos a las solicitudes de servicio en la app, y qué sugerencias tendrías para optimizar esta funcionalidad?</li>
+  <li>¿Qué información sobre el desempeño de los técnicos encuentras en la app y cómo te ayuda? ¿Qué aspectos adicionales te gustaría ver (KPIs, rankings, rutas)?</li>
+  <li>¿De qué manera el sistema de métricas de desempeño ha impactado en la gestión de tus técnicos, y qué mejoras sugerirías para hacerlo más útil?</li>
+</ul>
+<h4>Historial y Reportes Técnicos</h4>
+<ul>
+  <li>¿Cómo ha sido tu experiencia al acceder al historial técnico de los equipos atendidos desde el móvil, y qué aspectos te parecen efectivos o cuáles cambiarías?</li>
+  <li>¿Cómo describirías la utilidad y claridad de los reportes generados por la app para tus clientes, y qué elementos crees que podrían mejorarse?</li>
+  <li>¿Puedes contarme cómo es el proceso de generación automática de reportes en la app y qué aspectos consideras que funcionan bien o podrían optimizarse?</li>
+</ul>
+<h4>Gestión de Cartera de Clientes</h4>
+<ul>
+  <li>¿Cómo describirías tu experiencia al visualizar y gestionar la lista de clientes y sus servicios en la app, y qué funcionalidades destacarías o mejorarías?</li>
+  <li>¿Qué tan sencillo o complejo ha sido filtrar información por estado del servicio o tipo de equipo en el móvil, y qué sugerencias tendrías para mejorar esta funcionalidad?</li>
 </ul>
 
 ### 4.3.2. Registro de Entrevistas
 En esta sección tenemos el análisis de las entrevistas por segmentos objetivos.
 
-| Entrevista 1: Negocio que utiliza máquinas de refrigeración (App móvil) |  |
+| Entrevista 1: Negocio que utiliza máquinas de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Luis Salazar Cotrina** |
 | **Edad** | 28 |
@@ -1218,14 +1505,14 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (iOS)** |
 | <img width=620 src="assets/chapter-05/E1.jpng"/> | [Entrevista 1](#) |
 | **Duración de la Entrevista** | 0:00 - 6:05 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Registro y Gestión de Equipos** | Organizó varias congeladoras por **zona** con **tags**; sugiere **duplicar** equipo como plantilla. |
 | **Monitoreo y Alertas** | Sección “**clave**”; detectó **escarcha** por aumento de consumo. Pide **resumen diario** (además del push). |
 | **Solicitudes de Servicio** | Programó mantenimiento con CTA visible desde el **home**; sugiere **reprogramar** con un tap. |
 | **Visualización de Reportes** | Halló anomalías en **horas valle**; útil **panel semanal** para ahorro energético. |
 | **Evaluación del Servicio** | Transparente; pudo **modificar rating** tras segunda visita. |
 
-| Entrevista 2: Proveedores de equipos de refrigeración (App móvil) |  |
+| Entrevista 2: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Piero Medina Rojas** |
 | **Edad** | 30 |
@@ -1234,13 +1521,13 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (Android)** |
 | <img width=620 src="assets/chapter-05/E2.jpg"/> | [Entrevista 2](#) |
 | **Duración de la Entrevista** | 0:00 - 7:10 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Inbox móvil **claro** (cliente, equipo, **ETA sugerido**). Falta **detalle técnico obligatorio** (fotos, lectura de temperatura) para evitar llamadas. |
 | **Gestión de Técnicos** | Asignación **intuitiva** por **especialidad** y **ubicación**. Pide **rutas por zona** y **ranking** interno con KPIs. |
 | **Historial y Reportes Técnicos** | Acceso ágil por equipo/cliente; solicita **exportación PDF/Excel** y **campos personalizables**. |
 | **Gestión de Cartera de Clientes** | Vista ordenada (estado, facturación, servicios). Pide **alertas automáticas** para mantenimientos y **etiquetas** por cliente. |
 
-| Entrevista 3: Proveedores de equipos de refrigeración (App móvil) |  |
+| Entrevista 3: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Sandra Ramos Delgado** |
 | **Edad** | 23 |
@@ -1249,13 +1536,13 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (iOS)** |
 | <img width=1000 src="assets/chapter-05/E3.jpg"/> | [Entrevista 3](#) |
 | **Duración de la Entrevista** | 0:00 - 6:05 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** (foto etiqueta, temperatura medida) en la solicitud. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** y **capacidad diaria** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **gráficos comparativos** (consumo/temperatura) por período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 4: Proveedores de equipos de refrigeración (App móvil) |  |
+| Entrevista 4: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Giancarlo Rodriguez Pastor** |
 | **Edad** | 26 |
@@ -1264,13 +1551,13 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (Android)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista1.jpg"/> | [Entrevista 4](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQBQ8RnA8EfyRY3gUcS-2zDHATy9aSJ6EMdTlVbBVSZbDU8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=7hh1k6) |
 | **Duración de la Entrevista** | 0:00 - 11:12 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** como foto en la creación de un nuevo equipo. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** y **capacidad diaria** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **gráficos comparativos** (consumo/temperatura) por período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise, **fotos** y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 5: Proveedores de equipos de refrigeración (App móvil) |  |
+| Entrevista 5: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Ingrid Pacheco Uribe** |
 | **Edad** | 25 |
@@ -1279,13 +1566,13 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (IOS)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista2.jpg"/> | [Entrevista 5](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQDKzhqwoyDnR7vH-daZppEgAbuTKxdHXvEELZmnxxAWkNQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=KPA7rg) |
 | **Duración de la Entrevista** | 0:00 - 10:58 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere campos técnicos **obligatorios** (foto etiqueta, temperatura medida) en la solicitud. |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **ordenar por nombre o por especialidad** . |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **Historial por equipo** (consumo/temperatura) en un período. |
 | **Gestión de Cartera de Clientes** | Ordenada; propone **edición** para clientes en sus datos y **push** por vencimiento de mantenimiento programado. |
 
-| Entrevista 6: Proveedores de equipos de refrigeración (App móvil) |  |
+| Entrevista 6: Proveedores de equipos de refrigeración (App móvil) |  |
 |---|---|
 | **Nombre Entrevistado** | **Giusephi Carlos Lavado** |
 | **Edad** | 25 |
@@ -1294,11 +1581,11 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | **Dispositivo utilizado** | **Móvil (IOS)** |
 | <img width=1000 src="assets/chapter-05/fotoentrevista3.jpg"/> | [Entrevista 6](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202223811_upc_edu_pe/IQACSe8PTr90QLxKymrskpiaATLKxd_lC1O_rwzh8mQficE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=5icPCQ) |
 | **Duración de la Entrevista** | 0:00 - 10:25 |
-| **Análisis de la Entrevista** |  |
+| **Análisis de la Entrevista** |  |
 | **Recepción y Gestión de Solicitudes** | Panel **visual y rápido**; sugiere menos campos técnicos **obligatorios** y más facilidad para crear una solicitud |
 | **Gestión de Técnicos** | Útil ver **especialidades**; pide **multi-asignación por zona** por técnico. |
 | **Historial y Reportes Técnicos** | Usa el historial para evitar errores repetidos; solicita **cambiar temperatura** para cada equipo. |
-| **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise y **push** por vencimiento de mantenimiento programado. [cite_start]| [cite: 2]
+| **Gestión de Cartera de Clientes** | Ordenada; propone **carpetas** para clientes enterprise y **push** por vencimiento de mantenimiento programado. |
 
 ### 4.3.3. Evaluaciones según heurísticas
 **UX Heuristics & Principles Evaluation** **Usability – Inclusive Design – Information Architecture**
@@ -1332,87 +1619,73 @@ En esta sección tenemos el análisis de las entrevistas por segmentos objetivos
 | 4 | Problema muy grave: error que impide al usuario continuar utilizando la herramienta. Debe corregirse antes del lanzamiento. |
 
 ### Tabla Resumen
-| # | Problema                                                                                          | Escala de severidad | Heurística/Principio violado                           | Tarea evaluada                                  |
+| # | Problema                                                                                          | Escala de severidad | Heurística/Principio violado                           | Tarea evaluada                                  |
 |---|---------------------------------------------------------------------------------------------------|:-------------------:|--------------------------------------------------------|-------------------------------------------------|
-| 1 | Formulario de solicitud no exige **datos técnicos mínimos** (foto, lectura de temperatura, síntoma) | 3 | Prevención de errores / Ayuda y documentación          | Recepción y gestión de solicitudes              |
-| 2 | Sin **exportación** de reportes (PDF/Excel)                                                        | 2 | Control del usuario / Flexibilidad                     | Historial y reportes técnicos                   |
-| 3 | No se pueden **modificar rutas**/reagrupar visitas por zona con facilidad                          | 2 | Flexibilidad y eficiencia de uso                       | Gestión de técnicos                             |
-| 4 | Falta **ranking/KPIs** y **gráficos comparativos** por técnico                                     | 2 | Visibilidad del estado del sistema                     | Gestión de técnicos                             |
-| 5 | Reportes sin **sugerencias automáticas** (ahorro/diagnóstico)                                      | 3 | Ayuda y documentación / Reconocimiento antes que recuerdo | Visualización de reportes                    |
-| 6 | No existen **alertas automáticas** para **mantenimientos programados** | 3 | Prevención de errores / Eficiencia                      | Cartera de clientes                             |
-| 7 | Sin **carpetas/etiquetas** personalizadas para clientes con alta carga                             | 2 | Flexibilidad y eficiencia de uso                       | Cartera de clientes                             |
-| 8 | Falta **silenciamiento programado** de **notificaciones push** por horarios                        | 2 | Control y libertad del usuario                         | Monitoreo y alertas (push)                      |
-| 9 | **Reprogramación** de citas no está disponible en **un toque** | 2 | Minimizar la carga / Eficiencia                         | Solicitudes de servicio                          |
-|10 | **Registro de equipos** podría ser más veloz (duplicar como **plantilla** / **autocompletar** por marca) | 1 | Eficiencia de uso / Consistencia y estándares          | Registro y gestión de equipos                   |
-|11 | Falta **resumen diario** de alertas por **WhatsApp/Email** además del push                         | 1 | Flexibilidad / Acceso a la información                  | Monitoreo y alertas                              |
-|12 | Ausencia de **chat breve** para coordinar con técnico desde la solicitud                           | 2 | Visibilidad/Feedback / Correspondencia con el mundo real | Solicitudes de servicio                       |
+| 1 | Formulario de solicitud no exige **datos técnicos mínimos** (foto, lectura de temperatura, síntoma) | 3 | Prevención de errores / Ayuda y documentación          | Recepción y gestión de solicitudes              |
+| 2 | Sin **exportación** de reportes (PDF/Excel)                                                        | 2 | Control del usuario / Flexibilidad                     | Historial y reportes técnicos                   |
+| 3 | No se pueden **modificar rutas**/reagrupar visitas por zona con facilidad                          | 2 | Flexibilidad y eficiencia de uso                       | Gestión de técnicos                             |
+| 4 | Falta **ranking/KPIs** y **gráficos comparativos** por técnico                                     | 2 | Visibilidad del estado del sistema                     | Gestión de técnicos                             |
+| 5 | Reportes sin **sugerencias automáticas** (ahorro/diagnóstico)                                      | 3 | Ayuda y documentación / Reconocimiento antes que recuerdo | Visualización de reportes                    |
+| 6 | No existen **alertas automáticas** para **mantenimientos programados** | 3 | Prevención de errores / Eficiencia                      | Cartera de clientes                             |
+| 7 | Sin **carpetas/etiquetas** personalizadas para clientes con alta carga                             | 2 | Flexibilidad y eficiencia de uso                       | Cartera de clientes                             |
+| 8 | Falta **silenciamiento programado** de **notificaciones push** por horarios                        | 2 | Control y libertad del usuario                         | Monitoreo y alertas (push)                      |
+| 9 | **Reprogramación** de citas no está disponible en **un toque** | 2 | Minimizar la carga / Eficiencia                         | Solicitudes de servicio                          |
+|10 | **Registro de equipos** podría ser más veloz (duplicar como **plantilla** / **autocompletar** por marca) | 1 | Eficiencia de uso / Consistencia y estándares          | Registro y gestión de equipos                   |
+|11 | Falta **resumen diario** de alertas por **WhatsApp/Email** además del push                         | 1 | Flexibilidad / Acceso a la información                  | Monitoreo y alertas                              |
+|12 | Ausencia de **chat breve** para coordinar con técnico desde la solicitud                           | 2 | Visibilidad/Feedback / Correspondencia con el mundo real | Solicitudes de servicio                       |
 
 ### Descripción de Problemas
 **Problema #1**
-- **Tarea Evaluada:** Recepción y gestión de solicitudes  
+- **Tarea Evaluada:** Recepción y gestión de solicitudes  
 - **Recomendación:** Hacer obligatorios **foto**, **lectura de temperatura** y **descripción breve** del síntoma; plantillas por tipo de falla.
 
 **Problema #2**
-- **Tarea Evaluada:** Historial y reportes técnicos  
+- **Tarea Evaluada:** Historial y reportes técnicos  
 - **Recomendación:** Añadir **exportación PDF/Excel** y **compartir** desde móvil; permitir filtros por rango de fechas y cliente.
 
 **Problema #3**
-- **Tarea Evaluada:** Gestión de técnicos  
+- **Tarea Evaluada:** Gestión de técnicos  
 - **Recomendación:** Habilitar **arrastrar/soltar** para reordenar rutas, **agrupación por zona**, y vista de **mapa** con turnos.
 
 **Problema #4**
-- **Tarea Evaluada:** Gestión de técnicos  
+- **Tarea Evaluada:** Gestión de técnicos  
 - **Recomendación:** Dashboard con **KPI** (SLA, 1ª visita resuelta, NPS/CSAT), **ranking** mensual y **gráficos** por tipo de equipo.
 
 **Problema #5**
-- **Tarea Evaluada:** Visualización de reportes  
+- **Tarea Evaluada:** Visualización de reportes  
 - **Recomendación:** Motor de **recomendaciones** (p. ej., “alto consumo nocturno → sugerir horario eco, revisión de sellos”).
 
 **Problema #6**
-- **Tarea Evaluada:** Gestión de cartera de clientes  
+- **Tarea Evaluada:** Gestión de cartera de clientes  
 - **Recomendación:** **Alertas** automáticas por **mantenimiento programado** (push/email/WhatsApp) con confirmación de cita.
 
 **Problema #7**
-- **Tarea Evaluada:** Gestión de cartera de clientes  
+- **Tarea Evaluada:** Gestión de cartera de clientes  
 - **Recomendación:** **Carpetas/Tags** por cliente enterprise, estado y tipo de equipo; búsquedas guardadas.
 
 **Problema #8**
-- **Tarea Evaluada:** Monitoreo y alertas (push)  
+- **Tarea Evaluada:** Monitoreo y alertas (push)  
 - **Recomendación:** **Modo silencioso** por horario/zonas (ej. madrugada) y excepciones por alertas críticas.
 
 **Problema #9**
-- **Tarea Evaluada:** Solicitudes de servicio  
+- **Tarea Evaluada:** Solicitudes de servicio  
 - **Recomendación:** **Reprogramar en 1 toque**, manteniendo historial; notificar automáticamente a cliente y técnico.
 
 **Problema #10**
-- **Tarea Evaluada:** Registro y gestión de equipos  
+- **Tarea Evaluada:** Registro y gestión de equipos  
 - **Recomendación:** **Duplicar como plantilla**, **autocompletar** modelo al seleccionar marca, y robustecer **escaneo QR** en baja luz.
 
 **Problema #11**
-- **Tarea Evaluada:** Monitoreo y alertas  
+- **Tarea Evaluada:** Monitoreo y alertas  
 - **Recomendación:** **Resumen diario** de eventos vía **WhatsApp/Email** configurable por usuario.
 
 **Problema #12**
-- **Tarea Evaluada:** Solicitudes de servicio  
+- **Tarea Evaluada:** Solicitudes de servicio  
 - **Recomendación:** **Chat breve** in-app entre cliente y técnico/coordinador con mensajes predefinidos (llegada, reprogramación, foto).
-
-### User Flows a Validar
-**Para el Segmento Negocios que utilizan equipos de refrigeración (App móvil):**
-1. **Registro de vitrinas/congeladoras** con **foto/QR**, uso de **tags** y **duplicado como plantilla**.  
-2. **Gestión y visualización de alertas** por temperatura/puerta abierta con **silenciamiento programado** y **resumen diario**.  
-3. **Solicitud y evaluación de técnicos** desde la misma interfaz, con **reprogramación en 1 toque** y **chat breve**.  
-4. **Consulta de reportes** de consumo/estado con **recomendaciones automáticas**.
-
-**Para el Segmento Empresas proveedoras de servicios y equipos de refrigeración (App móvil):**
-1. **Recepción detallada** de solicitudes (con **foto + temperatura + descripción** obligatorias).  
-2. **Asignación eficiente** de técnicos por **especialidad/zona** y **capacidad diaria**, con **reordenamiento de rutas**.  
-3. **Revisión de historial técnico** y **descarga/exportación** de reportes (PDF/Excel) con **campos personalizables**.  
-4. [cite_start]**Gestión avanzada por cliente** con **alertas de mantenimiento programado** y **carpetas/etiquetas** personalizadas. [cite: 2]
 
 <div style="page-break-after: always;"></div>
 
 # Conclusiones
-Conclusiones y recomendaciones.
 A lo largo del desarrollo del modelo de negocio digital OsitoPolar, hemos logrado validar la necesidad real y urgente de soluciones tecnológicas en el sector de refrigeración, tanto en los negocios que dependen de estos equipos como en las empresas proveedoras de servicios técnicos.
 El proceso de investigación, entrevistas y análisis ha revelado importantes hallazgos que refuerzan la relevancia de nuestra propuesta de valor.
 
@@ -1434,14 +1707,26 @@ Algunas recomendaciones que tomamos en cuenta que podrían impulsar el desarroll
 - Realizar pruebas piloto en campo con usuarios reales antes del lanzamiento masivo.
 - Consolidar alianzas con proveedores locales, para lograr una adopción más rápida y posicionar la plataforma como un estándar del sector.
 
-Este trabajo ha demostrado que OsitoPolar no solo resuelve un problema real, sino que tiene el potencial de transformar la forma en que se gestiona la refrigeración comercial y técnica en el Perú. [cite_start]Los próximos pasos deberán enfocarse en escalar esta solución de manera sostenible y centrada en el usuario. [cite: 2]
+Este trabajo ha demostrado que OsitoPolar no solo resuelve un problema real, sino que tiene el potencial de transformar la forma en que se gestiona la refrigeración comercial y técnica en el Perú. Los próximos pasos deberán enfocarse en escalar esta solución de manera sostenible y centrada en el usuario.
 
 # Videos
-- Video App Validation
-- Video About the Product
-- Video About the Team
+- **Video About the Product:** En este video presentamos la propuesta de valor de OsitoPolar, destacando sus funcionalidades principales como el monitoreo en tiempo real y la gestión de servicios técnicos. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder1)
+- **Video About the Team:** Conoce al equipo detrás de OsitoPolar, nuestros roles y cómo colaboramos para hacer realidad este proyecto. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder2)
+- **Video App Validation:** Demostración de la validación de la aplicación con usuarios reales, mostrando flujos de uso y feedback recibido. [Enlace al video (YouTube)](https://www.youtube.com/watch?v=placeholder3)
 
 # Glosario
+1.  **API (Application Programming Interface):** Conjunto de reglas y definiciones que permiten que diferentes aplicaciones de software se comuniquen entre sí.
+2.  **Backend:** La parte del lado del servidor de una aplicación web o móvil, responsable de la lógica de negocio, la base de datos y la autenticación.
+3.  **Bounded Context:** Un límite conceptual dentro del cual un modelo de dominio específico es aplicable y consistente. Concepto clave en Domain-Driven Design.
+4.  **Chiller:** Sistema de refrigeración que enfría agua o una mezcla de agua y glicol, que luego se circula para enfriar aire o equipos.
+5.  **CRUD (Create, Read, Update, Delete):** Las cuatro operaciones básicas para el almacenamiento persistente de datos.
+6.  **DDD (Domain-Driven Design):** Enfoque de desarrollo de software que conecta la implementación con un modelo evolutivo de los conceptos centrales del negocio.
+7.  **Endpoint:** Un punto final de comunicación en una API, generalmente una URL específica donde se puede acceder a un recurso.
+8.  **Flutter:** Kit de desarrollo de software de interfaz de usuario de código abierto creado por Google para crear aplicaciones nativas compiladas para móvil, web y escritorio desde una única base de código.
+9.  **HVAC (Heating, Ventilation, and Air Conditioning):** Sistemas de calefacción, ventilación y aire acondicionado.
+10. **IoT (Internet of Things):** Red de objetos físicos ("cosas") que llevan incorporados sensores, software y otras tecnologías con el fin de conectar e intercambiar datos con otros dispositivos y sistemas a través de Internet.
+11. **KPI (Key Performance Indicator):** Métrica cuantificable utilizada para evaluar el éxito de una organización o actividad en particular.
+12. **MVP (Minimum Viable Product):** Versión de un producto con las características suficientes para satisfacer a los primeros clientes y proporcionar retroalimentación para el desarrollo futuro.
 
 # Bibliografía
 - Axios. (s.f.). *Axios: Promise based HTTP client for the browser and node.js*. Recuperado el 10 de julio de 2025, de https://axios-http.com/docs/intro
@@ -1459,8 +1744,8 @@ Este trabajo ha demostrado que OsitoPolar no solo resuelve un problema real, sin
 - RESTfulAPI.net. (s.f.). *REST API tutorial*. Recuperado el 10 de julio de 2025, de https://restfulapi.net
 - Stripe. (s.f.). *Payments overview*. Recuperado el 10 de julio de 2025, de https://docs.stripe.com/payments?payments=popular
 - UXPressia. (s.f.). *User vs. buyer persona: Differences and free template*. Recuperado el 10 de julio de 2025, de https://uxpressia.com/blog/user-persona-vs-buyer-persona-difference
-- W3Schools. (s.f.). *HTML style guide and coding conventions*. [cite_start]Recuperado el 10 de julio de 2025, de https://www.w3schools.com/html/html5_syntax.asp [cite: 2]
+- W3Schools. (s.f.). *HTML style guide and coding conventions*. Recuperado el 10 de julio de 2025, de https://www.w3schools.com/html/html5_syntax.asp
 
 # Anexos
-- Organización GitHub: [https://github.com/Inteligencia-Artesanal-Aplicaciones-Web](https://github.com/Equipo5-Aplicaciones-Moviles/upc-Aplicaciones-Moviles-Equipo5)
-- [cite_start]Miro : https://miro.com/app/board/uXjVJGeldZw=/ [cite: 2]
+- Organización GitHub: [https://github.com/Equipo5-Aplicaciones-Moviles](https://github.com/Equipo5-Aplicaciones-Moviles)
+- Miro : https://miro.com/app/board/uXjVJGeldZw=/
