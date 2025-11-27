@@ -43,35 +43,113 @@
 
 <div style="page-break-after: always;"></div>
 
-# Tabla de Contenidos
+# Chapter I: Presentation
+- 1.1. Startup Profile
+  - 1.1.1. Startup Description
+  - 1.1.2. Team Member Profiles
+- 1.2. Solution Profile
+  - 1.2.1. Background and Problem Statement
+  - 1.2.2. Lean UX Process
+    - 1.2.2.1. Lean UX Problem Statements
+    - 1.2.2.2. Lean UX Assumptions
+    - 1.2.2.3. Lean UX Hypothesis Statements
+    - 1.2.2.4. Lean UX Canvas
+- 1.3. Target Segments
 
-1. [Student Outcome](#student-outcome)
-2. [Objetivos SMART](#objetivos-smart)
-3. [Capítulo I: Presentación](#capítulo-i-presentación)
-    - 1.1. Startup Profile
-    - 1.2. Solution Profile
-    - 1.3. Segmentos objetivo
-4. [Capítulo II: Requirements Development and Software Solution Design](#capítulo-ii-requirements-development-and-software-solution-design)
-    - 2.1. Competidores
-    - 2.2. Entrevistas
-    - 2.3. Needfinding
-    - 2.4. Requirements Specification
-    - 2.5. Strategic-Level Domain-Driven Design
-    - 2.6. Tactical-Level Domain-Driven Design
-5. [Capítulo III: Solution UI/UX Design](#capítulo-iii-solution-uiux-design)
-    - 3.1. Product Design
-6. [Capítulo IV: Product Implementation & Validation](#capítulo-iv-product-implementation--validation)
-    - 4.1. Software Configuration Management
-    - 4.2. Landing Page & Mobile Application Implementation
-        - [Sprint 1](#421-sprint-1)
-        - [Sprint 2](#422-sprint-2)
-        - [Sprint 3](#423-sprint-3)
-    - 4.3. Validation Interviews
-7. [Conclusiones](#conclusiones)
-8. [Videos](#videos)
-9. [Glosario](#glosario)
-10. [Bibliografía](#bibliografía)
-11. [Anexos](#anexos)
+# Chapter II: Requirements Development and Software Solution Design
+- 2.1. Competitors
+  - 2.1.1. Competitive Analysis
+  - 2.1.2. Strategies and Tactics Against Competitors
+- 2.2. Interviews
+  - 2.2.1. Interview Design
+  - 2.2.2. Interview Records
+  - 2.2.3. Interview Analysis
+- 2.3. Needfinding
+  - 2.3.1. User Personas
+  - 2.3.2. User Task Matrix
+  - 2.3.3. User Journey Mapping
+  - 2.3.4. Empathy Mapping
+  - 2.3.5. Ubiquitous Language
+- 2.4. Requirements Specification
+  - 2.4.1. User Stories
+  - 2.4.2. Impact Mapping
+  - 2.4.3. Product Backlog
+- 2.5. Strategic-Level Domain-Driven Design
+  - 2.5.1. EventStorming
+    - 2.5.1.1. Candidate Context Discovery
+    - 2.5.1.2. Domain Message Flows Modeling
+    - 2.5.1.3. Bounded Context Canvases
+  - 2.5.2. Context Mapping
+  - 2.5.3. Software Architecture
+    - 2.5.3.1. Software Architecture Context Level Diagrams
+    - 2.5.3.2. Software Architecture Container Level Diagrams
+    - 2.5.3.3. Software Architecture Deployment Diagrams
+- 2.6. Tactical-Level Domain-Driven Design
+  - 2.6.x. Bounded Context: <Bounded Context Name>
+    - 2.6.x.1. Domain Layer
+    - 2.6.x.2. Interface Layer
+    - 2.6.x.3. Application Layer
+    - 2.6.x.4. Infrastructure Layer
+    - 2.6.x.5. Bounded Context Software Architecture Component Level Diagrams
+    - 2.6.x.6. Bounded Context Software Architecture Code Level Diagrams
+      - 2.6.x.6.1. Bounded Context Domain Layer Class Diagrams
+      - 2.6.x.6.2. Bounded Context Database Design Diagram
+
+# Chapter III: Solution UI/UX Design
+- 3.1. Product Design
+  - 3.1.1. Style Guidelines
+    - 3.1.1.1. General Style Guidelines
+  - 3.1.2. Information Architecture
+    - 3.1.2.1. Organization Systems
+    - 3.1.2.2. Labelling Systems
+    - 3.1.2.3. SEO Tags and Meta Tags
+    - 3.1.2.4. Searching Systems
+    - 3.1.2.5. Navigation Systems
+  - 3.1.3. Landing Page UI Design
+    - 3.1.3.1. Landing Page Wireframe
+    - 3.1.3.2. Landing Page Mock-up
+  - 3.1.4. Mobile Applications UX/UI Design
+    - 3.1.4.1. Mobile Applications Wireframes
+    - 3.1.4.2. Mobile Applications Wireflow Diagrams
+    - 3.1.4.3. Mobile Applications Mock-ups
+    - 3.1.4.4. Mobile Applications User Flow Diagrams
+    - 3.1.4.5. Mobile Applications Prototyping
+
+# Chapter IV: Product Implementation & Validation
+- 4. Product Implementation & Validation
+- 4.1. Software Configuration Management
+  - 4.1.1. Software Development Environment Configuration
+  - 4.1.2. Source Code Management
+  - 4.1.3. Source Code Style Guide & Conventions
+  - 4.1.4. Software Deployment Configuration
+- 4.2. Landing Page & Mobile Application Implementation
+  - 4.2.1. Sprint n
+    - 4.2.1.1. Sprint Planning n
+    - 4.2.1.2. Sprint Backlog n
+    - 4.2.1.3. Development Evidence for Sprint Review
+    - 4.2.1.4. Testing Suite Evidence for Sprint Review
+    - 4.2.1.5. Execution Evidence for Sprint Review
+    - 4.2.1.6. Services Documentation Evidence for Sprint Review
+    - 4.2.1.7. Software Deployment Evidence for Sprint Review
+    - 4.2.1.8. Team Collaboration Insights during Sprint
+- 4.3. Validation Interviews
+  - 4.3.1. Interview Design
+  - 4.3.2. Interview Records
+  - 4.3.3. Heuristic Evaluations
+
+# Conclusions
+- Conclusions and Recommendations.
+
+# Videos
+- Video App Validation
+- Video About the Product
+- Video About the Team
+
+# Glosario
+
+# Bibliografia
+
+# Anexos
 
 <div style="page-break-after: always;"></div>
 
