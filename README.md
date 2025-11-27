@@ -303,17 +303,100 @@ Hemos identificado una brecha significativa: las soluciones actuales no abordan 
 - Implementar inteligencia artificial que permita trazar estrategias de mantenimiento inteligente, rutas eficientes para los técnicos y recomendaciones proactivas ante posibles fallos.
 
 **User Outcomes**
-* **¿Quién será nuestro usuario?**
-    * Negocios que dependen críticamente del uso de sistemas de refrigeración como supermercados, minimarkets, restaurantes, laboratorios y empresas del rubro alimentario y farmacéutico.
-    * Técnicos especializados en refrigeración que brindan mantenimiento a dichos sistemas.
-    * Proveedores de equipos de refrigeración que desean ofrecer un servicio posventa más eficiente.
-* **¿Dónde encaja nuestro producto en su vida?**
-    * En situaciones donde los negocios necesitan garantizar la continuidad operativa de sus equipos de frío, evitando pérdidas económicas por fallas imprevistas.
-    * En el día a día de técnicos de refrigeración que deben gestionar múltiples clientes, visitas y mantenimientos.
-    * En la operación diaria de los negocios que necesitan registros y reportes precisos del desempeño de sus sistemas de refrigeración.
-* **¿Qué problemas tiene nuestro producto y cómo se pueden resolver?**
-    * El principal desafío es asegurar que los datos de monitoreo (temperatura, consumo energético, fallas, etc.) sean precisos, actualizados y confiables. **Solución**: Se debe integrar sensores calibrados y sistemas de verificación automática que validen las lecturas antes de almacenarlas.
-    * Otro problema puede ser la adopción inicial de la plataforma por parte de usuarios no tecnológicos. **Solución**: Esto se abordará con una interfaz sencilla, explicaciones paso a paso y soporte técnico accesible.
+
+## ¿Quién será nuestro usuario?
+
+- **Negocios que dependen críticamente del uso de sistemas de refrigeración** como supermercados, minimarkets, restaurantes, laboratorios y empresas del rubro alimentario y farmacéutico.
+- **Técnicos especializados en refrigeración** que brindan mantenimiento a dichos sistemas.
+- **Proveedores de equipos de refrigeración** que desean ofrecer un servicio posventa más eficiente.
+
+## ¿Dónde encaja nuestro producto en su vida?
+
+- En situaciones donde los negocios necesitan garantizar la continuidad operativa de sus equipos de frío, evitando pérdidas económicas por fallas imprevistas.
+- En el día a día de técnicos de refrigeración que deben gestionar múltiples clientes, visitas y mantenimientos.
+- En la operación diaria de los negocios que necesitan registros y reportes precisos del desempeño de sus sistemas de refrigeración.
+
+## ¿Qué problemas tiene nuestro producto y cómo se pueden resolver?
+
+- El principal desafío es asegurar que los datos de monitoreo (temperatura, consumo energético, fallas, etc.) sean precisos, actualizados y confiables.  
+  **Solución**: Se debe integrar sensores calibrados y sistemas de verificación automática que validen las lecturas antes de almacenarlas.
+- Otro problema puede ser la adopción inicial de la plataforma por parte de usuarios no tecnológicos.  
+  **Solución**: Esto se abordará con una interfaz sencilla, explicaciones paso a paso y soporte técnico accesible.
+
+## ¿Cómo y Cuándo es usado nuestro producto?
+
+- Se accede desde la aplicación web, tanto desde computadoras como dispositivos móviles.
+- Se utiliza diariamente para monitorear el estado de los equipos de frío, recibir alertas, programar mantenimientos o revisar el historial técnico.
+- También se activa automáticamente en segundo plano cuando se integran sensores de monitoreo con la plataforma.
+
+## ¿Qué problemas tiene nuestro producto?
+
+- En sus etapas iniciales, puede carecer de ciertas integraciones con hardware de terceros.
+- Algunos usuarios pueden requerir capacitación para comprender todas las funcionalidades avanzadas.
+- También podría haber desafíos para que los técnicos adopten el uso digital en lugar del método tradicional.
+
+## ¿Qué características son importantes para la app?
+
+- Monitoreo en tiempo real de temperatura, consumo energético y tiempo de uso.
+- Alertas automáticas por fallas detectadas en los equipos.
+- Historial técnico completo con reportes exportables en PDF.
+- Calendario de mantenimiento preventivo con notificaciones programadas.
+- Módulo exclusivo para técnicos con gestión de visitas y clientes.
+- Soporte técnico inteligente y recomendaciones predictivas mediante IA.
+- Registro de múltiples ubicaciones y usuarios con distintos roles.
+- Interfaz intuitiva y minimalista para garantizar fácil adopción.
+
+## ¿Cómo debe verse nuestro producto y cómo comportarse?
+
+- **Interfaz amigable y confiable**: Los usuarios deben sentirse seguros al usar la aplicación. La interfaz debe ser clara, ordenada y fácil de navegar, sin sobrecargar de información, con gráficos e indicadores intuitivos.
+- **Diseño centrado en tareas críticas**: Desde el primer acceso, los usuarios deben poder ver si hay fallas, cuándo es la próxima visita técnica, y acceder rápidamente a los reportes y al historial de sus equipos.
+- **Accesibilidad multiplataforma**: Disponible en web y móvil, adaptable para usuarios que están en oficina o en campo. Notificaciones inmediatas ante cualquier problema detectado.
+- **Simplicidad**: La app debe permitirles ver sus clientes, equipos en riesgo y visitas programadas, todo desde un panel centralizado. Pueden agendar visitas y generar reportes técnicos en segundos.
+
+## ¿Qué valor busca el cliente?
+
+- **Gestión técnica simplificada**: Los proveedores y técnicos buscan dejar de ser reactivos. OsitoPolar los vuelve proactivos con mantenimiento predictivo, historiales claros y clientes organizados.
+- **Seguridad operativa y cero sorpresas**: Los negocios quieren evitar pérdidas por fallas en frío. OsitoPolar les da monitoreo constante, alertas automáticas y control total sobre sus equipos.
+- **Eficiencia energética y trazabilidad**: Los dueños quieren saber si sus equipos consumen de más, si están rindiendo mal, o si un componente ya debería ser reemplazado. El sistema lo identifica antes que ocurra el fallo.
+
+## ¿Qué beneficios adicionales obtendrá el cliente?
+
+- Visibilidad total del estado de sus equipos, desde cualquier lugar, en cualquier momento.
+- Soporte técnico más ágil gracias al historial previo y alertas automáticas.
+- Menores costos operativos gracias a mantenimientos a tiempo y mayor eficiencia energética.
+- Reportes personalizados y exportables.
+- Automatización de visitas técnicas cuando se detectan patrones de falla.
+
+## ¿Cómo atraeremos usuarios?
+
+- **Marketing dirigido a nichos clave**: Supermercados, restaurantes y empresas de frío serán contactados directamente mediante LinkedIn, correos y llamadas estratégicas.
+- **Alianzas con proveedores de equipos**: Trabajaremos con empresas que venden congeladoras o cámaras frigoríficas para que incluyan OsitoPolar en sus paquetes posventa.
+- **Prueba gratuita de versiones de pago**: Un modelo de 14 días gratis con monitoreo limitado para mostrar el valor de la plataforma en tiempo real.
+
+## ¿Cómo generaremos ingresos?
+
+- **Suscripción mensual de negocios**: Por el uso de la plataforma, según número de equipos, tipo de reportes y funcionalidades.
+- **Modelo freemium**: Habrá una versión gratuita que brindará algunas funciones limitadas, pero con anuncios, lo que generará ingresos adicionales.
+- **Publicidad dirigida (opcional)**: Marcas de refrigeración podrían pagar por visibilidad dentro de la plataforma si se llega a una masa crítica de técnicos y negocios.
+
+## ¿Cuál es nuestra competencia y cómo la superamos?
+
+- **Competencia**: Las principales competidoras son aplicaciones relacionadas con la gestión de datos y orientada al servicio técnico de mantenimiento de equipos de refrigeración.
+- **Nuestra ventaja**: OsitoPolar fue diseñado exclusivamente para negocios que dependen de equipos de frío. No somos una herramienta genérica, somos expertos en el nicho. No solo registramos visitas o mantenimientos, también detectamos anomalías en tiempo real, generamos alertas y automatizamos acciones.
+
+## ¿Cuál es nuestro mayor riesgo?
+
+- **Adopción lenta por parte del personal tradicional**: Algunos proveedores aún dependen de agendas físicas o Excel y podrían resistirse al cambio.
+- **Falta de adopción inicial**: La dificultad para convencer a los primeros usuarios de que la app es útil y confiable puede retrasar su adopción.
+- **Desconfianza en la precisión de los sensores**: Si los datos no son confiables, la plataforma pierde valor
+
+## ¿Cómo lo resolveremos?
+
+- **Algoritmos de validación**: Implementaremos algoritmos de IA que verifiquen la información y filtren los reportes ambiguos o antiguos, garantizando solo datos confiables y actuales.
+- **Capacitación y soporte**: Para resolver la falta de adopción, ofreceremos tutoriales interactivos, videos explicativos y soporte técnico accesible para que los usuarios se familiaricen con las funciones.
+- **Estrategia progresiva de integraciones**: Comenzaremos con los equipos más usados y luego ampliaremos compatibilidad mediante APIs y alianzas con fabricantes.
+- **Sensores certificados**: Solo se integrarán sensores probados.
+
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
