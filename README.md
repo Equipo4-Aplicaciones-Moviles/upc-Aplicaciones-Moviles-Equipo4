@@ -43,7 +43,7 @@
 
 <div style="page-break-after: always;"></div>
 
-## Chapter I: Presentation
+# Chapter I: Presentation
 - [1.1. Startup Profile](#11-startup-profile)
   - [1.1.1. Startup Description](#111-startup-description)
   - [1.1.2. Team Member Profiles](#112-team-member-profiles)
@@ -56,7 +56,7 @@
     - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
 - [1.3. Target Segments](#13-target-segments)
 
-## Chapter II: Requirements Development and Software Solution Design
+# Chapter II: Requirements Development and Software Solution Design
 - [2.1. Competitors](#21-competitors)
   - [2.1.1. Competitive Analysis](#211-competitive-analysis)
   - [2.1.2. Strategies and Tactics Against Competitors](#212-strategies-and-tactics-against-competitors)
@@ -85,7 +85,7 @@
     - [2.5.3.2. Software Architecture Container Level Diagrams](#2532-software-architecture-container-level-diagrams)
     - [2.5.3.3. Software Architecture Deployment Diagrams](#2533-software-architecture-deployment-diagrams)
 - [2.6. Tactical-Level Domain-Driven Design](#26-tactical-level-domain-driven-design)
-  - **2.6.x. Bounded Context: _<Bounded Context Name>_**
+  - [2.6.x. Bounded Context: \<Bounded Context Name\>](#26x-bounded-context--bounded-context-name)
     - [2.6.x.1. Domain Layer](#26x1-domain-layer)
     - [2.6.x.2. Interface Layer](#26x2-interface-layer)
     - [2.6.x.3. Application Layer](#26x3-application-layer)
@@ -95,7 +95,7 @@
       - [2.6.x.6.1. Bounded Context Domain Layer Class Diagrams](#26x61-bounded-context-domain-layer-class-diagrams)
       - [2.6.x.6.2. Bounded Context Database Design Diagram](#26x62-bounded-context-database-design-diagram)
 
-## Chapter III: Solution UI/UX Design
+# Chapter III: Solution UI/UX Design
 - [3.1. Product Design](#31-product-design)
   - [3.1.1. Style Guidelines](#311-style-guidelines)
     - [3.1.1.1. General Style Guidelines](#3111-general-style-guidelines)
@@ -115,7 +115,7 @@
     - [3.1.4.4. Mobile Applications User Flow Diagrams](#3144-mobile-applications-user-flow-diagrams)
     - [3.1.4.5. Mobile Applications Prototyping](#3145-mobile-applications-prototyping)
 
-## Chapter IV: Product Implementation & Validation
+# Chapter IV: Product Implementation & Validation
 - [4. Product Implementation & Validation](#4-product-implementation--validation)
 - [4.1. Software Configuration Management](#41-software-configuration-management)
   - [4.1.1. Software Development Environment Configuration](#411-software-development-environment-configuration)
@@ -123,7 +123,7 @@
   - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide--conventions)
   - [4.1.4. Software Deployment Configuration](#414-software-deployment-configuration)
 - [4.2. Landing Page & Mobile Application Implementation](#42-landing-page--mobile-application-implementation)
-  - **4.2.1. Sprint n**
+  - [4.2.1. Sprint n](#421-sprint-n)
     - [4.2.1.1. Sprint Planning n](#4211-sprint-planning-n)
     - [4.2.1.2. Sprint Backlog n](#4212-sprint-backlog-n)
     - [4.2.1.3. Development Evidence for Sprint Review](#4213-development-evidence-for-sprint-review)
@@ -137,22 +137,22 @@
   - [4.3.2. Interview Records](#432-interview-records)
   - [4.3.3. Heuristic Evaluations](#433-heuristic-evaluations)
 
-## Conclusions
+# Conclusions
 - [Conclusions and Recommendations](#conclusions-and-recommendations)
 
-## Videos
+# Videos
 - [Video App Validation](#video-app-validation)
 - [Video About the Product](#video-about-the-product)
 - [Video About the Team](#video-about-the-team)
 
-## Glosario
+# Glosario
 - [Glosario](#glosario)
 
-## Bibliografía
+# Bibliografia
 - [Bibliografia](#bibliografia)
 
-## Anexos
-- [Anexos](#anexos)
+# Anexos (haz hiper vinculos ese indice)
+- [Anexos](#anexos-haz-hiper-vinculos-ese-indice)
 
 
 <div style="page-break-after: always;"></div>
