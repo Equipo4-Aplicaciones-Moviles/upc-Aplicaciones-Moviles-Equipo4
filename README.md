@@ -45,16 +45,16 @@
 
 # Chapter I: Presentation
 - [1.1. Startup Profile](#11-startup-profile)
-  - [1.1.1. Startup Description](#111-startup-description)
-  - [1.1.2. Team Member Profiles](#112-team-member-profiles)
+  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
+  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
 - [1.2. Solution Profile](#12-solution-profile)
-  - [1.2.1. Background and Problem Statement](#121-background-and-problem-statement)
+  - [1.2.1. Antecendentes y Problemática](#121-antecedentes-y-problemática)
   - [1.2.2. Lean UX Process](#122-lean-ux-process)
     - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
     - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
     - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
     - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
-- [1.3. Target Segments](#13-target-segments)
+- [1.3. Segmentos Objetivos](#13-segmentos-objetivos)
 
 # Chapter II: Requirements Development and Software Solution Design
 - [2.1. Competitors](#21-competitors)
