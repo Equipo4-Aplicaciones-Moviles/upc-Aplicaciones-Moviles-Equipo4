@@ -1691,15 +1691,15 @@ Provee la implementación concreta de servicios como base de datos, brokers, etc
 | EquipmentRepository | Repository | Implementación de EquipmentRepository con acceso a base de datos | PostgreSQL |
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
-<img width="3870" height="3211" alt="mi_equipo_component1" src="https://github.com/user-attachments/assets/709cd005-84e4-4a14-8e6d-4dd3a8c2772b" />
+<img width="3870" height="auto" alt="mi_equipo_component1" src="https://github.com/user-attachments/assets/709cd005-84e4-4a14-8e6d-4dd3a8c2772b" />
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Mi Equipo. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
 #### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
-<img width="1538" height="850" alt="image" src="https://github.com/user-attachments/assets/2b1b243e-27c0-41d7-a1a5-1f6ff0a01e7e" />
+<img width="1538" height="auto" alt="image" src="https://github.com/user-attachments/assets/2b1b243e-27c0-41d7-a1a5-1f6ff0a01e7e" />
 
 #### 2.6.1.6.2. Bounded Context Database Design Diagram
-<img width="1091" height="623" alt="image" src="https://github.com/user-attachments/assets/79d43335-bed1-4203-9d34-3298314f8d43" />
+<img width="1091" height="auto" alt="image" src="https://github.com/user-attachments/assets/79d43335-bed1-4203-9d34-3298314f8d43" />
 
  
 #### 2.6.2. Bounded Context: Gestión de Solicitudes
@@ -1739,15 +1739,15 @@ Provee la implementación concreta de servicios como base de datos, brokers, etc
 | ServiceRequestRepository | Repository | Implementación de ServiceRequestRepository con acceso a base de datos | PostgreSQL |
 
 ##### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
-<img width="4620" height="1411" alt="gestion_solicitudes_component" src="https://github.com/user-attachments/assets/589e930b-82c7-48fd-9c49-7fe81b7c3a19" />
+<img width="4620" height="auto" alt="gestion_solicitudes_component" src="https://github.com/user-attachments/assets/589e930b-82c7-48fd-9c49-7fe81b7c3a19" />
 
 ##### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Gestión de Solicitudes. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
 ###### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
-<img width="1817" height="467" alt="image" src="https://github.com/user-attachments/assets/b686ba99-f84c-4900-be14-d455b16d9b9f" />
+<img width="1817" height="auto" alt="image" src="https://github.com/user-attachments/assets/b686ba99-f84c-4900-be14-d455b16d9b9f" />
 
 ###### 2.6.2.6.2. Bounded Context Database Design Diagram
-<img width="542" height="640" alt="image" src="https://github.com/user-attachments/assets/e394d39c-dc41-46ed-9066-a52dbd2e81e8" />
+<img width="542" height="auto" alt="image" src="https://github.com/user-attachments/assets/e394d39c-dc41-46ed-9066-a52dbd2e81e8" />
 
            
 
@@ -1787,15 +1787,15 @@ Provee la implementación concreta de servicios como base de datos, brokers, etc
 | WorkOrderRepository | Repository | Implementación de WorkOrderRepository con acceso a base de datos | PostgreSQL |
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
-<img width="4620" height="1411" alt="orden_trabajo_component" src="https://github.com/user-attachments/assets/c4700d59-dc40-4338-ae11-6ddf359ad468" />
+<img width="4620" height="auto" alt="orden_trabajo_component" src="https://github.com/user-attachments/assets/c4700d59-dc40-4338-ae11-6ddf359ad468" />
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Órdenes de Trabajo. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
 #### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
-<img width="1805" height="442" alt="image" src="https://github.com/user-attachments/assets/cf16b776-74cf-4c03-af58-38d6be9fca31" />
+<img width="1805" height="auto" alt="image" src="https://github.com/user-attachments/assets/cf16b776-74cf-4c03-af58-38d6be9fca31" />
 
 #### 2.6.3.6.2. Bounded Context Database Design Diagram
-<img width="622" height="480" alt="image" src="https://github.com/user-attachments/assets/409402e0-9d5f-40e2-90c3-c8bfd29e5444" />
+<img width="622" height="auto" alt="image" src="https://github.com/user-attachments/assets/409402e0-9d5f-40e2-90c3-c8bfd29e5444" />
 
  
 
@@ -1835,15 +1835,15 @@ Provee la implementación concreta de servicios como base de datos, brokers, etc
 | TechnicianRepository | Repository | Implementación de TechnicianRepository con acceso a base de datos | PostgreSQL |
 
 ##### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
-<img width="4620" height="1616" alt="ver_mantenimientos_component" src="https://github.com/user-attachments/assets/cc9a9843-3bbf-4fa8-b894-3c0f667caeda" />
+<img width="4620" height="auto" alt="ver_mantenimientos_component" src="https://github.com/user-attachments/assets/cc9a9843-3bbf-4fa8-b894-3c0f667caeda" />
 
 ##### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 A continuación, se detallan los diagramas de arquitectura de código que brindan mayor profundidad sobre la implementación interna del bounded context de Ver Mantenimientos. Esta vista se enfoca en clases, métodos, atributos y relaciones a nivel de código fuente.
 ###### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
-<img width="1327" height="511" alt="image" src="https://github.com/user-attachments/assets/d17df10e-5038-45b5-847e-20237f81cbb5" />
+<img width="1327" height="auto" alt="image" src="https://github.com/user-attachments/assets/d17df10e-5038-45b5-847e-20237f81cbb5" />
 
 ###### 2.6.4.6.2. Bounded Context Database Design Diagram
-<img width="871" height="463" alt="image" src="https://github.com/user-attachments/assets/7c0cba94-db9f-4329-9de0-87a4dfa55863" />
+<img width="871" height="auto" alt="image" src="https://github.com/user-attachments/assets/7c0cba94-db9f-4329-9de0-87a4dfa55863" />
 
      
 
