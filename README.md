@@ -3334,12 +3334,15 @@ Sprint # | Sprint 3 | | | | | | |
 ---------|----------|---------|-------|-----|----|----|---|
 User Story | Work-Item / Task
 ID | Title | ID | Title | Description | Estimation (Hours) | Assigned To | Status
-US05| Ver reporte de servicio realizado | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los reportes | 4 | Sergio Aguirre | In process
-US05| Ver reporte de servicio realizado | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los servicios realizados y cada uno de sus atributos | 3 | Maria Muñoz | In process
-US09| Ver consumo energético | UT03 | Visualizar detalle de consumo | Implementar detalle del consumo energético para cada equipo e refrigeración | 3 | Luis Montañez | In process
-US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Implementar visualizar el historial completo de los servicios realizados | 3 | Victor Rojas | In process
-US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | In process
-US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | In process
+US05| Ver reporte de servicio realizado | UT01 | Implementar estructura | Crear los componentes, entidades y servicios de los reportes | 4 | Sergio Aguirre | Done
+US05| Ver reporte de servicio realizado | UT02 | Implementar operaciones CRUD |  Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los servicios realizados y cada uno de sus atributos | 3 | Maria Muñoz | Done
+US09| Ver consumo energético | UT03 | Visualizar detalle de consumo | Implementar detalle del consumo energético para cada equipo e refrigeración | 3 | Luis Montañez | Done
+US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Implementar visualizar el historial completo de los servicios realizados | 3 | Victor Rojas | Done
+US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | Done
+US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | Done
+US17| Visualizar equipos entregados | UT07 | Ver equipos de refrigeración | Implementar la visualización de entregas de equipos | 4 | Maria Muñoz | Done
+US03| Solicitar servicio de reparación | UT08 | Hacer solicitudes de mantenimiento de equipos | Implementar función de solicitudes de work orders para equipos de refrigeración | 4 | Victor Rojas | Done
+US04| Ver estado del servicio | UT09 | Visualizar estado de un servicio a un equipo | Implementar función de visualización de mantenimientos de equipos | 4 | Sergio Aguirre | Done
 
 <img src="assets/TF/backlog3.jpg" alt="backlog3" width="1000" height="auto">
 link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a9af6f028c14403598e82c1558E82E2A6F/osito-polar-sprint-backlog-3
