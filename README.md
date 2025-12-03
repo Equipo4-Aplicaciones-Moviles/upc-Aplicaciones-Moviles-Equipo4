@@ -3299,6 +3299,12 @@ link de Trello: https://trello.com/invite/b/692f7b1a04415c0e07643de9/ATTI707e69d
 <img width="1000" height="auto" src="assets/TF/technicians.jpg"><br>
 
 #### 4.2.2.7. Software Deployment Evidence for Sprint Review
+Despliegue de la aplicación backend en Azure
+<img width="1000" height="auto" src="assets/TF/azure_despliegue.jpg"><br>
+Prueba de los endpoints
+<img width="1000" height="auto" src="assets/TF/endpoint_prueba1"><br>
+<img width="1000" height="auto" src="assets/TF/endpoint_prueba2.jpg"><br>
+
 #### 4.2.2.8. Team Collaboration Insights during Sprint
 
 ### 4.2.3 Sprint 3
@@ -3386,7 +3392,11 @@ fotos de capturas de ejecución
 
 #### 4.2.2.7. Software Deployment Evidence for Sprint Review
 
-Despliegue de la aplicación backend en Azure 
+Despliegue de la aplicación backend en Azure
+<img width="1000" height="auto" src="assets/TF/azure_despliegue.jpg"><br>
+Prueba de los endpoints
+<img width="1000" height="auto" src="assets/TF/endpoint_prueba1"><br>
+<img width="1000" height="auto" src="assets/TF/endpoint_prueba2.jpg"><br>
 
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
