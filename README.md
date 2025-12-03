@@ -164,7 +164,7 @@
     - [3.1.4.5. Mobile Applications Prototyping](#3145-mobile-applications-prototyping)
 
 # Chapter IV: Product Implementation & Validation
-- [4. Product Implementation & Validation](#4-capitulo-VI-product-implementation-validation)
+- [4. Product Implementation & Validation](#capitulo-VI-product-implementation-validation)
 - [4.1. Software Configuration Management](#41-software-configuration-management)
   - [4.1.1. Software Development Environment Configuration](#411-software-development-environment-configuration)
   - [4.1.2. Source Code Management](#412-source-code-management)
