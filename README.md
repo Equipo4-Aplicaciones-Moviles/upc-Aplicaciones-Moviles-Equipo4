@@ -164,13 +164,13 @@
     - [3.1.4.5. Mobile Applications Prototyping](#3145-mobile-applications-prototyping)
 
 # Chapter IV: Product Implementation & Validation
-- [4. Product Implementation & Validation](#capitulo-VI-product-implementation-validation)
+- [4. Product Implementation & Validation](#capitulo-VI-product-implementation-and-validation)
 - [4.1. Software Configuration Management](#41-software-configuration-management)
   - [4.1.1. Software Development Environment Configuration](#411-software-development-environment-configuration)
   - [4.1.2. Source Code Management](#412-source-code-management)
-  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide-conventions)
+  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide-and-conventions)
   - [4.1.4. Software Deployment Configuration](#414-software-deployment-configuration)
-- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page-mobile-application-implementation)
+- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page-and-mobile-application-implementation)
   - [4.2.1. Sprint n](#421-sprint-n)
     - [4.2.1.1. Sprint Planning n](#4211-sprint-planning-2)
     - [4.2.1.2. Sprint Backlog n](#4212-sprint-backlog-2)
@@ -2991,7 +2991,7 @@ El contraste cromático resalta las acciones principales de aprobación o rechaz
    
   ### 3.1.4.5. Mobile Applications Prototyping
 
-# Capítulo IV: Product Implementation & Validation
+# Capítulo IV: Product Implementation and Validation
 
 
 ## 4.1 Software Configuration Management
@@ -3069,7 +3069,7 @@ Project Management
  3. Feature branch (Ramas de funcionalidad): Cada nueva funcionalidad o tarea específica se desarrollará en su propia rama. Una vez completada y probada, se
  integrará en la rama de desarrollo. Las ramas de funcionalidad seguirán un esquema de nombres descriptivos, como por ejemplo: feature/chapter-01.
 
-### 4.1.3. Source code style guide & Conventions
+### 4.1.3. Source code style guide and Conventions
  El equipo adoptará nomenclatura en inglés para todas las variables, funciones, clases y archivos del proyecto, con el objetivo de mantener flexibilidad, escalabilidad y
  coherencia en el desarrollo. HTML / CSS Se sigue el Google HTML/CSS Style Guide.
  Las clases CSS estarán en kebab-case (.main-header, .card-title).
@@ -3106,7 +3106,7 @@ Project Management
  Adicionalmente, se implementó un archivo "languages.js" que contiene los textos en español e inglés. Este archivo es consumido por el script "main.js", el cual permite
  realizar el cambio de idioma dinámicamente en la landing page.ations Implementation
 
-## 4.2. Landing Page & Mobile Application Implementation
+## 4.2. Landing Page and Mobile Application Implementation
 
 
 ### 4.2.1. Sprint 1
