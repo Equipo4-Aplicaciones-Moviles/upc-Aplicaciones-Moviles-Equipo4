@@ -206,7 +206,7 @@
 
 # Videos
 - [Video App the product](https://www.youtube.com/watch?v=C2BqPrKRUN8)
-- [Video About the Product](#video-about-the-product)
+- [Video About the Product](https://www.youtube.com/watch?v=li0cKa47jG8)
 - [Video About the Team](#video-about-the-team)
 
 # Ver Glosario
