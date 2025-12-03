@@ -3399,6 +3399,24 @@ link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a
 
 #### 4.2.3.5. Execution Evidence for Sprint Review
 
+**Inicio de sesión**  
+<img src="assets/TF/android1.jpg" height="400"><br>
+
+**Mi perfil**  
+<img src="assets/TF/android_mi_perfil.jpeg" height="400"><br>
+
+**Mis equipos**  
+<img src="assets/TF/android_mis_equipos.jpeg" height="400"><br>
+
+**Rentar equipos**  
+<img src="assets/TF/android_rentar_equipos.jpeg" height="400"><br>
+
+**Nueva solicitud**  
+<img src="assets/TF/android_nueva_solicitud.jpeg" height="400"><br>
+
+**Notificaciones**  
+<img src="assets/TF/android_notificaciones.jpeg" height="400"><br>
+
 
 #### 4.2.3.6. Services Documentation Evidence for Sprint Review
 
