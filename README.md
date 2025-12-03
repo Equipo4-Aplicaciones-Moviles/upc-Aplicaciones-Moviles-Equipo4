@@ -164,13 +164,13 @@
     - [3.1.4.5. Mobile Applications Prototyping](#3145-mobile-applications-prototyping)
 
 # Chapter IV: Product Implementation & Validation
-- [4. Product Implementation & Validation](#4-capitulo-VI-product-implementation-&-validation)
+- [4. Product Implementation & Validation](#4-capitulo-VI-product-implementation-validation)
 - [4.1. Software Configuration Management](#41-software-configuration-management)
   - [4.1.1. Software Development Environment Configuration](#411-software-development-environment-configuration)
   - [4.1.2. Source Code Management](#412-source-code-management)
-  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide-&-conventions)
+  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide-conventions)
   - [4.1.4. Software Deployment Configuration](#414-software-deployment-configuration)
-- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page-&-mobile-application-implementation)
+- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page-mobile-application-implementation)
   - [4.2.1. Sprint n](#421-sprint-n)
     - [4.2.1.1. Sprint Planning n](#4211-sprint-planning-2)
     - [4.2.1.2. Sprint Backlog n](#4212-sprint-backlog-2)
@@ -193,13 +193,13 @@
 - [Video About the Product](#video-about-the-product)
 - [Video About the Team](#video-about-the-team)
 
-# Glosario
+# Ver Glosario
 - [Glosario](#glosario)
 
-# Bibliografia
-- [Bibliografia](#bibliografia)
+# Ver Bibliografia
+- [Bibliografía](#bibliografía)
 
-# Anexos
+# Ver Anexos
 - [Anexos](#anexos)
 
 
