@@ -3292,11 +3292,11 @@ link de Trello: https://trello.com/invite/b/692f7b1a04415c0e07643de9/ATTI707e69d
 
 **OsitoPolarPlatform.api**
 
-<img src="assets/TF/ositopolarswagger.jpg" height="400"><br>
-<img src="assets/TF/workorders.jpg" height="400"><br>
-<img src="assets/TF/profiles.jpg" height="400"><br>
-<img src="assets/TF/equipments.jpg" height="400"><br>
-<img src="assets/TF/technicians.jpg" height="400"><br>
+<img width="1000" height="auto" src="assets/TF/ositopolarswagger.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/workorders.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/profiles.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/equipments.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/technicians.jpg"><br>
 
 #### 4.2.2.7. Software Deployment Evidence for Sprint Review
 #### 4.2.2.8. Team Collaboration Insights during Sprint
@@ -3371,6 +3371,22 @@ link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a
 | https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | ui improvements | e70498bea74545fdde26056509f5682e8842c35a | implement client login screen | feature: implement login screen | 23/11/25     |
 | https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | fixing_ui | 7bf95f9aab503fda48b15146b2efd1d081d43931 | Update TextField colors form better readability | feature: Update TextField colors form better readability | 2/12/25     |
 
+#### 4.2.3.5. Execution Evidence for Sprint Review
+fotos de capturas de ejecución
+
+#### 4.2.2.6. Services Documentation Evidence for Sprint Review
+
+**OsitoPolarPlatform.api**
+
+<img width="1000" height="auto" src="assets/TF/ositopolarswagger.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/workorders.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/profiles.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/equipments.jpg"><br>
+<img width="1000" height="auto" src="assets/TF/technicians.jpg"><br>
+
+#### 4.2.2.7. Software Deployment Evidence for Sprint Review
+
+Despliegue de la aplicación backend en Azure 
 
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
