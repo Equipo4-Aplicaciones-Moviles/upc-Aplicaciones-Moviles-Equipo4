@@ -3321,7 +3321,7 @@ A continuación, se presenta la planificación del tercer sprint. En esta secci�
 | **Sprint 3 Velocity**              | 15 |
 | **Sum of Story Points**        | 25 |
 
-#### 4.2.3.3. Sprint Backlog 1
+#### 4.2.3.2. Sprint Backlog 3
 
 Sprint # | Sprint 3 | | | | | | |
 ---------|----------|---------|-------|-----|----|----|---|
@@ -3336,6 +3336,41 @@ US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | C
 
 <img src="assets/TF/backlog3.jpg" alt="backlog3" width="1000" height="auto">
 link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a9af6f028c14403598e82c1558E82E2A6F/osito-polar-sprint-backlog-3
+
+ #### 4.2.3.3. Development Evidence for Sprint Review
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|---------|----------|----------------|-----------|-------------|--------------|
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | aef393ef8153d51584ed72949255d3be38a8128f | Feature: Add Withdrawals | Feature: Add Withdrawals | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 31749b306e00d19d48dedf2177d8283d3215b95c | feature/ui improvements add operation analytics | feature/ui improvements add operation analytics | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 03a72d69c54208f92236665364e3d18bb641dcdc | add health analytics | add health analytics page | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 3996e3822e32b37ba51626d6f78b319f3e1660cc | add marketplace page | feat: add marketplace page | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | e6b130c494a450b8fea8288c0e24e6ae91209e58 | Add terms and conditions | feature: add terms and conditions | 1/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | f260c6f0d9cc7c905d3b888ac6edce7e242a68d4 | implement my equipment page | feature: implement my equipment page | 25/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 63f7e99c5b538e2ed941901376f4cf80535db3e7 | implements 2fa verification | feature: implement 2fa verification | 13/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 20a8e92c9a5b2e7f3ceb99a7a93ec3e30bf029ce | Add Equipment screen with form and validation | feature: Add equipment screen with form and validation | 14/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 0f58ac7a41cc2a577e47844e069bc491dfd233f9 | Create Equipment and service request features | feature: Create Equipment and service request features | 14/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 3f112cefe4fc12eb47096f8eab75f8c7a6e4c3e6 | Add analytical screen | feature: add analytical screen | 16/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | ui improvements | e70498bea74545fdde26056509f5682e8842c35a | implement client login screen | feature: implement login screen | 23/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | fixing_ui | 7bf95f9aab503fda48b15146b2efd1d081d43931 | Update TextField colors form better readability | feature: Update TextField colors form better readability | 2/12/25     |
+
+#### 4.2.3.4. Testing Suite Evidence for Sprint Review
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
+|---------|----------|----------------|-----------|-------------|--------------|
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | aef393ef8153d51584ed72949255d3be38a8128f | Feature: Add Withdrawals | Feature: Add Withdrawals | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 31749b306e00d19d48dedf2177d8283d3215b95c | feature/ui improvements add operation analytics | feature/ui improvements add operation analytics | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 03a72d69c54208f92236665364e3d18bb641dcdc | add health analytics | add health analytics page | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | 3996e3822e32b37ba51626d6f78b319f3e1660cc | add marketplace page | feat: add marketplace page | 2/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | e6b130c494a450b8fea8288c0e24e6ae91209e58 | Add terms and conditions | feature: add terms and conditions | 1/12/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-Provider | ui improvements | f260c6f0d9cc7c905d3b888ac6edce7e242a68d4 | implement my equipment page | feature: implement my equipment page | 25/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 63f7e99c5b538e2ed941901376f4cf80535db3e7 | implements 2fa verification | feature: implement 2fa verification | 13/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 20a8e92c9a5b2e7f3ceb99a7a93ec3e30bf029ce | Add Equipment screen with form and validation | feature: Add equipment screen with form and validation | 14/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 0f58ac7a41cc2a577e47844e069bc491dfd233f9 | Create Equipment and service request features | feature: Create Equipment and service request features | 14/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | admin | 3f112cefe4fc12eb47096f8eab75f8c7a6e4c3e6 | Add analytical screen | feature: add analytical screen | 16/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | ui improvements | e70498bea74545fdde26056509f5682e8842c35a | implement client login screen | feature: implement login screen | 23/11/25     |
+| https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | fixing_ui | 7bf95f9aab503fda48b15146b2efd1d081d43931 | Update TextField colors form better readability | feature: Update TextField colors form better readability | 2/12/25     |
+
 
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
