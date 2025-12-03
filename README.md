@@ -3029,7 +3029,7 @@ US24 | Explorar soluciones específicas para mi rubro | UT04 | Crear la sección
 US24 | Explorar soluciones específicas para mi rubro | UT05 | Añadir estilos CSS | Aplicar estilos según el diseño aprobado de "Beneficios" | 2 | Luis Montañez | Done
 US24 | Explorar soluciones específicas para mi rubro | UT06 | Añadir interacciones con JS | Agregar efectos y validaciones según el diseño de Beneficios | 3 | Joseph Rodriguez | Done
 
-<img src="assets/TF/backlog1.jpg" alt="backlog1" width="600" height="auto">
+<img src="assets/TF/backlog1.jpg" alt="backlog1" width="1000" height="auto">
 link de Trello: https://trello.com/invite/b/692f781cba1286ca0c3a9a2f/ATTI2ac02e1ea3f375b9e1ccd8051faebc69F69AC868/osito-polar-sprint-backlog-1
 
 
@@ -3060,8 +3060,6 @@ Suite de pruebas con xUnit, FluentAssertions y Moq. 21 pruebas unitarias (100% e
 
 Framework Pattern Driven Refactoring Report
 
-#### 4.2.1.5. Execution Evidence for Sprint Review
-#### 4.2.1.6. Services Documentation Evidence for Sprint Review
 #### 4.2.1.7. Software Deployment Evidence for Sprint Review
 
 <img width="1202" height="607" alt="image" src="https://github.com/user-attachments/assets/8c830c06-9dc1-46a3-83e0-38a753051518" />
@@ -3116,6 +3114,9 @@ US01| Registrar usuario | UT05 | Funcionalidad de registro | Implementar registr
 US11| Asignar técnico | UT06 | Agregar técnico | Crear los componentes, entidades y servicios de los técnicos | 4 | Maria Muñoz | Done
 US11| Asignar técnico | UT07 | Agregar técnico | Implementar las operaciones CREATE, READ, UPDATE AND DELETE de los técnicos y cada uno de sus atributos | 3 | Maria Muñoz | Done
 US17| Visualizar equipos entregados | UT08 | Funcionalidad de visualización de equipos | Implementar la vista de los equipos que ya han sido entregados | 3 | Joseph Rodriguez | Done
+
+<img src="assets/TF/backlog2.jpg" alt="backlog2" width="1000" height="auto">
+link de Trello: https://trello.com/invite/b/692f7b1a04415c0e07643de9/ATTI707e69d8af5a0d84514ab740c99e58e19319BEFB/osito-polar-sprint-backlog-2
 
 
 #### 4.2.2.3. Development Evidence for Sprint Review
@@ -3197,6 +3198,8 @@ US12| Ver historial de servicios | UT04 | Visualizar detalle de historial | Impl
 US31| Controlar encendido y apagado del equipo | UT05 | Funcionalidad de actualización de estado de equipo | Implementar encendido y apagado para equipos | 3 | Joseph Rodriguez | In process
 US32| Ajustar temperatura del equipo | UT06 | Establecer temperatura óptima | Cambiar valores de temperatura de los equipos | 4 | Maria Muñoz | In process
 
+<img src="assets/TF/backlog3.jpg" alt="backlog3" width="1000" height="auto">
+link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a9af6f028c14403598e82c1558E82E2A6F/osito-polar-sprint-backlog-3
 
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
