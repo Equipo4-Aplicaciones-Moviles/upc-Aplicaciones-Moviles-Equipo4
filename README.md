@@ -113,7 +113,7 @@
       - [2.6.1.6.1. Bounded Context Domain Layer Class Diagrams](#26161-bounded-context-domain-layer-class-diagrams)
       - [2.6.1.6.2. Bounded Context Database Design Diagram](#26162-bounded-context-database-design-diagram)
 
-- [2.6.2. Bounded Context: <Gestión de Solicitudes>](#262-bounded-context-gestión-de-solicitudes)
+  - [2.6.2. Bounded Context: <Gestión de Solicitudes>](#262-bounded-context-gestión-de-solicitudes)
     - [2.6.2.1. Domain Layer](#2621-domain-layer)
     - [2.6.2.2. Interface Layer](#2622-interface-layer)
     - [2.6.2.3. Application Layer](#2623-application-layer)
@@ -123,7 +123,7 @@
       - [2.6.2.6.1. Bounded Context Domain Layer Class Diagrams](#26261-bounded-context-domain-layer-class-diagrams)
       - [2.6.2.6.2. Bounded Context Database Design Diagram](#26262-bounded-context-database-design-diagram)
 
-- [2.6.3. Bounded Context: <Órdenes de Trabajo>](#263-bounded-context-órdenes-de-trabajo)
+  - [2.6.3. Bounded Context: <Órdenes de Trabajo>](#263-bounded-context-órdenes-de-trabajo)
     - [2.6.3.1. Domain Layer](#2631-domain-layer)
     - [2.6.3.2. Interface Layer](#2632-interface-layer)
     - [2.6.3.3. Application Layer](#2633-application-layer)
@@ -133,7 +133,7 @@
       - [2.6.3.6.1. Bounded Context Domain Layer Class Diagrams](#26361-bounded-context-domain-layer-class-diagrams)
       - [2.6.3.6.2. Bounded Context Database Design Diagram](#26362-bounded-context-database-design-diagram)
 
-- [2.6.4. Bounded Context: <Ver Mantenimientos>](#264-bounded-context-ver-mantenimientos)
+  - [2.6.4. Bounded Context: <Ver Mantenimientos>](#264-bounded-context-ver-mantenimientos)
     - [2.6.4.1. Domain Layer](#2641-domain-layer)
     - [2.6.4.2. Interface Layer](#2642-interface-layer)
     - [2.6.4.3. Application Layer](#2643-application-layer)
@@ -143,7 +143,7 @@
       - [2.6.4.6.1. Bounded Context Domain Layer Class Diagrams](#26461-bounded-context-domain-layer-class-diagrams)
       - [2.6.4.6.2. Bounded Context Database Design Diagram](#26462-bounded-context-database-design-diagram)
 
-- [2.6.5. Bounded Context: <Notificaciones>](#265-bounded-context-notificaciones)
+  - [2.6.5. Bounded Context: <Notificaciones>](#265-bounded-context-notificaciones)
     - [2.6.5.1. Domain Layer](#2651-domain-layer)
     - [2.6.5.2. Interface Layer](#2652-interface-layer)
     - [2.6.5.3. Application Layer](#2653-application-layer)
@@ -153,7 +153,7 @@
       - [2.6.5.6.1. Bounded Context Domain Layer Class Diagrams](#26561-bounded-context-domain-layer-class-diagrams)
       - [2.6.5.6.2. Bounded Context Database Design Diagram](#26562-bounded-context-database-design-diagram)
 
-- [2.6.6. Bounded Context: <Ver Equipos>](#266-bounded-context-ver-equipos)
+  - [2.6.6. Bounded Context: <Ver Equipos>](#266-bounded-context-:-ver-equipos)
     - [2.6.6.1. Domain Layer](#2661-domain-layer)
     - [2.6.6.2. Interface Layer](#2662-interface-layer)
     - [2.6.6.3. Application Layer](#2663-application-layer)
