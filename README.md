@@ -3398,7 +3398,7 @@ link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a
 | https://github.com/Equipo4-Aplicaciones-Moviles/OsitoPolar-AppMovil | fixing_ui | 7bf95f9aab503fda48b15146b2efd1d081d43931 | Update TextField colors form better readability | feature: Update TextField colors form better readability | 2/12/25     |
 
 #### 4.2.3.5. Execution Evidence for Sprint Review
-fotos de capturas de ejecución
+
 
 #### 4.2.3.6. Services Documentation Evidence for Sprint Review
 
@@ -3418,6 +3418,11 @@ Prueba de los endpoints
 <br>
 <img width="1000" height="auto" src="assets/TF/endpoint_prueba1.jpg"><br>
 <img width="1000" height="auto" src="assets/TF/endpoint_prueba2.jpg"><br>
+
+Despliegue de la aplicación en Firebase App Distribution
+
+<img width="1253" height="649" alt="image" src="https://github.com/user-attachments/assets/b25c2e98-2bdc-40be-8736-d19e776d93db" />
+
 
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
