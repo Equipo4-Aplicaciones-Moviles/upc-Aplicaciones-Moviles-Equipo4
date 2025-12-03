@@ -57,7 +57,7 @@
 - [1.3. Segmentos Objetivos](#13-segmentos-objetivos)
 
 # Chapter II: Requirements Development and Software Solution Design
-- [2.1. Competitores](#21-competitores)
+- [2.1. Competidores](#21-competidores)
   - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
   - [2.1.2. Estrategias y tácticas frente a competidores](#212-Estrategias-y-tácticas-frente-a-competidores)
 - [2.2. Entrevistas](#22-Entrevistas)
@@ -484,7 +484,7 @@ El presente Lean UX Canvas se ha desarrollado para ofrecer una visión estratég
   </figcaption>
 </figure>
 
-## 1.3. Segmentos objetivo
+## 1.3. Segmentos objetivos
 
 **Segmento Objetivo #1: Negocios que utilizan equipos de refrigeración**
 * **Aspectos demográficos:**
@@ -2397,8 +2397,7 @@ El Landing Page Mock-up de OsitoPolar muestra un diseño limpio y organizado, co
 
 
     
-  - 3.1.4. Mobile Applications UX/UI Design
-    - 3.1.4.1. Mobile Applications Wireframes
+
 ### 3.1.4. Mobile Applications UX/UI Design
 #### 3.1.4.1. Mobile Applications Wireframes
 
@@ -2612,7 +2611,7 @@ La vista evidencia **claridad y estructura secuencial**, guiando al usuario en c
 
 ---
 
-  - 3.1.4.2. Mobile Applications Wireflow Diagrams
+#### 3.1.4.2. Mobile Applications Wireflow Diagrams
 En esta sección se presentan los Wireflows para cada objetivo del usuario, teniendo en cuenta los User Personas relevantes. Cada diagrama ilustra el flujo de interacción del usuario y cómo las acciones realizadas afectan las pantallas dentro de la aplicación.
 
 
@@ -2967,6 +2966,7 @@ El contraste cromático resalta las acciones principales de aprobación o rechaz
 ---
 
   ### 3.1.4.3. Mobile Applications Mock-ups
+  ### 3.1.4.4. Mobile Applications User Flow Diagrams
 
 ---
 
@@ -2989,7 +2989,7 @@ El contraste cromático resalta las acciones principales de aprobación o rechaz
      style="max-width: 70%; height: auto; display: block; margin: 0 auto;">
 
    
-    - 3.1.4.5. Mobile Applications Prototyping
+  ### 3.1.4.5. Mobile Applications Prototyping
 
 # Capítulo IV: Product Implementation & Validation
 
