@@ -205,7 +205,7 @@
 - [Conclusions and Recommendations](#conclusions-and-recommendations)
 
 # Videos
-- [Video App the product]([#video-app-validation](https://www.youtube.com/watch?v=C2BqPrKRUN8))
+- [Video App the product][https://www.youtube.com/watch?v=C2BqPrKRUN8]
 - [Video About the Product](#video-about-the-product)
 - [Video About the Team](#video-about-the-team)
 
