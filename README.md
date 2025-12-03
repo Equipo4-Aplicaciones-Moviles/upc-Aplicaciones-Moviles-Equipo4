@@ -199,8 +199,8 @@
 # Bibliografia
 - [Bibliografia](#bibliografia)
 
-# Anexos (haz hiper vinculos ese indice)
-- [Anexos](#anexos-haz-hiper-vinculos-ese-indice)
+# Anexos
+- [Anexos](#anexos)
 
 
 <div style="page-break-after: always;"></div>
@@ -2095,7 +2095,7 @@ La base de datos del contexto “Ver Equipos” está compuesta por las siguient
 <img width="1712" height="520" alt="image" src="https://github.com/user-attachments/assets/6b81b3d0-cb3a-48f6-ad5d-0b024c6382c7" />
 
 # Chapter III: Solution UI/UX Design
-- 3.1. Product Design
+## 3.1. Product Design
 
 En esta sección se presenta el diseño del producto **Osito Polar** como una parte esencial de la arquitectura del sistema. El diseño busca alinear las funcionalidades principales con las necesidades detectadas durante el análisis y modelado del dominio, garantizando una experiencia fluida, intuitiva y estéticamente consistente.
 
@@ -2104,13 +2104,13 @@ En esta sección se presenta el diseño del producto **Osito Polar** como una pa
 La arquitectura del producto contempla una **aplicación móvil desarrollada en Kotlin**, respaldada por un **backend en Spring Boot** y una **base de datos relacional en PostgreSQL**. Estas decisiones tecnológicas garantizan escalabilidad, rendimiento y mantenibilidad a largo plazo.
 
 ---
-  - 3.1.1. Style Guidelines
+  ### 3.1.1. Style Guidelines
 
 El objetivo de esta sección es establecer una guía visual clara y compartida por todo el equipo de desarrollo y diseño, asegurando una experiencia consistente en todas las pantallas y plataformas.  
 Se definen los criterios para colores, tipografía, iconografía, botones, espaciados y usabilidad.
 
 ---
- - 3.1.1.1. General Style Guidelines
+ #### 3.1.1.1. General Style Guidelines
 
 #### Paleta de colores principal
 
@@ -2157,13 +2157,13 @@ El proyecto emplea una tipografía sans-serif moderna que asegura claridad y leg
 - Estructura visual compatible con distintos tamaños de pantalla.
 
 ---
-  - 3.1.2. Information Architecture
+### 3.1.2. Information Architecture
     
 La arquitectura de la información de **Osito Polar** fue diseñada para facilitar la navegación, el descubrimiento de funcionalidades y la organización jerárquica de los datos.  
 Tanto la landing page como la aplicación móvil siguen principios de jerarquía, consistencia y categorización.
 
 ---
-  - 3.1.2.1. Organization Systems
+#### 3.1.2.1. Organization Systems
 
 Se aplican distintos sistemas de organización según la sección o funcionalidad:
 
@@ -2183,7 +2183,7 @@ Se aplican distintos sistemas de organización según la sección o funcionalida
   Contenido separado para usuarios principiantes, intermedios o expertos.
 
 ---
-  - 3.1.2.2. Labelling Systems
+#### 3.1.2.2. Labelling Systems
 
 Las etiquetas de texto fueron cuidadosamente seleccionadas para ser **claras, cortas y coherentes** con la experiencia del usuario.
 
@@ -2200,7 +2200,7 @@ Las etiquetas de texto fueron cuidadosamente seleccionadas para ser **claras, co
 La iconografía refuerza las etiquetas mediante símbolos intuitivos y colores distintivos.
 
 ---
-  - 3.1.2.3. SEO Tags and Meta Tags
+#### 3.1.2.3. SEO Tags and Meta Tags
 
 Se definen metadatos para optimizar la visibilidad tanto en motores de búsqueda (SEO) como en tiendas de aplicaciones (ASO).
 
@@ -2219,7 +2219,7 @@ Se definen metadatos para optimizar la visibilidad tanto en motores de búsqueda
 - **App Keywords:** hardware, build pc, compatibilidad, tecnología, comunidad gamer  
 ---
 
-  - 3.1.2.4. Searching Systems
+#### 3.1.2.4. Searching Systems
 
 El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexible**.
 
@@ -2230,7 +2230,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 
 ---
 
-  - 3.1.2.5. Navigation Systems
+#### 3.1.2.5. Navigation Systems
 
 #### Landing Page
 - Menú superior o hamburguesa con secciones: **Inicio**, **Sobre Nosotros**, **FAQ**, **Contacto**.  
@@ -2245,7 +2245,7 @@ El sistema de búsqueda está diseñado para ser **rápido, predictivo y flexibl
 
 ---
 
-  - 3.1.3. Landing Page UI Design
+### 3.1.3. Landing Page UI Design
 
 El diseño de la landing page de **Osito Polar** fue desarrollado en **Figma**, priorizando la claridad visual, la jerarquía informativa y la usabilidad.  
 El enlace oficial al diseño es el siguiente:  
@@ -2253,7 +2253,7 @@ El enlace oficial al diseño es el siguiente:
 
 ---
 
-  - 3.1.3.1. Landing Page Wireframe
+#### 3.1.3.1. Landing Page Wireframe
 El wireframe de la página de inicio de OsitoPolar organiza los elementos clave para ofrecer una navegación intuitiva. Incluye un encabezado con el logo y un menú de navegación, seguido de una propuesta de valor clara con botones de acción destacados como "Solicitar Demo" y "¿Cómo Funciona?". La página cuenta con secciones para describir a los usuarios objetivo, las funcionalidades clave del sistema, y los beneficios que ofrece OsitoPolar. Al final, se encuentra un formulario de contacto para que los usuarios soliciten una demo, junto con enlaces legales en el pie de página.
 
 <figure style="page-break-inside: avoid; text-align: center;">
@@ -2266,7 +2266,7 @@ El wireframe de la página de inicio de OsitoPolar organiza los elementos clave 
 </figure>
 
 
-  - 3.1.3.2. Landing Page Mock-up
+#### 3.1.3.2. Landing Page Mock-up
 El Landing Page Mock-up de OsitoPolar muestra un diseño limpio y organizado, con una estructura intuitiva que guía a los usuarios a través de la plataforma. Incluye una propuesta de valor destacada en la parte superior, seguida de secciones clave como las funcionalidades del sistema, los beneficios para empresas y proveedores, y una explicación clara de cómo funciona el servicio. También cuenta con testimonios de clientes, detalles sobre la empresa y un formulario para solicitar una demo, todo con un enfoque en facilitar la conversión de visitantes a usuarios activos.
 
 - Esta es la primera sección, llamada "Inicio". En esta se puede ver la propuesta de valor que ofrece nuestra plataforma junto con un "Call to Action" que se agregará a futuro.
