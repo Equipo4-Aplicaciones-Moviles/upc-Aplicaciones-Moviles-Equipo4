@@ -164,22 +164,22 @@
     - [3.1.4.5. Mobile Applications Prototyping](#3145-mobile-applications-prototyping)
 
 # Chapter IV: Product Implementation & Validation
-- [4. Product Implementation & Validation](#4-product-implementation--validation)
+- [4. Product Implementation & Validation](#4-capitulo-VI-product-implementation-&-validation)
 - [4.1. Software Configuration Management](#41-software-configuration-management)
   - [4.1.1. Software Development Environment Configuration](#411-software-development-environment-configuration)
   - [4.1.2. Source Code Management](#412-source-code-management)
-  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide--conventions)
+  - [4.1.3. Source Code Style Guide & Conventions](#413-source-code-style-guide-&-conventions)
   - [4.1.4. Software Deployment Configuration](#414-software-deployment-configuration)
-- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page--mobile-application-implementation)
+- [4.2. Landing Page & Mobile Application Implementation](#42-landing-page-&-mobile-application-implementation)
   - [4.2.1. Sprint n](#421-sprint-n)
-    - [4.2.1.1. Sprint Planning n](#4211-sprint-planning-n)
-    - [4.2.1.2. Sprint Backlog n](#4212-sprint-backlog-n)
-    - [4.2.1.3. Development Evidence for Sprint Review](#4213-development-evidence-for-sprint-review)
-    - [4.2.1.4. Testing Suite Evidence for Sprint Review](#4214-testing-suite-evidence-for-sprint-review)
-    - [4.2.1.5. Execution Evidence for Sprint Review](#4215-execution-evidence-for-sprint-review)
-    - [4.2.1.6. Services Documentation Evidence for Sprint Review](#4216-services-documentation-evidence-for-sprint-review)
-    - [4.2.1.7. Software Deployment Evidence for Sprint Review](#4217-software-deployment-evidence-for-sprint-review)
-    - [4.2.1.8. Team Collaboration Insights during Sprint](#4218-team-collaboration-insights-during-sprint)
+    - [4.2.1.1. Sprint Planning n](#4211-sprint-planning-2)
+    - [4.2.1.2. Sprint Backlog n](#4212-sprint-backlog-2)
+    - [4.2.1.3. Development Evidence for Sprint Review](#4223-development-evidence-for-sprint-review)
+    - [4.2.1.4. Testing Suite Evidence for Sprint Review](#4224-testing-suite-evidence-for-sprint-review)
+    - [4.2.1.5. Execution Evidence for Sprint Review](#4225-execution-evidence-for-sprint-review)
+    - [4.2.1.6. Services Documentation Evidence for Sprint Review](#4226-services-documentation-evidence-for-sprint-review)
+    - [4.2.1.7. Software Deployment Evidence for Sprint Review](#4227-software-deployment-evidence-for-sprint-review)
+    - [4.2.1.8. Team Collaboration Insights during Sprint](#4228-team-collaboration-insights-during-sprint)
 - [4.3. Validation Interviews](#43-validation-interviews)
   - [4.3.1. Diseño de Entrevistas](#431-diseño-de-entrevistas)
   - [4.3.2. Registro de Entrevistas](#432-registro-de-entrevistas)
@@ -2992,6 +2992,15 @@ El contraste cromático resalta las acciones principales de aprobación o rechaz
   ### 3.1.4.5. Mobile Applications Prototyping
 
 # Capítulo IV: Product Implementation & Validation
+
+
+## 4.1 Software Configuration Management
+### 4.1.1. Software development environment configuration
+### 4.1.2. Source code management
+### 4.1.3. Source code style guide & Conventions
+### 4.1.4. Software Deployment Configuration
+## 4.2. Landing Page & Mobile Application Implementation
+
 
 ### 4.2.1. Sprint 1
 #### 4.2.1.1. Sprint Planning 1
