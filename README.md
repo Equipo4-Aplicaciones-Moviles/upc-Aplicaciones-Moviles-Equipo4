@@ -3187,6 +3187,26 @@ link de Trello: https://trello.com/invite/b/692f7b1a04415c0e07643de9/ATTI707e69d
 
 ### 4.2.3 Sprint 3
 
+#### 4.2.3.1. Sprint Planning 3
+A continuación, se presenta la planificación del tercer sprint. En esta sección se expone la reunión inicial correspondiente, en la cual se establecieron los objetivos, se definieron los acuerdos y se revisaron los aspectos fundamentales que orientarían el desarrollo del sprint.
+
+| **Sprint #**                    | **Sprint 3** |
+|-------------------------------|-------------|
+| **Sprint Planning Background**| En el sprint decidimos reunirnos para verificar el progreso de cada uno de los participantes y el progreso desde el punto de vista grupal, luego de ello buscamos formas y acciones de mejora. |
+| **Date**                      | 28/11/25    |
+| **Time**                      | 20:00 horas |
+| **Location**                  | Via Discord |
+| **Prepared By**               | Sergio Aguirre |
+| **Attendees**                 | Joseph Rodriguez, Sergio Aguirre, Victor Rojas, Maria Muñoz, Luis Montañez |
+| **Sprint 3 Review Summary**     | Esta sección se dedicó a terminar las aplicaciones móviles tanto en flutter como en Android Studio y también que el backend esté completamente desplegado. |
+| **Sprint 3 Retrospective Summary** | Todos los integrantes mencionaron tener aciertos en partes del código y en otras partes poder mejorar sus habilidades.  |
+| **Sprint Goal & User Stories** |  |
+| **Sprint 3 Goal**               | En este sprint, nos enfocamos en terminar la aplicación móvil de Osito Polar para Android e iOS utilizando Flutter. También se mejoró la aplicación para Android Studio. Además, se ha completado el despliegue del backend al 100%, lo que asegura que ambos sistemas estén totalmente integrados y funcionales. Este último sprint nos permitirá ofrecer la experiencia de usuario más completa, asegurando la estabilidad y escalabilidad de las aplicaciones móviles. |
+| **Sprint 3 Velocity**              | 15 |
+| **Sum of Story Points**        | 25 |
+
+#### 4.2.3.3. Sprint Backlog 1
+
 Sprint # | Sprint 3 | | | | | | |
 ---------|----------|---------|-------|-----|----|----|---|
 User Story | Work-Item / Task
