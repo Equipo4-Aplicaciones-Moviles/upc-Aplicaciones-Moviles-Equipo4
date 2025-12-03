@@ -206,6 +206,7 @@
 
 # Videos
 - [Video App Validation](#video-app-validation)
+- https://www.youtube.com/watch?v=C2BqPrKRUN8
 - [Video About the Product](#video-about-the-product)
 - [Video About the Team](#video-about-the-team)
 
