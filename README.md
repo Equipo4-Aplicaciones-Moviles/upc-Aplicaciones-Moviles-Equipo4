@@ -3029,6 +3029,9 @@ US24 | Explorar soluciones específicas para mi rubro | UT04 | Crear la sección
 US24 | Explorar soluciones específicas para mi rubro | UT05 | Añadir estilos CSS | Aplicar estilos según el diseño aprobado de "Beneficios" | 2 | Luis Montañez | Done
 US24 | Explorar soluciones específicas para mi rubro | UT06 | Añadir interacciones con JS | Agregar efectos y validaciones según el diseño de Beneficios | 3 | Joseph Rodriguez | Done
 
+<img src="assets/TF/backlog1.jpg" alt="backlog1" width="600" height="auto">
+link de Trello: https://trello.com/invite/b/692f781cba1286ca0c3a9a2f/ATTI2ac02e1ea3f375b9e1ccd8051faebc69F69AC868/osito-polar-sprint-backlog-1
+
 
 
 #### 4.2.1.3. Development Evidence for Sprint Review
