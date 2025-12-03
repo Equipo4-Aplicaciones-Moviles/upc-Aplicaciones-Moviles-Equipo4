@@ -181,9 +181,9 @@
     - [4.2.1.7. Software Deployment Evidence for Sprint Review](#4217-software-deployment-evidence-for-sprint-review)
     - [4.2.1.8. Team Collaboration Insights during Sprint](#4218-team-collaboration-insights-during-sprint)
 - [4.3. Validation Interviews](#43-validation-interviews)
-  - [4.3.1. Interview Design](#431-interview-design)
-  - [4.3.2. Interview Records](#432-interview-records)
-  - [4.3.3. Heuristic Evaluations](#433-heuristic-evaluations)
+  - [4.3.1. Diseño de Entrevistas](#431-diseño-de-entrevistas)
+  - [4.3.2. Registro de Entrevistas](#432-registro-de-entrevistas)
+  - [4.3.3. Evualuaciones según heurísticas](#433-evaluaciones-según-heurísticas)
 
 # Conclusions
 - [Conclusions and Recommendations](#conclusions-and-recommendations)
@@ -3224,9 +3224,6 @@ link de Trello: https://trello.com/invite/b/692f7d038185a0f6b03f7c71/ATTId60a74a
 #### 4.3. Validation Interviews
 #### 4.3.1. Diseño de Entrevistas
 
-En esta sección se presentan los detalles de las entrevistas de validación realizadas.
-
-### 5.3.1. Diseño de Entrevistas.
 
 <h4>Objetivo de la Entrevista</h4>
 <p>Validar la usabilidad, efectividad y propuesta de valor de la <strong>aplicación móvil OsitoPolar</strong> para los segmentos clave. Se evaluará si las funcionalidades cubren las necesidades operativas reales y si los flujos táctiles (tap, swipe, notificaciones push) son intuitivos para usuarios con distintos perfiles técnicos.</p>
@@ -3443,7 +3440,7 @@ En esta sección se presentan los detalles de las entrevistas de validación rea
 
 ---
 
-### 5.3.2. Registro de Entrevistas.
+### 4.3.2. Registro de Entrevistas.
 En esta sección tenemos el análisis de las entrevistas por segmentos objetivos.
 
 <br>
