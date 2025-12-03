@@ -205,9 +205,9 @@
 - [Conclusions and Recommendations](#conclusions-and-recommendations)
 
 # Videos
-- [Video App the product](https://www.youtube.com/watch?v=C2BqPrKRUN8)
-- [Video About the Product](https://www.youtube.com/watch?v=li0cKa47jG8)
-- [Video About the Team](#video-about-the-team)
+- [Video App the Product](https://www.youtube.com/watch?v=C2BqPrKRUN8)
+- [Video About the Validation]()
+- [Video About the Team](https://www.youtube.com/watch?v=li0cKa47jG8)
 
 # Ver Glosario
 - [Glosario](#glosario)
